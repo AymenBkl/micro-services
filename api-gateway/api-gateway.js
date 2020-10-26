@@ -6,7 +6,7 @@ var debug = require('debug')('http'),
     config= require ('./config')(),
     request = require('request'),
     servicesHelper = require('./services-helper')(config.services),
-    serviceRegistry = require ('micro-node-service-registry-lib')({
+    serviceRegistry = require ('../micro-node-service-registry-lib')({
         name:config.serviceRegistry.database.name,
         user:config.serviceRegistry.database.user,
         password:config.serviceRegistry.database.password,

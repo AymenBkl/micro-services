@@ -10,7 +10,7 @@ var config= require ('./config')(),
     morgan= require('morgan'),
     cluster = require('cluster'),
     numCPUs = require('os').cpus().length,
-    netLib = require ('micro-node-net-lib'),
+    netLib = require ('../micro-node-net-lib'),
     configServer= {
         server:{
             port:config.server.port
@@ -26,7 +26,7 @@ var config= require ('./config')(),
         exitHandlers:["exit","SIGINT","SIGTERM"]
     }
     server = netLib.server(configServer),
-    serviceRegistry = require ('micro-node-service-registry-lib')({
+    serviceRegistry = require ('../micro-node-service-registry-lib')({
         name:config.serviceRegistry.database.name,
         user:config.serviceRegistry.database.user,
         password:config.serviceRegistry.database.password,

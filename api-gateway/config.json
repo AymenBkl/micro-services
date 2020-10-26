@@ -30,10 +30,10 @@
   ],
   "serviceRegistry":{
       "database":{
-        "name":"my_mongo_db",
-        "user":"my_mongo_db_user",
-        "password":"my_mongo_db_password",
-        "host":"my_mongo_db_host",
+        "name":"micro",
+        "user":"root",
+        "password":"",
+        "host":"localhost",
         "port":27017
       }
   }

@@ -9,7 +9,7 @@ var config= require ('./config')(),
     morgan= require('morgan'),
     cluster = require('cluster'),
     numCPUs = require('os').cpus().length,
-    netLib = require ('micro-node-net-lib'),
+    netLib = require ('../micro-node-net-lib'),
     apiGateway = require('./api-gateway'),
     configServer= {
         server:{
