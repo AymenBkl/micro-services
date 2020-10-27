@@ -8,6 +8,7 @@ var express = require('express'),
     config= require ('./config')()
 
 router.post('/', function (req, res,next) {
+    console.log(req.body);
     return res.status(200).send("## Login -> This is just a test response ;-)");
 });
 
