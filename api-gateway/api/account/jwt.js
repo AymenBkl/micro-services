@@ -5,7 +5,9 @@ router = express.Router();
 
 const jwt = require('../../middlewares/jwt/jwt');
 
-router.get('/',jwt.verifyUser,function (req, res,next) {
-});
+
+const controller = require('../../controllers/checkjwt');
+
+router.get('/',controller.checkJWT);
 
 module.exports = router;
