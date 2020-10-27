@@ -1,13 +1,11 @@
 
 
 var express = require('express'),
-router = express.Router(),
-apiGateway = require('../.././api-gateway');
+router = express.Router();
 
+const jwt = require('../../middlewares/jwt/jwt');
 
-router.get('/', function (req, res,next) {
-    var request = new apiGateway();
-    request.sendRequest("ServiceSignup","jwt",req, res,next);
+router.get('/',jwt.verifyUser,function (req, res,next) {
 });
 
 module.exports = router;

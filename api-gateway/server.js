@@ -10,6 +10,10 @@ var config= require ('./config')(),
     cluster = require('cluster'),
     numCPUs = require('os').cpus().length,
     netLib = require ('../micro-node-net-lib'),
+    cfg = require('./config.json'),
+    mongoose = require('mongoose'),
+    passport = require('passport');
+    cookieParser = require('cookie-parser');
     apiGateway = require('./api-gateway'),
     configServer= {
         server:{
@@ -44,6 +48,10 @@ var config= require ('./config')(),
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(morgan('dev'));
+        app.use(passport.initialize());
+        app.use(passport.session());
+        app.use(cookieParser(cfg.cockiParserSecret));
+        mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false })
         configServer.express.app = app;
         
         //header(s) setting
