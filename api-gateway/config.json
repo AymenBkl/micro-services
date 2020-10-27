@@ -18,6 +18,7 @@
     "route":"api",
     "modules":[
       {"name":"login", "path":"api/account", "route":"account/login"},
+      {"name":"jwt", "path":"api/account", "route":"account/jwt"},
       {"name":"signup", "path":"api/account", "route":"account/signup"},
       {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
     ]
@@ -26,6 +27,7 @@
       {"name":"ServiceLog", "endpointId":"log"},
       {"name":"ServiceLogin", "endpointId":"login"},
       {"name":"ServiceSignup", "endpointId":"signup"},
+      {"name":"ServiceSignup", "endpointId":"jwt"},
       {"name":"ServiceOrders", "endpointId":"orders"}
   ],
   "serviceRegistry":{
@@ -36,7 +38,15 @@
         "host":"localhost",
         "port":27017
       }
-  }
+  },
+  "token" : {
+    "tokenExperationDate" : 366666660,
+    "secretKey" : "12345azerty6789"
+  },
+  "facebook" : {
+    "clientId" : "299424541329444",
+    "clientSecret" : "67397e0217fc7687941793dd3e2609ee"
+}
 }
 
 

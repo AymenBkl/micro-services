@@ -15,6 +15,8 @@ function ServiceHelper(services) {
         },
         getService:function (serviceName,serviceEndpointId) {
             var service=services.filter(function( item ) {
+                console.log(item);
+                console.log(serviceEndpointId);
                 return (item.name == serviceName && item.endpointId == serviceEndpointId);
             });
             if (!service || !service[0] || service[0].length==0){

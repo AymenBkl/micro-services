@@ -6,7 +6,7 @@ const extractJwt = require("passport-jwt").ExtractJwt;
 
 const JWT = require("jsonwebtoken");
 
-const user = require("../../models/user/user"); 
+const user = require("../../models/User/user"); 
 
 const config = require("../../config.json");
 

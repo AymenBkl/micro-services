@@ -17,7 +17,8 @@
   "api":{
     "route":"api",
     "modules":[
-      {"name":"signup", "route":"signup"}
+      {"name":"Controllers/signup", "route":"signup"},
+      {"name":"Controllers/jwt", "route":"jwt"}
     ]
   },
   "serviceRegistry":{
@@ -32,7 +33,15 @@
         "host":"localhost",
         "port":27017
       }
-  }
+  },
+  "token" : {
+    "tokenExperationDate" : 366666660,
+    "secretKey" : "12345azerty6789"
+  },
+  "facebook" : {
+    "clientId" : "299424541329444",
+    "clientSecret" : "67397e0217fc7687941793dd3e2609ee"
+}
 }
 
 

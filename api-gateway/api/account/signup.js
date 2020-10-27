@@ -11,4 +11,9 @@ router.post('/', function (req, res,next) {
     request.sendRequest("ServiceSignup","signup",req, res,next);
 });
 
+router.get('/', function (req, res,next) {
+    var request = new apiGateway();
+    request.sendRequest("ServiceSignup","jwt",req, res,next);
+});
+
 module.exports = router;

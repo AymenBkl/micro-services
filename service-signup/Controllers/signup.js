@@ -5,7 +5,7 @@
 var express = require('express'),
     router = express.Router(),
     debug = require('debug')('http'),
-    config= require ('./config')()
+    config= require ('../config')()
 
 router.post('/', function (req, res,next) {
     return res.status(200).send("## Signup -> This is just a test response ;-)");

@@ -43,7 +43,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,req, re
             if (error){
                 return next(error);
             }else {
-                return res.status(500).send(responseLib.errorResponse(1001,"Service not found","Application Error"));
+                return res.status(500).send(1001,"Service not found","Application Error");
             }
 
         }
