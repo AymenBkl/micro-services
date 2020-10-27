@@ -47,19 +47,6 @@ const userSchema = new Schema({
     strict : true
 }
 )
-var autoPopulateLead = function(next) {
-    this.populate('facebook');
-    this.populate('google');
-    this.populate('instagram');
-    this.populate('twitter');
-    this.populate('phone');
-    next();
-  };
-  
-userSchema.
-pre('findOne', autoPopulateLead).
-pre('find', autoPopulateLead).
-pre('findByIdAndUpdate', autoPopulateLead);
 
 userSchema.plugin(passportLocalMongoose);
 validators.validators.emailValidator(userSchema);

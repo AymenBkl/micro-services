@@ -13,15 +13,14 @@ const config = require("../../config.json");
 const facebookTokenStrategy = require("passport-facebook-token");
 
 module.exports.getToken = (user) => {
-  return JWT.sign(user, config.secretKey, {
-    expiresIn: config.tokenExperationDate,
+  return JWT.sign(user, config.token.secretKey, {
+    expiresIn: config.token.tokenExperationDate,
   });
 };
 
 var opts = {};
 
 opts.secretOrKey = config.token.secretKey;
-
 opts.jwtFromRequest = extractJwt.fromAuthHeaderAsBearerToken();
 
 exports.jwtPassport = passport.use(

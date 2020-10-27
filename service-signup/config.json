@@ -28,7 +28,7 @@
       },
       "database":{
         "name":"micro",
-        "user":"root",
+        "user":"",
         "password":"",
         "host":"localhost",
         "port":27017
@@ -41,7 +41,8 @@
   "facebook" : {
     "clientId" : "299424541329444",
     "clientSecret" : "67397e0217fc7687941793dd3e2609ee"
-}
+},
+"cockiParserSecret" : "aymenxyzbkl12345678910"
 }
 
 
