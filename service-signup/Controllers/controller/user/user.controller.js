@@ -16,7 +16,7 @@ module.exports = {
             username : req.body.username,
             firstname : req.body.firstname,
             lastname : req.body.lastname,
-            role : 'normalUser'
+            role : req.body.role
         })
         registerUser.registerUser(req,res,newUser,req.body.password);
     },

@@ -8,6 +8,11 @@ var express = require('express'),
     config= require ('../config')()
 
 const userController = require('./UserController/user.controller');
+
+router.options('/',(req,res,next) => {
+    next();
+});
+
 router.post('/',userController.login);
 
 module.exports = router;

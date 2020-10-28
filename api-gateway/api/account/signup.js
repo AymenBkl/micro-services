@@ -6,6 +6,10 @@ var express = require('express'),
     router = express.Router(),
     apiGateway = require('../.././api-gateway');
 
+router.options('/',(req,res,next) => {
+    next();
+});
+
 router.post('/', function (req, res,next) {
     var request = new apiGateway();
     request.sendRequest("ServiceSignup","signup",req, res,next);

@@ -15,7 +15,7 @@
       },
       {
         "name": "Access-Control-Allow-Headers",
-        "value": "Origin, X-Requested-With, Content-Type, Accept"
+        "value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
       },
       {
         "name": "Access-Control-Allow-Methods",

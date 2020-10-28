@@ -10,6 +10,10 @@ var express = require('express'),
 
 const userController = require('./controller/user/user.controller');
 
+router.options('/',(req,res,next) => {
+    next();
+});
+
 router.post('/',userController.signUp);
 
 module.exports = router;
