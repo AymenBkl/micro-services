@@ -23,7 +23,7 @@ var ApiGateway = function () {
 ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,req, res,next) {
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
-
+    console.log(serviceName,serviceEndpointId);
     serviceRegistry.find(service.name,service.endpointId,function (error,service) {
         if (service && !error){
             console.log(service);
@@ -40,6 +40,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,req, re
                 }
             });
         } else {
+            console.log(error);
             if (error){
                 return next(error);
             }else {

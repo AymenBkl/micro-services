@@ -33,7 +33,7 @@ var config= require ('./config')(),
 
     if (cluster.isMaster && config.server.isCluster) {
         debug("cpus:" + numCPUs);
-        for (var i = 0; i < numCPUs; i++) {
+        for (var i = 0; i < 1; i++) {
             cluster.fork();
         }
         cluster.on('exit', function(worker, code, signal) {
@@ -68,7 +68,6 @@ var config= require ('./config')(),
 
         //load API route(s)
         config.api.modules.forEach(function(item) {
-            //console.log(item);
             app.use('/' + config.api.route + "/" + item.route, require('./' + item.path + "/" +  item.name));
         });
         
