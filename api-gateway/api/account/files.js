@@ -6,19 +6,21 @@ var express = require('express'),
     router = express.Router(),
     apiGateway = require('../.././api-gateway');
 
-router.all('/', function (req, res, next) {
+const jwt = require('../../middlewares/jwt/jwt');
+
+router.all('/',function (req, res, next) {
     next();
 })
-    .options('/', (req, res, next) => {
+    .options('/',jwt.verifyUser, (req, res, next) => {
         next();
     })
-    .post('/addfile', function (req, res, next) {
+    .post('/addfile',jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceFiles", "Routes/files.route", req.method, req, res, next);
+        request.sendRequest("ServiceFiles", "Routes/files.route", req.method,true, req, res, next);
     })
-    .get('/getfile', function (req, res, next) {
+    .get('/getfile',jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceFiles", "Routes/files.route", req.method, req, res, next);
+        request.sendRequest("ServiceFiles", "Routes/files.route", req.method,false, req, res, next);
     });
 
 

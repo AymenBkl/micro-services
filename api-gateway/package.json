@@ -25,6 +25,7 @@
     "micro-node-service-registry-lib": "git@github.com:alchimya/micro-node-service-registry-lib.git",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
+    "multiparty": "^4.2.2",
     "passport": "^0.4.1",
     "passport-facebook-token": "^4.0.0",
     "passport-jwt": "^4.0.0",

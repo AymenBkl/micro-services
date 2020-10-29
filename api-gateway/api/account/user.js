@@ -13,13 +13,17 @@ router.all('/', function (req, res, next) {
     .options('/', (req, res, next) => {
         next();
     })
-    .post('/', function (req, res, next) {
+    .post('/image', function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, req, res, next);
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method,true, req, res, next);
     })
-    .get('/route', function (req, res, next) {
+    .get('/user', function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, req, res, next);
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method,false, req, res, next);
+    })
+    .put('/updateuser', function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method,false, req, res, next);
     });
 
 

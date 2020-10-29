@@ -14,7 +14,7 @@ router.all('/', function (req, res, next) {
     })
     .post('/', function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceSignup", "Routes/signup.route", req.method, req, res, next);
+        request.sendRequest("ServiceSignup", "Routes/signup.route", req.method,false, req, res, next);
     })
 
 

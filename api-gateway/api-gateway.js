@@ -20,25 +20,41 @@ var ApiGateway = function () {
 };
 
 
-ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,req, res,next) {
+ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next) {
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
     console.log(serviceName,serviceEndpointId);
     serviceRegistry.find(service.name,service.endpointId,function (error,service) {
         if (service && !error){
             console.log(service.endpointUrl);
-            request({
-                url: service.endpointUrl,
-                method: method,
-                json:req.body
-            }, function(error, response, body){
-                if (error){
-                    return next(error)
-                }else {
-                    debug(body);
-                    return res.status(response.statusCode).send(body);
-                }
-            });
+            if (file == true){
+                request({
+                    url: service.endpointUrl,
+                    method: method,
+                    body : req ,
+                }, function(error, response, body){
+                    if (error){
+                        return next(error)
+                    }else {
+                        debug(body);
+                        return res.status(response.statusCode).send(JSON.parse(body));
+                    }
+                });
+            }
+            else {
+                request({
+                    url: service.endpointUrl,
+                    method: method,
+                    json : req.body ,
+                }, function(error, response, body){
+                    if (error){
+                        return next(error)
+                    }else {
+                        debug(body);
+                        return res.status(response.statusCode).send(body);
+                    }
+                });
+            }
         } else {
             console.log(error);
             if (error){

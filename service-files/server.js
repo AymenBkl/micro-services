@@ -54,8 +54,8 @@ if (cluster.isMaster && config.server.isCluster) {
 } else {
 
     var app = express();
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+    app.use(bodyParser.json({limit: '50mb'}));
     app.use(morgan('dev'));
     app.use(passport.initialize());
     app.use(passport.session());

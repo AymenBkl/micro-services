@@ -1,15 +1,13 @@
-/**
- * Created by domenicovacchiano on 07/07/16.
- */
 
-var express = require('express'),
-    router = express.Router(),
-    debug = require('debug')('http'),
-    config= require ('../config')()
-
-
-router.post('/', function (req, res,next) {
-    return res.status(200).send("## postfile -> This is just a test response ;-)");
-});
-
-module.exports = router;
+const response = require('../Handler/HandlerFiles/response.controller');
+module.exports.upload = (req,res) => {
+    console.log(req.file);
+    if (req.file){
+    const query = {
+        $set : {imageUrl : req.file.filename}
+    }
+    response.response('success',res,req.file,200,null);
+} else {
+    response.response("error",res,"FILE NOT PRESENT",500,null);
+}
+}
