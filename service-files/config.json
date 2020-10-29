@@ -1,0 +1,50 @@
+{
+    "server":{
+      "id":"ServiceFiles",
+      "port":8085,
+      "isCluster":true,
+      "https":{
+        "isEnabled":false,
+        "key":"",
+        "ca":""
+      },
+      "headers":[
+        {"name":"Access-Control-Allow-Origin","value":"*"},
+        {"name":"Access-Control-Allow-Headers","value":"Origin, X-Requested-With, Content-Type, Accept, Authorization"},
+        {"name":"Access-Control-Allow-Methods","value":"GET,PUT,POST,DELETE,OPTIONS"}
+        ]
+    },
+    "api":{
+      "route":"api",
+      "modules":[
+        {"name":"Controllers/addfile", "route":"addfile"},
+        {"name":"Controllers/getfile", "route":"getfile"}
+      ]
+    },
+    "serviceRegistry":{
+        "watchDog":{
+          "isEnabled":false,
+          "timer":30000
+        },
+        "database":{
+          "name":"micro",
+          "user":"",
+          "password":"",
+          "host":"localhost",
+          "port":27017
+        }
+    },
+    "token" : {
+      "tokenExperationDate" : 366666660,
+      "secretKey" : "12345azerty6789"
+    },
+    "facebook" : {
+      "clientId" : "299424541329444",
+      "clientSecret" : "67397e0217fc7687941793dd3e2609ee"
+  },
+  "cockiParserSecret" : "aymenxyzbkl12345678910"
+  }
+  
+  
+  
+  
