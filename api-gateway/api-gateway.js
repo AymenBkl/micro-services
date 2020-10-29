@@ -31,7 +31,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 request({
                     url: service.endpointUrl,
                     method: method,
-                    body : req ,
+                    json : req ,
                 }, function(error, response, body){
                     if (error){
                         return next(error)

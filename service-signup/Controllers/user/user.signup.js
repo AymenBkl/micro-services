@@ -20,14 +20,3 @@ module.exports = {
 }
 }
 
-function requests(){
-    var contents = {
-        headers: { 'content-type': 'application/json' }, 
-        url: 'http://localhost:8080/api/account/addfile', 
-        uri: 'http://localhost:8080/api/account/addfile',
-        body: {}
-    }
-    request.post('http://localhost:8080/api/account/addfile',function(error, response, body){
-        console.log(body);
-    }); 
-}

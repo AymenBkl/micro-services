@@ -1,9 +1,7 @@
-const user = require("../../models/User/user");
-
-const passport = require("passport");
 
 
-const registerUser = require('./user.signup');
+
+const updateImage = require('./updateImage');
 
 
 //const checkJWT = require('./checkJWT');
@@ -11,12 +9,9 @@ const registerUser = require('./user.signup');
 
 module.exports = {
     updateImage : (req,res,next) => {
-        
-        registerUser.registerUser(req,res,newUser,req.body.password);
+        updateImage.upadeteImage(req,res,next);
     },
-    /**check : (req,res,next) => {
-        checkJWT.checkJWT(req,res,next);
-    },**/
+
 
 }
 
