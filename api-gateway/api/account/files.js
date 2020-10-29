@@ -6,19 +6,20 @@ var express = require('express'),
     router = express.Router(),
     apiGateway = require('../.././api-gateway');
 
-router.options('/',(req,res,next) => {
+router.all('/', function (req, res, next) {
     next();
-});
-
-router.post('/', function (req, res,next) {
-    var request = new apiGateway();
-    request.sendRequest("ServiceFiles","addfile",req, res,next);
-});
-
-router.get('/', function (req, res,next) {
-    var request = new apiGateway();
-    request.sendRequest("ServiceFiles","getfile",req, res,next);
-});
+})
+    .options('/', (req, res, next) => {
+        next();
+    })
+    .post('/addfile', function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceFiles", "Routes/files.route", req.method, req, res, next);
+    })
+    .get('/getfile', function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceFiles", "Routes/files.route", req.method, req, res, next);
+    });
 
 
 

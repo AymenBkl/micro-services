@@ -17,8 +17,7 @@
     "api":{
       "route":"api",
       "modules":[
-        {"name":"Controllers/addfile", "route":"addfile"},
-        {"name":"Controllers/getfile", "route":"getfile"}
+        {"name":"Routes/files.route", "route":"files"}
       ]
     },
     "serviceRegistry":{
