@@ -28,8 +28,7 @@
   "services":[
       {"name":"ServiceLog", "endpointId":"log"},
       {"name":"ServiceLogin", "endpointId":"login"},
-      {"name":"ServiceSignup", "endpointId":"signup"},
-      {"name":"ServiceSignup", "endpointId":"jwt"},
+      {"name":"ServiceSignup", "endpointId":"Controllers/signup"},
       {"name":"ServiceFiles", "endpointId":"Controllers/addfile"},
       {"name":"ServiceFiles", "endpointId":"getfile"},
       {"name":"ServiceOrders", "endpointId":"orders"}

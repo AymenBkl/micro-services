@@ -12,7 +12,7 @@ router.options('/',(req,res,next) => {
 
 router.post('/', function (req, res,next) {
     var request = new apiGateway();
-    request.sendRequest("ServiceSignup","signup",req, res,next);
+    request.sendRequest("ServiceSignup","Controllers/signup",req, res,next);
 });
 
 
