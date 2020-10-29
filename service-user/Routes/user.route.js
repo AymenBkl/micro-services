@@ -1,8 +1,14 @@
 const express = require('express');
 
-const router = express.Router();
+const app = express();
+
+var router = express.Router();
+
+const userRouter = require('./user/userRouter');
 
 
-router.get("/testRouter",(req,res,next) => {
-    res.send('this a test route');
-} )
+app.use('/user',userRouter);
+
+
+
+module.exports = app;

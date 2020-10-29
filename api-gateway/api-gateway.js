@@ -20,16 +20,16 @@ var ApiGateway = function () {
 };
 
 
-ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,req, res,next) {
+ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,req, res,next) {
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
     console.log(serviceName,serviceEndpointId);
     serviceRegistry.find(service.name,service.endpointId,function (error,service) {
         if (service && !error){
-            console.log(service);
+            console.log(service.endpointUrl);
             request({
                 url: service.endpointUrl,
-                method: 'POST',
+                method: method,
                 json:req.body
             }, function(error, response, body){
                 if (error){

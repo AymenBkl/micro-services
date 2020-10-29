@@ -74,8 +74,8 @@ if (cluster.isMaster && config.server.isCluster) {
 
     //load API route(s)
     config.api.modules.forEach(function (item) {
-        //console.log(item);
-        app.use('/' + config.api.route + "/" + item.route, require('./' + item.name));
+        console.log('/' + config.api.route + "/" + item.route);
+        app.use('/' + config.api.route, require('./' + item.name));
     });
 
     server.create(function (err, server) {
