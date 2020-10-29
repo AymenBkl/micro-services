@@ -3,6 +3,7 @@ const express = require('express');
 
 var router = express.Router();
 
+const userController = require('../../Controllers/user/user.controller');
 
 router.all("/", (req, res, next) => {
     next();
@@ -10,13 +11,6 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/", (req, res, next) => {
-        res.send('this a test route')
-    })
-
-    .get("/", (req, res, next) => {
-        res.send('this a test route')
-    })
-
+    .post("/",userController.signUp);
 
 module.exports = router;

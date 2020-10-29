@@ -1,6 +1,6 @@
-const user = require("../../../models/User/user");
-const response = require('../../../Handler/UserHandler/response.controller');
-const jwt = require('../../../Middlewares/jwt/jwt');
+const user = require("../../models/User/user");
+const response = require('../../Handler/UserHandler/response.controller');
+const jwt = require('../../Middlewares/jwt/jwt');
 const passport = require("passport");
 var request = require('request');
 module.exports = {

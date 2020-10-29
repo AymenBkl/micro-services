@@ -17,8 +17,7 @@
   "api":{
     "route":"api",
     "modules":[
-      {"name":"Controllers/signup", "route":"signup"},
-      {"name":"Controllers/jwt", "route":"jwt"}
+      {"name":"Routes/signup.route", "route":"signup"}
     ]
   },
   "serviceRegistry":{

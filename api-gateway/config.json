@@ -29,7 +29,7 @@
   "services":[
       {"name":"ServiceLog", "endpointId":"log"},
       {"name":"ServiceLogin", "endpointId":"login"},
-      {"name":"ServiceSignup", "endpointId":"Controllers/signup"},
+      {"name":"ServiceSignup", "endpointId":"Routes/signup.route"},
       {"name":"ServiceFiles", "endpointId":"Controllers/addfile"},
       {"name":"ServiceUser", "endpointId":"Routes/user.route"},
       {"name":"ServiceFiles", "endpointId":"getfile"},

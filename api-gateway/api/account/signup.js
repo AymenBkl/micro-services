@@ -6,14 +6,16 @@ var express = require('express'),
     router = express.Router(),
     apiGateway = require('../.././api-gateway');
 
-router.options('/',(req,res,next) => {
+router.all('/', function (req, res, next) {
     next();
-});
-
-router.post('/', function (req, res,next) {
-    var request = new apiGateway();
-    request.sendRequest("ServiceSignup","Controllers/signup",req, res,next);
-});
+})
+    .options('/', (req, res, next) => {
+        next();
+    })
+    .post('/', function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceSignup", "Routes/signup.route", req.method, req, res, next);
+    })
 
 
 
