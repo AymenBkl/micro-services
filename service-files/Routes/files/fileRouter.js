@@ -15,9 +15,7 @@ router.all("/", (req, res, next) => {
     })
     .post("/",upload.single('file'),filesController.uploadImage)
 
-    .get("/", (req, res, next) => {
-        res.send('this a test file gett')
-    })
+    .get("/",filesController.getImage);
 
 
 module.exports = router;

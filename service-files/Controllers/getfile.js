@@ -1,15 +1,13 @@
-/**
- * Created by domenicovacchiano on 07/07/16.
- */
+const fs = require("fs");
+const path = require('path');
+const response = require('../Handler/HandlerFiles/response.controller');
+module.exports.getImage = (req, res) => {
+    if (fs.existsSync('./uploads/'+req.body.imageUrl)) {
+        var fullUrl = req.protocol + '://' + req.get('host') + '/uploads/'+req.body.imageUrl;
+        response.response('success', res, fullUrl, 200, null);
+    }
+    else {
+        response.response("error", res, "FILE NOT FOUND", 404, null);
+    }
+}
 
-var express = require('express'),
-    router = express.Router(),
-    debug = require('debug')('http'),
-    config= require ('../config')()
-
-
-router.get('/', function (req, res,next) {
-    return res.status(200).send("## getfile -> This is just a test response ;-)");
-});
-
-module.exports = router;
