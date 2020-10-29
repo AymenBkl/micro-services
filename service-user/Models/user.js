@@ -40,6 +40,12 @@ const userSchema = new Schema({
         type : String,
         default : '',
     },
+    hash : {
+        select : false,
+    },
+    salt : {
+        select : false,
+    }
 } , {
     timestamps : true,
     strict : true

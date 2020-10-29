@@ -29,7 +29,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             console.log(service.endpointUrl);
             if (file == true){
                 request({
-                    url: service.endpointUrl + "?id=" + req.user._id,
+                    url: req.user ? service.endpointUrl + "?id=" + req.user._id : service.endpointUrl,
                     method: method,
                     body: req ,
                 }, function(error, response, body){
@@ -43,7 +43,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             }
             else {
                 request({
-                    url: service.endpointUrl,
+                    url: req.user ? service.endpointUrl + "?id=" + req.user._id : service.endpointUrl,
                     method: method,
                     json : req.body ,
                 }, function(error, response, body){

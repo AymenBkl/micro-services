@@ -15,9 +15,9 @@ router.all("/", (req, res, next) => {
     })
     .post("/",userController.updateImage)
 
-    .get("/", (req, res, next) => {
-        res.send('this a test route')
-    })
+    .get("/",userController.getUser)
+    
+    .put("/",userController.updateUser);
 
 
 module.exports = router;
