@@ -6,6 +6,7 @@ var router = express.Router();
 
 const userController = require('../../Controllers/user.controller');
 
+
 router.all("/", (req, res, next) => {
     next();
 })

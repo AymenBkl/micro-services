@@ -10,9 +10,9 @@ module.exports = {
             .then(result => {
                 if (result && result.status == 200){
                     const query = {
-                        $set : {imageUrl : result}
+                        $set : {imageUrl : result.msg}
                     }
-                    updateUser.updateUser(res,req.user._id,query);
+                    updateUser.updateUser(res,req.query.id,query);
                 }
                 else {
                     response.response("error",res,result.msg,404,null);

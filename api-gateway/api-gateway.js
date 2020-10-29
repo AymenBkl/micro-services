@@ -29,9 +29,9 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             console.log(service.endpointUrl);
             if (file == true){
                 request({
-                    url: service.endpointUrl,
+                    url: service.endpointUrl + "?id=" + req.user._id,
                     method: method,
-                    json : req ,
+                    body: req ,
                 }, function(error, response, body){
                     if (error){
                         return next(error)

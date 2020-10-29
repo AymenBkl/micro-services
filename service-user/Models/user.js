@@ -40,30 +40,6 @@ const userSchema = new Schema({
         type : String,
         default : '',
     },
-    setup : {
-        type : Boolean,
-        default : false
-    },
-    facebook : [{
-        type : mongoose.Types.ObjectId,
-        ref : "facebook"
-    }],
-    google : [{
-        type : mongoose.Types.ObjectId,
-        ref : "google"
-    }],
-    instagram : [{
-        type : mongoose.Types.ObjectId,
-        ref : "instagram"
-    }],
-    twitter : [{
-        type : mongoose.Types.ObjectId,
-        ref : "twitter"
-    }],
-    phone : [{
-        type : mongoose.Types.ObjectId,
-        ref : "phone"
-    }],
 } , {
     timestamps : true,
     strict : true

@@ -16,7 +16,7 @@ router.all('/', function (req, res, next) {
     })
     .post('/image',jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method,true, req, res, next);
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next);
     })
     .get('/user',jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
