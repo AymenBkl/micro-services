@@ -20,6 +20,7 @@
       {"name":"login", "path":"api/account", "route":"account/login"},
       {"name":"jwt", "path":"api/account", "route":"account/jwt"},
       {"name":"signup", "path":"api/account", "route":"account/signup"},
+      {"name":"files", "path":"api/account", "route":"account/files"},
       {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
     ]
   },
@@ -28,6 +29,8 @@
       {"name":"ServiceLogin", "endpointId":"login"},
       {"name":"ServiceSignup", "endpointId":"signup"},
       {"name":"ServiceSignup", "endpointId":"jwt"},
+      {"name":"ServiceFiles", "endpointId":"addfile"},
+      {"name":"ServiceFiles", "endpointId":"getfile"},
       {"name":"ServiceOrders", "endpointId":"orders"}
   ],
   "serviceRegistry":{

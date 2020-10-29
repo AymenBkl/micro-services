@@ -16,3 +16,7 @@ DEBUG=http node server &
 cd ..
 cd api-gateway
 DEBUG=http node server
+
+cd ..
+cd service-files
+DEBUG=http node server
