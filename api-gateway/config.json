@@ -27,7 +27,7 @@
   },
   "services":[
       {"name":"ServiceLog", "endpointId":"log"},
-      {"name":"ServiceLogin", "endpointId":"login"},
+      {"name":"ServiceLogin", "endpointId":"Routes/login.route"},
       {"name":"ServiceSignup", "endpointId":"Routes/signup.route"},
       {"name":"ServiceFiles", "endpointId":"Routes/files.route"},
       {"name":"ServiceUser", "endpointId":"Routes/user.route"},

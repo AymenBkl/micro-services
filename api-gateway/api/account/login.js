@@ -6,16 +6,16 @@ var express = require('express'),
     router = express.Router(),
     apiGateway = require('../.././api-gateway');
 
-const jwt = require('../../middlewares/jwt/jwt');
-
-router.options('/',(req,res,next) => {
+router.all('/', function (req, res, next) {
     next();
-});
-
-router.post('/', function (req, res,next) {
-    var request = new apiGateway();
-    request.sendRequest("ServiceLogin","login",req, res,next);
-});
+})
+    .options('/', (req, res, next) => {
+        next();
+    })
+    .post('/', function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceLogin", "Routes/login.route", req.method,false, req, res, next);
+    })
 
 
 

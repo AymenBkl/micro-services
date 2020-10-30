@@ -27,7 +27,7 @@
     "route": "api",
     "modules": [
       {
-        "name": "controllers/login",
+        "name": "Routes/login.route",
         "route": "login"
       }
     ]
