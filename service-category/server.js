@@ -103,7 +103,7 @@ if (cluster.isMaster && config.server.isCluster) {
             debug("registerServer");
             config.api.modules.forEach(function (item) {
                 //console.log(item);
-                app.use('/' + config.api.route + "/" + item.route, require('./' + item.name));
+                app.use('/' + config.api.route, require('./' + item.name));
                 serviceRegistry.register({
                     serviceId: config.server.id,
                     serviceHost: address(),

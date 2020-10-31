@@ -17,6 +17,7 @@
     "api":{
       "route":"api",
       "modules":[
+        {"name":"Routes/category.route", "route":"files"},
         {"name":"Routes/category.route", "route":"category"}
       ]
     },

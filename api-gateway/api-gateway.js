@@ -20,7 +20,7 @@ var ApiGateway = function () {
 };
 
 
-ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next) {
+ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query) {
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
     console.log(serviceName,serviceEndpointId);
@@ -29,7 +29,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             console.log(service.endpointUrl);
             if (file == true){
                 request({
-                    url: req.user ? service.endpointUrl + "?id=" + req.user._id : service.endpointUrl,
+                    url: req.user ? service.endpointUrl + query : service.endpointUrl,
                     method: method,
                     body: req ,
                 }, function(error, response, body){

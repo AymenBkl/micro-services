@@ -23,6 +23,7 @@
       {"name":"files", "path":"api/account", "route":"account/files"},
       {"name":"user", "path":"api/account", "route":"account/user"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category"},
+      {"name":"category.files", "path":"api/crm/category", "route":"crm/files"},
       {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
     ]
   },

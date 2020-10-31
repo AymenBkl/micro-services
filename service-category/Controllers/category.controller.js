@@ -27,6 +27,10 @@ module.exports = {
         updateCategory.updateCategory(res,req.body.metadata.id,query);
     },
 
+    addImage : (req,res,next) => {
+        updateImage.upadeteImage(req,res,next);
+    }
+
 
 }
 
