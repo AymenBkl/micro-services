@@ -3,7 +3,7 @@
 
 const updateImage = require('./updateImage');
 
-const updateUser = require('./updateUser');
+const updateCategory = require('./updateCategory');
 
 const getUser = require('./getUser');
 
@@ -19,11 +19,12 @@ module.exports = {
         gettAllCategory.getAll(res,req.query.id);
     },
 
-    updateUser : (req,res,next) => {
+    updateCategory : (req,res,next) => {
         const query = {
             $set : req.body
         }
-        updateUser.updateUser(res,req.query.id,query);
+        console.log(req.body);
+        updateCategory.updateCategory(res,req.body.metadata.id,query);
     },
 
 

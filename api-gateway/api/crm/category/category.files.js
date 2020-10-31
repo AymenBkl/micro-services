@@ -22,9 +22,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory","Routes/category.route", req.method,false, req, res, next);
     })
-    .put('/updatecategory/:categoryId',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
-        req.body.metadata = {};
-        req.body.metadata.id = req.params.categoryId;
+    .put('/updatecategory',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory","Routes/category.route", req.method,false, req, res, next);
     });

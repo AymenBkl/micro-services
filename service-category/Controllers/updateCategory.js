@@ -1,12 +1,12 @@
-const user = require('../Models/category');
+const category = require('../Models/category');
 
 const response = require('../Handler/HandlerCategory/response.controller');
 
-module.exports.updateUser = (res,id,query) =>{
-    user.findByIdAndUpdate(id,query,{new : true})
-        .then(user => {
-            if (user){
-                response.response("success",res,"USER FOUND",200,user);
+module.exports.updateCategory = (res,id,query) =>{
+    category.findByIdAndUpdate(id,query,{new : true})
+        .then(category => {
+            if (category){
+                response.response("success",res,"USER FOUND",200,category);
             }
             else {
                 response.response("error",res,"undefined",404,null);

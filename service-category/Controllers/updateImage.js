@@ -1,6 +1,6 @@
 const request = require('../Request/request').request;
 
-const updateUser = require('./updateUser');
+const updateUser = require('./updateCategory');
 
 const response = require('../Handler/HandlerCategory/response.controller');
 
