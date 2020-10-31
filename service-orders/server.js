@@ -9,7 +9,7 @@ var config= require ('./config')(),
     bodyParser = require('body-parser'),
     morgan= require('morgan'),
     cluster = require('cluster'),
-    numCPUs = require('os').cpus().length,
+    numCPUs = /**require('os').cpus().length**/ 1,
     netLib = require ('../micro-node-net-lib'),
     configServer= {
         server:{
