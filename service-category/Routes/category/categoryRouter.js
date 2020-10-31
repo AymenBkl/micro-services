@@ -8,7 +8,6 @@ const categoryController = require('../../Controllers/category.controller');
 
 
 router.all("/", (req, res, next) => {
-    console.log('here');
     next();
 })
     .options("/", (req, res, next) => {
@@ -16,7 +15,7 @@ router.all("/", (req, res, next) => {
     })
     .post("/",categoryController.addCategory)
 
-    .get("/",categoryController.updateImage)
+    .get("/",categoryController.getAllCategory)
     
     .put("/",categoryController.updateUser);
 

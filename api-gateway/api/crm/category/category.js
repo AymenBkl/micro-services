@@ -18,8 +18,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory","Routes/category.route", req.method, false, req, res, next);
     })
-    .get('/category/:userId',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
-        req.body.id = req.params.userId;
+    .get('/allcategory',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory","Routes/category.route", req.method,false, req, res, next);
     })

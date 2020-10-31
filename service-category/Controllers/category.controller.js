@@ -9,13 +9,14 @@ const getUser = require('./getUser');
 
 const addCategory = require('./addCategory');
 
+const gettAllCategory = require('./getAllCategory');
 module.exports = {
     addCategory : (req,res,next) => {
         req.body.pharmacy = req.query.id;
         addCategory.addCategory(res,req.body);
     },
-    updateImage : (req,res,next) => {
-        updateImage.upadeteImage(req,res,next);
+    getAllCategory : (req,res,next) => {
+        gettAllCategory.getAll(res,req.query.id);
     },
 
     updateUser : (req,res,next) => {
