@@ -17,7 +17,9 @@ router.all("/", (req, res, next) => {
 
     .get("/",categoryController.getAllCategory)
     
-    .put("/",categoryController.updateCategory);
+    .put("/",categoryController.updateCategory)
+
+    .delete("/",categoryController.deleteCategory);
 
 
 module.exports = router;

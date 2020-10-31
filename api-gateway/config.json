@@ -34,6 +34,7 @@
       {"name":"ServiceFiles", "endpointId":"Routes/files.route"},
       {"name":"ServiceUser", "endpointId":"Routes/user.route"},
       {"name":"ServiceCategory", "endpointId":"Routes/category.route"},
+      {"name":"ServiceCategory", "endpointId":"Routes/categoryMangement.route"},
       {"name":"ServiceOrders", "endpointId":"orders"}
   ],
   "serviceRegistry":{

@@ -2,11 +2,12 @@ const category = require('../Models/category');
 
 const response = require('../Handler/HandlerCategory/response.controller');
 
-module.exports.updateCategory = (res,id,query) =>{
-    category.findByIdAndUpdate(id,query,{new : true})
-        .then(category => {
-            if (category){
-                response.response("success",res,"CATEGORY UPDATED",200,category);
+module.exports.addCategory = (res,id) =>{
+    console.log(id);
+    category.findByIdAndDelete(id)
+        .then(result => {
+            if (result){
+                response.response("success",res,"CATEGORY DELETED",200,null);
             }
             else {
                 response.response("error",res,"undefined",404,null);
@@ -14,6 +15,5 @@ module.exports.updateCategory = (res,id,query) =>{
         } )
         .catch(err => {
             response.response("error",res,err,500,null);
-
         })
 }

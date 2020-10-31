@@ -17,8 +17,9 @@
     "api":{
       "route":"api",
       "modules":[
-        {"name":"Routes/category.route", "route":"files"},
-        {"name":"Routes/category.route", "route":"category"}
+        {"name":"Routes/category.route", "route":"category"},
+        {"name":"Routes/categoryMangement.route", "route":"files"}
+
       ]
     },
     "serviceRegistry":{

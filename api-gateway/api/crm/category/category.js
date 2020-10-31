@@ -27,6 +27,12 @@ router.all('/', function (req, res, next) {
         req.body.metadata.id = req.params.categoryId;
         var request = new apiGateway();
         request.sendRequest("ServiceCategory","Routes/category.route", req.method,false, req, res, next);
+    })
+    .delete("/deletecategory/:categoryId",jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
+        req.body.metadata = {};
+        req.body.metadata.id = req.params.categoryId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceCategory","Routes/category.route", req.method,false, req, res, next);
     });
 
 
