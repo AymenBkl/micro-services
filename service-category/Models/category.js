@@ -7,18 +7,13 @@ const categorySchema = new Schema({
 
     name : {
         type : String,
-        default : ''
+        required : true,
     },
 
     pharmacy : {
         type : mongoose.Types.ObjectId,
-        ref : 'User'
-    },
-    email : {
-        type : String,
-        required : true,
-        unique : true,
-        index : true
+        ref : 'User',
+        required : true
     },
     imageUrl : {
         type : String,
@@ -26,9 +21,8 @@ const categorySchema = new Schema({
     },
 } , {
     timestamps : true,
-    strict : true
 }
 )
 
 
-module.exports = mongoose.model('Category',categorySchema);
+module.exports = mongoose.model('category',categorySchema);

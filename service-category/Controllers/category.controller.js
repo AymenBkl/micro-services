@@ -7,9 +7,12 @@ const updateUser = require('./updateUser');
 
 const getUser = require('./getUser');
 
+const addCategory = require('./addCategory');
+
 module.exports = {
-    getUser : (req,res,next) => {
-        getUser.getUser(res,req.body.id,null);
+    addCategory : (req,res,next) => {
+        req.body.pharmacy = req.query.id;
+        addCategory.addCategory(res,req.body);
     },
     updateImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);

@@ -14,9 +14,19 @@ cd service-log
 DEBUG=http node server &
 
 cd ..
-cd api-gateway
+cd service-files
+DEBUG=http node server
+
+
+cd ..
+cd service-user
 DEBUG=http node server
 
 cd ..
-cd service-files
+cd service-category
 DEBUG=http node server
+
+cd ..
+cd api-gateway
+DEBUG=http node server
+

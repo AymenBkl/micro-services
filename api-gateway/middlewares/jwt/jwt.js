@@ -42,7 +42,7 @@ exports.verifyUser = passport.authenticate("jwt", { session: false });
 
 exports.verifyPharmacy = (req, res, next) => {
   if (req.user) {
-    if (req.user.role == 'pharmacys') {
+    if (req.user.role == 'pharmacy') {
       next();
     } else {
       res.statusCode = 403;

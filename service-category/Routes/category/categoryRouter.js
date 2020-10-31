@@ -4,20 +4,21 @@ const express = require('express');
 var router = express.Router();
 
 
-const userController = require('../../Controllers/category.controller');
+const categoryController = require('../../Controllers/category.controller');
 
 
 router.all("/", (req, res, next) => {
+    console.log('here');
     next();
 })
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",userController.updateImage)
+    .post("/",categoryController.addCategory)
 
-    .get("/",userController.getUser)
+    .get("/",categoryController.updateImage)
     
-    .put("/",userController.updateUser);
+    .put("/",categoryController.updateUser);
 
 
 module.exports = router;
