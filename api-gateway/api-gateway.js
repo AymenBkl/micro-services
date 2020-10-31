@@ -42,6 +42,8 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 });
             }
             else {
+                console.log(req.user);
+                console.log(req.user ? service.endpointUrl + "?id=" + req.user._id : service.endpointUrl);
                 request({
                     url: req.user ? service.endpointUrl + "?id=" + req.user._id : service.endpointUrl,
                     method: method,

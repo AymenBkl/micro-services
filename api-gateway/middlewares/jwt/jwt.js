@@ -42,17 +42,15 @@ exports.verifyUser = passport.authenticate("jwt", { session: false });
 
 exports.verifyPharmacy = (req, res, next) => {
   if (req.user) {
-    if (req.user.role == "pharmacy") {
+    if (req.user.role == 'pharmacys') {
       next();
     } else {
-      err = new Error("unAuthorized you didn't buy  a sticker");
-      err.status = 403;
-      return next(err);
+      res.statusCode = 403;
+      res.json({status : 403,msg : 'you are not allow to do this operation'});
     }
   } else {
-    err = new Error("unlogged");
-    err.status = 403;
-    return next(err);
+    res.statusCode = 403;
+    res.json({status : 403,msg : 'login first'});
   }
 };
 
