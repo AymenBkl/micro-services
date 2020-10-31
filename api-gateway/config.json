@@ -22,6 +22,7 @@
       {"name":"signup", "path":"api/account", "route":"account/signup"},
       {"name":"files", "path":"api/account", "route":"account/files"},
       {"name":"user", "path":"api/account", "route":"account/user"},
+      {"name":"category", "path":"api/crm/category", "route":"crm/category"},
       {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
     ]
   },
@@ -31,6 +32,7 @@
       {"name":"ServiceSignup", "endpointId":"Routes/signup.route"},
       {"name":"ServiceFiles", "endpointId":"Routes/files.route"},
       {"name":"ServiceUser", "endpointId":"Routes/user.route"},
+      {"name":"ServiceCategory", "endpointId":"Routes/category.route"},
       {"name":"ServiceOrders", "endpointId":"orders"}
   ],
   "serviceRegistry":{

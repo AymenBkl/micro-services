@@ -40,9 +40,9 @@ exports.jwtPassport = passport.use(
 
 exports.verifyUser = passport.authenticate("jwt", { session: false });
 
-exports.verifyNotNormalUser = (req, res, next) => {
+exports.verifyPharmacy = (req, res, next) => {
   if (req.user) {
-    if (req.user.role != "normalUser") {
+    if (req.user.role == "pharmacy") {
       next();
     } else {
       err = new Error("unAuthorized you didn't buy  a sticker");
