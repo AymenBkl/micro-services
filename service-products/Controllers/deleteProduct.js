@@ -1,13 +1,13 @@
-const category = require('../Models/product');
+const product = require('../Models/product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
 
-module.exports.addCategory = (res,id) =>{
+module.exports.deleteProduct = (res,id) =>{
     console.log(id);
-    category.findByIdAndDelete(id)
+    product.findByIdAndDelete(id)
         .then(result => {
             if (result){
-                response.response("success",res,"CATEGORY DELETED",200,null);
+                response.response("success",res,"PRODUCT DELETED",200,null);
             }
             else {
                 response.response("error",res,"undefined",404,null);

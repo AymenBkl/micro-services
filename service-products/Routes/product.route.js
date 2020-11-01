@@ -3,13 +3,11 @@ const express = require('express');
 const app = express();
 
 
-const categoryRouter = require('./category/categoryRouter');
+const productRouter = require('./product/productRouter');
 
-const categoryFilesRouter = require('./category/categoryFilesRouter');
 
-app.use('/products',categoryRouter);
+app.use('/products',productRouter);
 
-app.use('/files',categoryFilesRouter);
 
 
 module.exports = app;

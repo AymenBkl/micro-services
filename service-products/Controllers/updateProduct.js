@@ -1,14 +1,14 @@
-const category = require('../Models/product');
+const product = require('../Models/product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
 
-module.exports.updateCategory = (res,id,query) =>{
+module.exports.updateProduct = (res,id,query) =>{
     console.log(id);
 
-    category.findByIdAndUpdate(id,query,{new : true})
-        .then(category => {
-            if (category){
-                response.response("success",res,"CATEGORY UPDATED",200,category);
+    product.findByIdAndUpdate(id,query,{new : true})
+        .then(product => {
+            if (product){
+                response.response("success",res,"PRODUCT UPDATED",200,product);
             }
             else {
                 response.response("error",res,"undefined",404,null);

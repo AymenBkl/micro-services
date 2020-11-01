@@ -11,7 +11,7 @@ const productSchema = new Schema({
     },
 
     price : {
-        type : Float64Array,
+        type : Number,
         required : true
     },
     description : {

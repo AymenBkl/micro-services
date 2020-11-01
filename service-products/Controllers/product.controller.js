@@ -14,26 +14,25 @@ const gettAllProduct = require('./getAllProduct');
 const deleteProduct = require('./deleteProduct');
 module.exports = {
     addProduct : (req,res,next) => {
-        req.body.pharmacy = req.query.id;
+        req.body.category = req.body.metadata.categoryId;
         addProduct.addProduct(res,req.body);
     },
     getAllProduct : (req,res,next) => {
-        gettAllProduct.getAll(res,req.query.id);
+        gettAllProduct.getAll(res,req.body.metadata.categoryId);
     },
 
     updateProduct : (req,res,next) => {
-        req.body.pharmacy = req.query.id;
         const query = {
             $set : req.body
         }
         console.log(req.body);
-        updateProduct.updateProduct(res,req.body.metadata.id,query);
+        updateProduct.updateProduct(res,req.body.metadata.productId,query);
     },
 
     deleteProduct : (req,res,next) => {
-        deleteProduct.addProduct(res,req.body.metadata.id);
+        deleteProduct.deleteProduct(res,req.body.metadata.productId);
     },
-    
+
     addImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);
     }

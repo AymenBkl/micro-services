@@ -1,6 +1,6 @@
 const request = require('../Request/requestFile').request;
 
-const updateCategory = require('./updateProduct');
+const updateProduct= require('./updateProduct');
 
 const response = require('../Handler/HandlerProduct/response.controller');
 
@@ -13,7 +13,7 @@ module.exports = {
                     const query = {
                         $set : {imageUrl : result.msg}
                     }
-                    updateCategory.updateCategory(res,req.query.categoryId,query);
+                    updateProduct.updateProduct(res,req.query.productId,query);
                 }
                 else {
                     response.response("error",res,result.msg,404,null);

@@ -4,7 +4,7 @@ const express = require('express');
 var router = express.Router();
 
 
-const categoryController = require('../../Controllers/product.controller');
+const productController = require('../../Controllers/product.controller');
 
 
 router.all("/", (req, res, next) => {
@@ -13,11 +13,11 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",categoryController.addImage)
+    .post("/",productController.addImage)
 
-    .get("/",categoryController.getAllCategory)
+    .get("/",productController.deleteProduct)
     
-    .put("/",categoryController.updateCategory);
+    .put("/",productController.updateProduct);
 
 
 module.exports = router;
