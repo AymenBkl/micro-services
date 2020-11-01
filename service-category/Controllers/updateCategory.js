@@ -3,6 +3,8 @@ const category = require('../Models/category');
 const response = require('../Handler/HandlerCategory/response.controller');
 
 module.exports.updateCategory = (res,id,query) =>{
+    console.log(id);
+
     category.findByIdAndUpdate(id,query,{new : true})
         .then(category => {
             if (category){

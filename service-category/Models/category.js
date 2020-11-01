@@ -10,6 +10,11 @@ const categorySchema = new Schema({
         required : true,
     },
 
+    description : {
+        type : String,
+        required : true,
+    },
+
     pharmacy : {
         type : mongoose.Types.ObjectId,
         ref : 'User',

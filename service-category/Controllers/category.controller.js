@@ -22,6 +22,7 @@ module.exports = {
     },
 
     updateCategory : (req,res,next) => {
+        req.body.pharmacy = req.query.id;
         const query = {
             $set : req.body
         }
