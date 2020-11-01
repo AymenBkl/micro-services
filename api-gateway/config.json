@@ -24,6 +24,8 @@
       {"name":"user", "path":"api/account", "route":"account/user"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category"},
       {"name":"category.files", "path":"api/crm/category", "route":"crm/files"},
+      {"name":"product", "path":"api/crm/products", "route":"crm/products"},
+      {"name":"product.files", "path":"api/crm/products", "route":"crm/products"},
       {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
     ]
   },
@@ -35,6 +37,8 @@
       {"name":"ServiceUser", "endpointId":"Routes/user.route"},
       {"name":"ServiceCategory", "endpointId":"Routes/category.route"},
       {"name":"ServiceCategory", "endpointId":"Routes/categoryMangement.route"},
+      {"name":"ServiceProducts", "endpointId":"Routes/product.route"},
+      {"name":"ServiceProducts", "endpointId":"Routes/productMangement.route"},
       {"name":"ServiceOrders", "endpointId":"orders"}
   ],
   "serviceRegistry":{

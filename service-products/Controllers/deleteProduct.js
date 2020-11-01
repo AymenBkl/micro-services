@@ -1,6 +1,6 @@
-const category = require('../Models/category');
+const category = require('../Models/product');
 
-const response = require('../Handler/HandlerCategory/response.controller');
+const response = require('../Handler/HandlerProduct/response.controller');
 
 module.exports.addCategory = (res,id) =>{
     console.log(id);

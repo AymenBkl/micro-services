@@ -7,7 +7,7 @@ const categoryRouter = require('./category/categoryRouter');
 
 const categoryFilesRouter = require('./category/categoryFilesRouter');
 
-app.use('/category',categoryRouter);
+app.use('/products',categoryRouter);
 
 app.use('/files',categoryFilesRouter);
 

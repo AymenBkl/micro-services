@@ -1,7 +1,7 @@
 {
     "server":{
-      "id":"ServiceCategory",
-      "port":8087,
+      "id":"ServiceProducts",
+      "port":8088,
       "isCluster":true,
       "https":{
         "isEnabled":false,
@@ -17,8 +17,8 @@
     "api":{
       "route":"api",
       "modules":[
-        {"name":"Routes/category.route", "route":"category"},
-        {"name":"Routes/categoryMangement.route", "route":"files"}
+        {"name":"Routes/product.route", "route":"products"},
+        {"name":"Routes/productMangement.route", "route":"files"}
 
       ]
     },

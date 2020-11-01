@@ -1,8 +1,8 @@
 const request = require('../Request/requestFile').request;
 
-const updateCategory = require('./updateCategory');
+const updateCategory = require('./updateProduct');
 
-const response = require('../Handler/HandlerCategory/response.controller');
+const response = require('../Handler/HandlerProduct/response.controller');
 
 module.exports = {
     upadeteImage : (req,res,next) => {

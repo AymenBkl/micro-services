@@ -3,21 +3,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const categorySchema = new Schema({
+const productSchema = new Schema({
 
     name : {
         type : String,
         required : true,
     },
 
+    price : {
+        type : Float64Array,
+        required : true
+    },
     description : {
         type : String,
         required : true,
     },
 
-    pharmacy : {
+    category : {
         type : mongoose.Types.ObjectId,
-        ref : 'User',
+        ref : 'Category',
         required : true
     },
     imageUrl : {
@@ -30,4 +34,4 @@ const categorySchema = new Schema({
 )
 
 
-module.exports = mongoose.model('category',categorySchema);
+module.exports = mongoose.model('product',productSchema);

@@ -1,10 +1,10 @@
-const category = require('../Models/category');
+const product = require('../Models/product');
 
-const response = require('../Handler/HandlerCategory/response.controller');
+const response = require('../Handler/HandlerProduct/response.controller');
 
 module.exports.addCategory = (res,body) =>{
     console.log(body);
-    category.create(body)
+    product.create(body)
         .then(category => {
             if (category){
                 response.response("success",res,"CATEGORY CREATED",200,category);

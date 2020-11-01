@@ -1,6 +1,6 @@
-const user = require('../Models/category');
+const user = require('../Models/product');
 
-const response = require('../Handler/HandlerCategory/response.controller');
+const response = require('../Handler/HandlerProduct/response.controller');
 
 module.exports.getUser = (res,id,query) =>{
     
