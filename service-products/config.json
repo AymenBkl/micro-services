@@ -18,6 +18,7 @@
       "route":"api",
       "modules":[
         {"name":"Routes/product.route", "route":"products"},
+        {"name":"Routes/product.management", "route":"management"},
         {"name":"Routes/productMangement.route", "route":"files"}
 
       ]
