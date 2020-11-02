@@ -20,7 +20,7 @@ var ApiGateway = function () {
 };
 
 
-ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query) {
+ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query,extra = '') {
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
     console.log(serviceName,serviceEndpointId);
@@ -29,7 +29,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             console.log(service.endpointUrl);
             if (file == true){
                 request({
-                    url: req.user ? service.endpointUrl + query : service.endpointUrl,
+                    url: req.user  ? service.endpointUrl + extra + query : service.endpointUrl + extra,
                     method: method,
                     body: req ,
                 }, function(error, response, body){
@@ -42,8 +42,9 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 });
             }
             else {
+                console.log(extra);
                 request({
-                    url: req.user ? service.endpointUrl + "?id=" + req.user._id : service.endpointUrl,
+                    url: req.user ? service.endpointUrl + extra + "?id=" + req.user._id : service.endpointUrl + extra,
                     method: method,
                     json : req.body ,
                 }, function(error, response, body){

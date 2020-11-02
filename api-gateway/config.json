@@ -27,6 +27,7 @@
       {"name":"product", "path":"api/crm/products", "route":"crm/products"},
       {"name":"product.files", "path":"api/crm/products", "route":"crm/productsfiles"},
       {"name":"product.management", "path":"api/crm/products", "route":"crm/productsmanagement"},
+      {"name":"product.management", "path":"api/crm/products", "route":"crm/productsmanagement/searchproducts"},
       {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
     ]
   },

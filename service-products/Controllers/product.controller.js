@@ -12,6 +12,8 @@ const addProduct = require('./addProduct');
 const gettAllProduct = require('./getAllProduct');
 
 const deleteProduct = require('./deleteProduct');
+
+const searchProduct = require('./searchProduct');
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.category = req.body.metadata.categoryId;
@@ -39,6 +41,10 @@ module.exports = {
 
     addImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);
+    },
+
+    searchProduct : (req,res,next) =>{
+        searchProduct.searchProduct(req,res);
     }
 
 

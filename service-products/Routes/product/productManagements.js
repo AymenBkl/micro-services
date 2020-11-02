@@ -13,11 +13,24 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",productController.allProduct)
+    .post("/", productController.allProduct)
 
-    .get("/",productController.allProduct)
-    
-    .put("/",productController.updateProduct);
 
+    .get("/", productController.allProduct)
+
+    .put("/", productController.updateProduct);
+
+
+router.all("/searchproducts", (req, res, next) => {
+    next();
+})
+    .options("/", (req, res, next) => {
+        next();
+    })
+    .get("/searchproducts", productController.allProduct)
+
+    .post("/searchproducts", productController.searchProduct)
+
+    .put("/searchproducts", productController.updateProduct);
 
 module.exports = router;

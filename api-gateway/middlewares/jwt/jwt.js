@@ -54,6 +54,20 @@ exports.verifyPharmacy = (req, res, next) => {
   }
 };
 
+exports.verifyPatient = (req, res, next) => {
+  if (req.user) {
+    if (req.user.role == 'pharmacy') {
+      next();
+    } else {
+      res.statusCode = 403;
+      res.json({status : 403,msg : 'you are not allow to do this operation'});
+    }
+  } else {
+    res.statusCode = 403;
+    res.json({status : 403,msg : 'login first'});
+  }
+};
+
 exports.verifyAdmin = (req, res, next) => {
   if (req.user) {
     if (req.user.admin) {
