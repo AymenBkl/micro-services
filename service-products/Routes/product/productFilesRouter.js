@@ -15,7 +15,7 @@ router.all("/", (req, res, next) => {
     })
     .post("/",productController.addImage)
 
-    .get("/",productController.deleteProduct)
+    .get("/",productController.allProduct)
     
     .put("/",productController.updateProduct);
 

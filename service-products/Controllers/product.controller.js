@@ -5,7 +5,7 @@ const updateImage = require('./updateImage');
 
 const updateProduct = require('./updateProduct');
 
-const getUser = require('./getUser');
+const allProducts = require('./allProducts');
 
 const addProduct = require('./addProduct');
 
@@ -19,6 +19,10 @@ module.exports = {
     },
     getAllProduct : (req,res,next) => {
         gettAllProduct.getAll(res,req.body.metadata.categoryId);
+    },
+
+    allProduct : (req,res,next) => {
+        allProducts.getAll(req,res)
     },
 
     updateProduct : (req,res,next) => {
