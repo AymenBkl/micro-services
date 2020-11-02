@@ -12,6 +12,9 @@ const addCategory = require('./addCategory');
 const gettAllCategory = require('./getAllCategory');
 
 const deleteCategory = require('./deleteCategory');
+
+const searchCategory = require('./searchCategory');
+
 module.exports = {
     addCategory : (req,res,next) => {
         req.body.pharmacy = req.query.id;
@@ -35,7 +38,10 @@ module.exports = {
     },
     addImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);
-    }
+    },
+    searchCategory : (req,res,next) => {
+        searchCategory.searchCategory(req,res);
+    },
 
 
 }

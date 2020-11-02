@@ -21,5 +21,13 @@ router.all("/", (req, res, next) => {
 
     .delete("/",categoryController.deleteCategory);
 
+router.all("/searchcategory", (req, res, next) => {
+        next();
+    })
+        .options("/", (req, res, next) => {
+            next();
+        })
+        .post("/searchcategory", categoryController.searchCategory);
+
 
 module.exports = router;

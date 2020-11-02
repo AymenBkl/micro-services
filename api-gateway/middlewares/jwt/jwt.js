@@ -57,6 +57,7 @@ exports.verifyPharmacy = (req, res, next) => {
 exports.verifyPatient = (req, res, next) => {
   if (req.user) {
     if (req.user.role == 'pharmacy') {
+      console.log(true);
       next();
     } else {
       res.statusCode = 403;

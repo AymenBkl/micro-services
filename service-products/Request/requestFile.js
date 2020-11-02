@@ -8,7 +8,7 @@ function requests(req,res,next){
             body : req
         },function(error, response, body){
             if (error != null) {
-                reject(err);
+                reject(error);
             }
             else {
                 resolve(JSON.parse(body));

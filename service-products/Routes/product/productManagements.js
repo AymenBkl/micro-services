@@ -27,10 +27,7 @@ router.all("/searchproducts", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .get("/searchproducts", productController.allProduct)
+    .post("/searchproducts", productController.searchProduct);
 
-    .post("/searchproducts", productController.searchProduct)
-
-    .put("/searchproducts", productController.updateProduct);
 
 module.exports = router;

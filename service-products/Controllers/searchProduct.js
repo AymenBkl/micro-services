@@ -2,6 +2,8 @@ const product = require('../Models/product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
 
+const request = require('../Request/requestCategories').request;
+
 module.exports.searchProduct = (req,res) =>{
     console.log(req.body.products);
     product.find({
@@ -10,7 +12,7 @@ module.exports.searchProduct = (req,res) =>{
     .populate({path : 'categorys'})
         .then(products => {
             if (products && products.length != 0){
-                filterProducts(products);
+                filterProducts(products,req);
                 response.response("success",res,"Products Found",200,products);
             }
             else {
@@ -22,17 +24,45 @@ module.exports.searchProduct = (req,res) =>{
         })
 }
 
-function filterProducts(products){
-    let categoriesId = {};
-    products.forEach(product => {
-        if (categoriesId[product.category]){
-        }
-        else {
-            categoriesId[product.category] = [];
-        }
-        categoriesId[product.category].push(product);
+function filterProducts(products,req){
+    return new Promise((resolve,reject) => {
+        getAllCategoriesId(products)
+            .then(categoriesId => {
+                req.body.categoriesId = Object.keys(categoriesId).map(key => {return {_id : key}});
+                request(req)
+                    .then(result => {
+                        if (result && result.status == 200){
+                            result.category.forEach(categorie => {
+                                categorie['products'] = JSON.stringify(categoriesId[categorie._id]);
+                            });
+                            console.log("xyz",result.category);
+                        }
+                        else {
+                            console.log('err')
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            });
+        
     });
 
-    console.log(categoriesId);
     
+}
+
+function getAllCategoriesId(products) {
+    return new Promise((resolve,reject) => {
+        let categoriesId = {};
+        console.log(products.length);
+        products.forEach(product => {
+            if (categoriesId[product.category]){
+            }
+            else {
+                categoriesId[product.category] = [];
+            }
+            categoriesId[product.category].push(product);
+        });
+        resolve(categoriesId);
+    });
 }

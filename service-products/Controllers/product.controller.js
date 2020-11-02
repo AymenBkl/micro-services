@@ -44,6 +44,7 @@ module.exports = {
     },
 
     searchProduct : (req,res,next) =>{
+        console.log(req.headers.authorization.split(' ')[1]);
         searchProduct.searchProduct(req,res);
     }
 

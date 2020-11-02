@@ -23,15 +23,22 @@ var ApiGateway = function () {
 ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query,extra = '') {
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
-    console.log(serviceName,serviceEndpointId);
     serviceRegistry.find(service.name,service.endpointId,function (error,service) {
+        console.log({
+            "Content-Type":"application/json",
+            "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
+    })
         if (service && !error){
-            console.log(service.endpointUrl);
             if (file == true){
                 request({
                     url: req.user  ? service.endpointUrl + extra + query : service.endpointUrl + extra,
                     method: method,
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
+                },
                     body: req ,
+                    
                 }, function(error, response, body){
                     if (error){
                         return next(error)
@@ -42,11 +49,14 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 });
             }
             else {
-                console.log(extra);
                 request({
                     url: req.user ? service.endpointUrl + extra + "?id=" + req.user._id : service.endpointUrl + extra,
                     method: method,
                     json : req.body ,
+                    headers: {
+                        "Content-Type":"application/json",
+                        "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
+                },
                 }, function(error, response, body){
                     if (error){
                         return next(error)
