@@ -5,6 +5,7 @@ const response = require('../Handler/HandlerUser/response.controller');
 module.exports.getUser = (res,id,query) =>{
     
     user.findById(id)
+        .select("-salt -hash")
         .then(user => {
             if (user){
                 response.response("success",res,"USER FOUND",200,user);

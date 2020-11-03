@@ -25,7 +25,7 @@ router.all("/searchpharmacies", (req, res, next) => {
     .options("/searchpharmacies", (req, res, next) => {
         next();
     })
-    .post("/searchpharmacies", userController.updateImage)
+    .post("/searchpharmacies", userController.searchPharmarcies)
 
 
 
