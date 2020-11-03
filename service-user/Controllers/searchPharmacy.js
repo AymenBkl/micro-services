@@ -38,8 +38,8 @@ function filterPharmacies(products,req){
         getAllPharmaciesId(products)
             .then(pharmaciesId => {
                 if (pharmaciesId){
-                    req.body.pharmaciesId = Object.keys(pharmaciesId).map(key => {return {_id : key}});
-                    resolve(pharmaciesId)
+                    let pharmacies = Object.keys(pharmaciesId).map(key => {return {pharmacy_id : key,pharmacy : pharmaciesId[key]}});
+                    resolve(pharmacies);
                 }
                 else {
                     reject();

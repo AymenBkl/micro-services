@@ -1,6 +1,7 @@
 const product = require('../Models/product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
+const category = require('../../service-category/Models/category');
 
 const request = require('../Request/requestCategories').request;
 
@@ -38,25 +39,25 @@ function filterProducts(products, req) {
     return new Promise((resolve, reject) => {
         validCategories(products, size)
             .then(categoriesId => {
-                console.log(Object.keys(categoriesId));
                 if (categoriesId && Object.keys(categoriesId).length != 0){
-                    console.log('heress');
                 req.body.categoriesId = Object.keys(categoriesId).map(key => { return { _id: key } });
                 request(req)
                     .then(result => {
                         if (result && result.status == 200) {
-                            Object.keys(result.category).forEach(categorie => {
-                                let categories = JSON.parse(result.category[categorie].categories);
-                                Object.keys(categories).map(categorie => {
+                            console.log("lol",result.category)
+                            result.category.forEach(categorie => {
+                                let categories = JSON.parse(categorie.pharmacy.categories);
+                                console.log(categories);
+                                categories.map(categorie => {
                                     Object.keys(categoriesId).map(
                                         categorieId => {
-                                            if (categorie == categorieId) {
-                                                categories[categorie].products = (categoriesId[categorieId]);
+                                            console.log(categorie);
+                                            if (categorie.category._id == categorieId) {
+                                                categorie.category.products = ({product : Object.values(categoriesId[categorieId])});
                                             }
                                         })
                                 })
-                                console.log(JSON.stringify(categories), size);
-                                result.category[categorie].categories = JSON.parse(JSON.stringify(categories));
+                                categorie.pharmacy.categories = JSON.parse(JSON.stringify(categories));
                             })
                             resolve(result.category);
                         }
@@ -65,6 +66,7 @@ function filterProducts(products, req) {
                         }
                     })
                     .catch(err => {
+                        console.log(err);
                         reject(err);
                     });
                 } else {
@@ -97,7 +99,7 @@ function validCategories(products, size) {
 
     getAllCategoriesId(products)
         .then((categoriesId) => {
-            let categoriesToRemove = Object.keys(categoriesId)
+            Object.keys(categoriesId)
                 .map(category => {
                     if (Object.keys(categoriesId[category]).length !== size){
                         delete categoriesId[category];
