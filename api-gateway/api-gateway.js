@@ -33,10 +33,6 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 request({
                     url: req.user  ? service.endpointUrl + extra + query : service.endpointUrl + extra,
                     method: method,
-                    headers: {
-                        "Content-Type":"application/json",
-                        "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
-                },
                     body: req ,
                     
                 }, function(error, response, body){

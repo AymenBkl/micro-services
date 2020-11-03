@@ -56,7 +56,8 @@ exports.verifyPharmacy = (req, res, next) => {
 
 exports.verifyPatient = (req, res, next) => {
   if (req.user) {
-    if (req.user.role == 'pharmacy') {
+    console.log(req.user.role);
+    if (req.user.role == 'patient') {
       console.log(true);
       next();
     } else {

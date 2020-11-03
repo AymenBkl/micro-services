@@ -23,10 +23,10 @@ router.all('/', function (req, res, next) {
 router.all('/searchproducts', function (req, res, next) {
     next();
 })
-    .options('/', jwt.verifyUser, jwt.verifyPatient, (req, res, next) => {
+    .options('/searchproducts', (req, res, next) => {
         next();
     })
-    .post('/', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
+    .post('/searchproducts', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/searchproducts');
     });
