@@ -30,13 +30,13 @@ router.all('/', function (req, res, next) {
     });
 
 
-router.all('/searchpharmacies', function (req, res, next) {
+router.all('/user/searchpharmacies', function (req, res, next) {
     next();
 })
     .options('/', jwt.verifyUser, (req, res, next) => {
         next();
     })
-    .post('/searchpharmacies', jwt.verifyUser, function (req, res, next) {
+    .post('/', jwt.verifyUser,jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/searchpharmacies');
     });

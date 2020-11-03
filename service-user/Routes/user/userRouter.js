@@ -13,11 +13,20 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",userController.updateImage)
+    .post("/", userController.updateImage)
 
-    .get("/",userController.getUser)
-    
-    .put("/",userController.updateUser);
+    .get("/", userController.getUser)
+
+    .put("/", userController.updateUser);
+
+router.all("/searchpharmacies", (req, res, next) => {
+    next();
+})
+    .options("/searchpharmacies", (req, res, next) => {
+        next();
+    })
+    .post("/searchpharmacies", userController.updateImage)
+
 
 
 module.exports = router;

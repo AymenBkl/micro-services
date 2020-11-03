@@ -22,7 +22,7 @@
       {"name":"signup", "path":"api/account", "route":"account/signup"},
       {"name":"files", "path":"api/account", "route":"account/files"},
       {"name":"user", "path":"api/account", "route":"account/user"},
-      {"name":"user", "path":"api/account", "route":"account/searchpharmacies"},
+      {"name":"user", "path":"api/account", "route":"account/user/searchpharmacies"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category/searchcategory"},
       {"name":"category.files", "path":"api/crm/category", "route":"crm/files"},

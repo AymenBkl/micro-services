@@ -24,7 +24,7 @@ router.all("/", (req, res, next) => {
 router.all("/searchproducts", (req, res, next) => {
     next();
 })
-    .options("/", (req, res, next) => {
+    .options("/searchproducts", (req, res, next) => {
         next();
     })
     .post("/searchproducts", productController.searchProduct);

@@ -24,7 +24,7 @@ router.all("/", (req, res, next) => {
 router.all("/searchcategory", (req, res, next) => {
         next();
     })
-        .options("/", (req, res, next) => {
+        .options("/searchcategory", (req, res, next) => {
             next();
         })
         .post("/searchcategory", categoryController.searchCategory);
