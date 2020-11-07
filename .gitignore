@@ -1,2 +1,14 @@
 node_modules
 docs
+api-gateway/node_modules
+micro-node-net-lib/node_modules
+micro-node-service-registry-lib/node_modules
+micro-node-service-registry-lib/micro-node-mongo-lib/node_modules
+service-category/node_modules
+service-files/node_modules
+service-login/node_modules
+service-orders/node_modules
+service-products/node_modules
+service-signup/node_modules
+service-user/node_modules
+

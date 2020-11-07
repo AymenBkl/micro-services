@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Micro Node Tutorial",
   "author": {
-    "name": "Domenico Vacchiano",
+    "name": ""aymenxyz6@gmail.com"",
     "email": "info@domenicovacchiano.com",
     "url": "http://www.domenicovacchiano.com"
   },
@@ -21,8 +21,6 @@
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "micro-node-net-lib": "git@github.com:alchimya/micro-node-net-lib.git",
-    "micro-node-service-registry-lib": "git@github.com:alchimya/micro-node-service-registry-lib.git",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
     "network-address": "^1.1.2",

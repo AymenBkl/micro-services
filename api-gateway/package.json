@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "Api Gateway",
   "author": {
-    "name": "Domenico Vacchiano",
-    "email": "domenico@doorgames.com",
-    "url": "http://www.doorgames.com"
+    "name": "Aymen Abdelmoumen Boukhelkhal",
+    "email": "aymenxyz6@gmail.com",
+    "url": "aymenxyz6@gmail.com"
   },
-  "homepage": "http://www.doorgames.com/",
+  "homepage": "aymenxyz6@gmail.com",
   "repository": {
     "type": "git",
     "url": ""
@@ -21,8 +21,6 @@
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^7.4.3",
-    "micro-node-net-lib": "git@github.com:alchimya/micro-node-net-lib.git",
-    "micro-node-service-registry-lib": "git@github.com:alchimya/micro-node-service-registry-lib.git",
     "mongoose": "^5.10.11",
     "morgan": "^1.10.0",
     "multiparty": "^4.2.2",
