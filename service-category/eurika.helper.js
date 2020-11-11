@@ -8,9 +8,11 @@ const ipAddr = '192.168.43.34';
 exports.registerWithEureka = function(appName, PORT) {
     const client = new Eureka({
     instance: {
+      id: appName,
       app: appName,
       hostName: hostName,
       ipAddr: ipAddr,
+      statusPageUrl: 'http://'+hostName+':'+PORT,
       port: {
         '$': PORT,
         '@enabled': 'true',

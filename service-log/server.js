@@ -11,6 +11,7 @@ var config= require ('./config')(),
     cluster = require('cluster'),
     numCPUs = /**require('os').cpus().length**/ 1,
     netLib = require ('../micro-node-net-lib'),
+    eurika = require('./eurika.helper'),
     configServer= {
         server:{
             port:config.server.port

@@ -21,57 +21,49 @@ var ApiGateway = function () {
 
 
 ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query,extra = '') {
-    
-    service=servicesHelper.getService(serviceName,serviceEndpointId);
-    serviceRegistry.find(service.name,service.endpointId,function (error,service) {
-        console.log({
-            "Content-Type":"application/json",
-            "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
-    })
-        if (service && !error){
-            if (file == true){
-                request({
-                    url: req.user  ? service.endpointUrl + extra + query : service.endpointUrl + extra,
-                    method: method,
-                    body: req ,
-                    
-                }, function(error, response, body){
-                    if (error){
-                        return next(error)
-                    }else {
-                        debug(body);
-                        return res.status(response.statusCode).send(JSON.parse(body));
-                    }
-                });
-            }
-            else {
-                request({
-                    url: req.user ? service.endpointUrl + extra + "?id=" + req.user._id : service.endpointUrl + extra,
-                    method: method,
-                    json : req.body ,
-                    headers: {
-                        "Content-Type":"application/json",
-                        "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
-                },
-                }, function(error, response, body){
-                    if (error){
-                        return next(error)
-                    }else {
-                        debug(body);
-                        return res.status(response.statusCode).send(body);
-                    }
-                });
-            }
-        } else {
-            console.log(error);
-            if (error){
-                return next(error);
-            }else {
-                return res.status(500).send(1001,"Service not found","Application Error");
-            }
-
+    const baseUrl = "http://aymenbkl:8050/" + serviceName.toLowerCase() + serviceEndpointId;
+    console.log(baseUrl);
+    if (service && !error){
+        if (file == true){
+            request({
+                url: req.user  ? baseUrl  + extra + query : service.endpointUrl + baseUrl,
+                method: method,
+                body: req ,
+                
+            }, function(error, response, body){
+                if (error){
+                    return next(error)
+                }else {
+                    debug(body);
+                    return res.status(response.statusCode).send(JSON.parse(body));
+                }
+            });
         }
-    });
+        else {
+            console.log(baseUrl);
+            request({
+                url: req.user ? baseUrl + extra + "?id=" + req.user._id : baseUrl + extra,
+                method: method,
+                json : req.body ,
+                
+            }, function(error, response, body){
+                if (error){
+                    return next(error)
+                }else {
+                    debug(body);
+                    return res.status(response.statusCode).send(body);
+                }
+            });
+        }
+    } else {
+        console.log(error);
+        if (error){
+            return next(error);
+        }else {
+            return res.status(500).send(1001,"Service not found","Application Error");
+        }
+
+    }
 };
 
 module.exports=ApiGateway;
