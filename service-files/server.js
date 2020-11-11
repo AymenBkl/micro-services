@@ -16,6 +16,7 @@ var config = require('./config')(),
     path = require('path'),
     passport = require('passport'),
     cookieParser = require('cookie-parser'),
+    eurika = require('./eurika.helper'),
     configServer = {
     server: {
         port: config.server.port
