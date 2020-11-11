@@ -15,6 +15,7 @@ var config = require('./config')(),
     mongoose = require('mongoose'),
     passport = require('passport');
     cookieParser = require('cookie-parser');
+    eurika = require('./eurika.helper');
     configServer = {
     server: {
         port: config.server.port
@@ -82,6 +83,9 @@ if (cluster.isMaster && config.server.isCluster) {
         if (!err) {
             //load API route(s) and register services
             registerServer();
+            eurika.registerWithEureka(config.server.id,config.server.port);
+
+            eurika.registerWithEureka(config.server.id,config.server.port);
             if (config.serviceRegistry.watchDog.isEnabled) {
                 setInterval(function () {
                     registerServer();

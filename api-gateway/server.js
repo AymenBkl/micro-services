@@ -14,6 +14,7 @@ var config= require ('./config')(),
     mongoose = require('mongoose'),
     passport = require('passport');
     cookieParser = require('cookie-parser');
+    eurika = require('./eurika.helper');
     apiGateway = require('./api-gateway'),
     configServer= {
         server:{
@@ -73,6 +74,8 @@ var config= require ('./config')(),
         
         server.create(function (err,server) {
             if (!err){
+                eurika.registerWithEureka(config.server.id,config.server.port);
+
                 console.log("### " + config.server.id + " -> " + (config.server.https ? "HTTPS" : "HTTP") + " Server started on port " +
                     config.server.port + (config.server.isCluster ? " cluster worker " + cluster.worker.id : ""));
             } else {

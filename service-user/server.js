@@ -15,6 +15,7 @@ var config = require('./config')(),
     mongoose = require('mongoose'),
     passport = require('passport');
     cookieParser = require('cookie-parser');
+    eurika = require('./eurika.helper');
     configServer = {
     server: {
         port: config.server.port
@@ -52,7 +53,6 @@ if (cluster.isMaster && config.server.isCluster) {
     });
 
 } else {
-
     var app = express();
     app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
     app.use(bodyParser.json({limit: '50mb'}));
@@ -81,6 +81,8 @@ if (cluster.isMaster && config.server.isCluster) {
         if (!err) {
             //load API route(s) and register services
             registerServer();
+            eurika.registerWithEureka(config.server.id,config.server.port);
+
             if (config.serviceRegistry.watchDog.isEnabled) {
                 setInterval(function () {
                     registerServer();
