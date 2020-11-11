@@ -16,7 +16,7 @@ router.all('/', function (req, res, next) {
     })
     .post('/allproducts', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next);
+        request.sendRequest("ServiceProducts", "/api/management", req.method, false, req, res, next);
     });
 
 
@@ -28,7 +28,7 @@ router.all('/searchproducts', function (req, res, next) {
     })
     .post('/searchproducts', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/searchproducts');
+        request.sendRequest("ServiceProducts", "/api/management", req.method, false, req, res, next,'','/searchproducts');
     });
    
 

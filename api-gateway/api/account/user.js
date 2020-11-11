@@ -17,16 +17,16 @@ router.all('/', function (req, res, next) {
     .post('/image', jwt.verifyUser, function (req, res, next) {
         const queryParams = "?id=" + req.user._id;
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next, queryParams);
+        request.sendRequest("ServiceUser", "/api/user", req.method, true, req, res, next, queryParams);
     })
     .get('/user/:userId', jwt.verifyUser, function (req, res, next) {
         req.body.id = req.params.userId;
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);
+        request.sendRequest("ServiceUser", "/api/user", req.method, false, req, res, next);
     })
     .put('/updateuser', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);
+        request.sendRequest("ServiceUser", "/api/user", req.method, false, req, res, next);
     });
 
 
@@ -38,7 +38,7 @@ router.all('/user/searchpharmacies', function (req, res, next) {
     })
     .post('/', jwt.verifyUser,jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/searchpharmacies');
+        request.sendRequest("ServiceUser", "/api/user", req.method, false, req, res, next,'','/searchpharmacies');
     });
 
 

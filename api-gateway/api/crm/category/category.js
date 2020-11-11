@@ -16,23 +16,23 @@ router.all('/', function (req, res, next) {
     })
     .post('/addcategory', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
+        request.sendRequest("ServiceCategory", "/api/category", req.method, false, req, res, next);
     })
     .get('/allcategory', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
+        request.sendRequest("ServiceCategory", "/api/category", req.method, false, req, res, next);
     })
     .put('/updatecategory/:categoryId', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.id = req.params.categoryId;
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
+        request.sendRequest("ServiceCategory", "/api/category", req.method, false, req, res, next);
     })
     .delete("/deletecategory/:categoryId", jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.id = req.params.categoryId;
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
+        request.sendRequest("ServiceCategory", "/api/category", req.method, false, req, res, next);
     });
 
 router.all('/searchcategory', function (req, res, next) {
@@ -44,7 +44,7 @@ router.all('/searchcategory', function (req, res, next) {
     .post('/', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         console.log("here");
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next,'','/searchcategory');
+        request.sendRequest("ServiceCategory", "/api/category", req.method, false, req, res, next,'','/searchcategory');
     });
 
 

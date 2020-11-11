@@ -17,15 +17,15 @@ router.all('/', function (req, res, next) {
     .post('/addimage/:productId',jwt.verifyUser,jwt.verifyPharmacy,function (req, res, next) {
         const queryParams = "?id="+req.user._id+"&productId="+ req.params.productId;
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts","Routes/productMangement.route", req.method, true, req, res, next,queryParams);
+        request.sendRequest("ServiceProducts","/api/files", req.method, true, req, res, next,queryParams);
     })
     .get('/allproducts',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts","Routes/productMangement.route", req.method,false, req, res, next);
+        request.sendRequest("ServiceProducts","/api/files", req.method,false, req, res, next);
     })
     .put('/updatecategory',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts","Routes/productMangement.route", req.method,false, req, res, next);
+        request.sendRequest("ServiceProducts","/api/files", req.method,false, req, res, next);
     });
 
 
