@@ -4,7 +4,7 @@ const response = require('../Handler/HandlerUser/response.controller');
 
 
 const options = {
-  timeout: 3000, 
+  timeout: 5000, 
   errorThresholdPercentage: 50, // When 50% of requests fail, trip the circuit
   resetTimeout: 30000 // After 30 seconds, try again.
 };
