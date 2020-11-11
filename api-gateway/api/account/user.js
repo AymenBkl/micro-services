@@ -11,7 +11,7 @@ const jwt = require('../../middlewares/jwt/jwt');
 router.all('/', function (req, res, next) {
     next();
 })
-    .options('/', jwt.verifyUser, (req, res, next) => {
+    .options('/', (req, res, next) => {
         next();
     })
     .post('/image', jwt.verifyUser, function (req, res, next) {

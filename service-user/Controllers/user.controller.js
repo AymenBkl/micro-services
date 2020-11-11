@@ -9,9 +9,11 @@ const getUser = require('./getUser');
 
 const searchPharmacies = require('./searchPharmacy');
 
+const circuitBreaker = require('../CircuitBreaker/circuitBreaker')
 module.exports = {
     getUser : (req,res,next) => {
-        getUser.getUser(res,req.body.id,null);
+        circuitBreaker.handleBreak(getUser.getUser(res,req.body.id,null));
+        
     },
     updateImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);
@@ -21,7 +23,8 @@ module.exports = {
         const query = {
             $set : req.body
         }
-        updateUser.updateUser(res,req.query.id,query);
+        circuitBreaker.handleBreak(updateUser.updateUser(res,req.query.id,query));
+
     },
 
     searchPharmarcies : (req,res,next) => {

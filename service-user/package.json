@@ -20,6 +20,7 @@
     "multiparty": "^4.2.2",
     "network-address": "^1.1.2",
     "nodemon": "^2.0.6",
+    "opossum": "^5.0.2",
     "passport": "^0.4.1",
     "passport-facebook-token": "^4.0.0",
     "passport-jwt": "^4.0.0",

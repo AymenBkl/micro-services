@@ -1,21 +1,21 @@
 const user = require('../Models/user');
 
-const response = require('../Handler/HandlerUser/response.controller');
 
 module.exports.getUser = (res,id,query) =>{
-    
-    user.findById(id)
+    return new Promise((resolve, reject) => {
+        user.findById(id)
         .select("-salt -hash")
         .then(user => {
             if (user){
-                response.response("success",res,"USER FOUND",200,user);
+                resolve({type:"success",res : res,msg : "USER FOUND",status : 200,user : user});
             }
             else {
-                response.response("error",res,"undefined",404,null);
+                resolve({type:"error",res : res,msg : "undefined",status: 404,user : null});
             }
         } )
         .catch(err => {
-            response.response("error",res,err,500,null);
-
+            reject({type:"error",res : res,msg : err,status: 500,user : null});
         })
+    });
+    
 }

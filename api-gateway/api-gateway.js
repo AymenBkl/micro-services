@@ -22,12 +22,15 @@ var ApiGateway = function () {
 
 ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query,extra = '') {
     const baseUrl = "http://aymenbkl:8050/" + serviceName.toLowerCase() + serviceEndpointId;
-    console.log("xd",baseUrl);
         if (file == true){
             request({
                 url: req.user  ? baseUrl  + extra + query : baseUrl+ extra,
                 method: method,
                 body: req ,
+                headers: {
+                    "Content-Type":"application/json",
+                    "Authorization": "Bearer " + req.headers.authorization != null ?  req.headers.authorization.split(' ')[1] : ''
+            },
                 
             }, function(error, response, body){
                 if (error){
@@ -39,13 +42,20 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             });
         }
         else {
-            console.log(baseUrl);
-            request({
+            let params = 
+            { 
                 url: req.user ? baseUrl + extra + "?id=" + req.user._id : baseUrl + extra,
                 method: method,
-                json : req.body ,
+                json : req.body }
+                if (req.headers.authorization != null){
+                    console.log('lol');
+                    params.headers = {
+                        "Content-Type":"application/json",
+                        "Authorization": "Bearer " + req.headers.authorization != null ?  req.headers.authorization.split(' ')[1] : ''
+                    }
+                }
                 
-            }, function(error, response, body){
+            request(params, function(error, response, body){
                 if (error){
                     return next(error)
                 }else {
