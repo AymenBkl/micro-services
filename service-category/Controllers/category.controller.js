@@ -15,32 +15,35 @@ const deleteCategory = require('./deleteCategory');
 
 const searchCategory = require('./searchCategory');
 
+const circuitBreaker = require('../CircuitBreaker/circuitBreaker');
+
 module.exports = {
     addCategory : (req,res,next) => {
         req.body.pharmacy = req.query.id;
-        addCategory.addCategory(res,req.body);
+        circuitBreaker.handleBreak(addCategory.addCategory(res,req.body));
     },
     getAllCategory : (req,res,next) => {
-        gettAllCategory.getAll(res,req.query.id);
+        circuitBreaker.handleBreak(gettAllCategory.getAll(res,req.query.id));
     },
 
     updateCategory : (req,res,next) => {
+
         req.body.pharmacy = req.query.id;
         const query = {
             $set : req.body
         }
-        console.log(req.body);
-        updateCategory.updateCategory(res,req.body.metadata.id,query);
+        circuitBreaker.handleBreak(updateCategory.updateCategory(res,req.body.metadata.id,query));
+
     },
 
     deleteCategory : (req,res,next) => {
-        deleteCategory.addCategory(res,req.body.metadata.id);
+        circuitBreaker.handleBreak(deleteCategory.addCategory(res,req.body.metadata.id));
     },
     addImage : (req,res,next) => {
-        updateImage.upadeteImage(req,res,next);
+        circuitBreaker.handleBreak(updateImage.upadeteImage(req,res,next));
     },
     searchCategory : (req,res,next) => {
-        searchCategory.searchCategory(req,res);
+        circuitBreaker.handleBreak(searchCategory.searchCategory(req,res));
     },
 
 

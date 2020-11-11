@@ -1,6 +1,6 @@
 const CircuitBreaker = require('opossum');
 
-const response = require('../Handler/HandlerUser/response.controller');
+const response = require('../Handler/HandlerCategory/response.controller');
 
 
 const options = {
@@ -15,10 +15,10 @@ module.exports.handleBreak =  function handleBreak(callbackFunction){
     breaker.fire()
       .then((result) => {
           console.log(result)
-          response.response(result.type,result.res,result.msg,result.status,result.user)
+          response.response(result.type,result.res,result.msg,result.status,result.category)
       })
       .catch((result) => {
-        response.response(result.type,result.res,result.msg,result.status,result.user)
+        response.response(result.type,result.res,result.msg,result.status,result.category)
     });
 }
 

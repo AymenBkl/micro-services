@@ -3,18 +3,21 @@ const category = require('../Models/category');
 const response = require('../Handler/HandlerCategory/response.controller');
 
 module.exports.getAll = (res,pharmacyId) =>{
+    return new Promise((resolve, reject) => {
+
     category.find({
         pharmacy : pharmacyId
     })
         .then(categories => {
             if (categories){
-                response.response("success",res,"CATEGORY CREATED",200,categories);
+                resolve({type:"success",res : res,msg : "Categories Found",status : 200,category : categories});
             }
             else {
-                response.response("error",res,"undefined",404,null);
+                resolve({type:"error",res : res,msg : "undefined",status: 404,category  : null});
             }
         } )
         .catch(err => {
-            response.response("error",res,err,500,null);
+            reject({type:"error",res : res,msg : err,status: 500,category  : null});
         })
+    });
 }

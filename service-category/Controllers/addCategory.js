@@ -3,17 +3,20 @@ const category = require('../Models/category');
 const response = require('../Handler/HandlerCategory/response.controller');
 
 module.exports.addCategory = (res,body) =>{
-    console.log(body);
+    return new Promise((resolve, reject) => {
+        console.log(body);
     category.create(body)
         .then(category => {
             if (category){
-                response.response("success",res,"CATEGORY CREATED",200,category);
+                resolve({type:"success",res : res,msg : "Category Created",status : 200,category : category});
             }
             else {
-                response.response("error",res,"undefined",404,null);
+                resolve({type:"error",res : res,msg : "undefined",status: 404,category  : null});
             }
         } )
         .catch(err => {
-            response.response("error",res,err,500,null);
+            reject({type:"error",res : res,msg : err,status: 500,category  : null});
         })
+    });
+    
 }
