@@ -22,11 +22,10 @@ var ApiGateway = function () {
 
 ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,file,req, res,next,query,extra = '') {
     const baseUrl = "http://aymenbkl:8050/" + serviceName.toLowerCase() + serviceEndpointId;
-    console.log(baseUrl);
-    if (service && !error){
+    console.log("xd",baseUrl);
         if (file == true){
             request({
-                url: req.user  ? baseUrl  + extra + query : service.endpointUrl + baseUrl,
+                url: req.user  ? baseUrl  + extra + query : baseUrl+ extra,
                 method: method,
                 body: req ,
                 
@@ -55,15 +54,9 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 }
             });
         }
-    } else {
-        console.log(error);
-        if (error){
-            return next(error);
-        }else {
-            return res.status(500).send(1001,"Service not found","Application Error");
-        }
+    
 
-    }
+    
 };
 
 module.exports=ApiGateway;

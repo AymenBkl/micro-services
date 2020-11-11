@@ -88,7 +88,7 @@ var config= require ('./config')(),
         app.use(function(err, req, res, next) {
             debug(err);
             var request = new apiGateway();
-            request.sendRequest("ServiceLog","log",req, res,next);
+            request.sendRequest("ServiceLog","/api/log", req.method,false, req, res,next);
             res.status(500).send({
                 code:1000,
                 message:"Application Error",
