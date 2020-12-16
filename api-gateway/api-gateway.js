@@ -28,6 +28,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
             "Content-Type":"application/json",
             "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
     })
+	console.log(service);
         if (service && !error){
             if (file == true){
                 request({

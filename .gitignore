@@ -13,3 +13,5 @@ service-products/node_modules
 service-signup/node_modules
 service-user/node_modules
 
+
+api-gateway/uploads/

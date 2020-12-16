@@ -9,7 +9,7 @@ var config = require('./config')(),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     cluster = require('cluster'),
-    numCPUs = /**require('os').cpus().length**/ 1,
+    numCPUs = /**require('os').cpus().length**/ 1 ,
     netLib = require('../micro-node-net-lib'),
     cfg = require('./config.json'),
     mongoose = require('mongoose'),
@@ -60,7 +60,7 @@ if (cluster.isMaster && config.server.isCluster) {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(cookieParser(cfg.cockiParserSecret));
-    mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false })
+    mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false,useUnifiedTopology: true  })
     configServer.express.app = app;
 
     //header(s) setting

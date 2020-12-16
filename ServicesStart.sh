@@ -15,16 +15,20 @@ DEBUG=http node server &
 
 cd ..
 cd service-files
-DEBUG=http node server
+DEBUG=http node server &
 
 
 cd ..
 cd service-user
-DEBUG=http node server
+DEBUG=http node server &
 
 cd ..
 cd service-category
-DEBUG=http node server
+DEBUG=http node server &
+
+cd ..
+cd service-products
+DEBUG=http node server &
 
 cd ..
 cd api-gateway

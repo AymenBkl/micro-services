@@ -5,7 +5,7 @@ function requests(req){
     return new Promise((resolve,reject) => {  
         console.log("here",req.body);  
         request.post({
-            url : 'http://localhost:8080/api/account/user/searchpharmacies', 
+            url : 'http://127.0.0.1:8080/api/account/user/searchpharmacies', 
             headers: {
                 "Content-Type":"application/json",
                 "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]

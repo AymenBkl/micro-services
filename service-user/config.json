@@ -1,7 +1,7 @@
 {
     "server":{
       "id":"ServiceUser",
-      "port":8086,
+      "port":8090,
       "isCluster":true,
       "https":{
         "isEnabled":false,
@@ -27,9 +27,9 @@
         },
         "database":{
           "name":"micro",
-          "user":"",
+          "user":"root",
           "password":"",
-          "host":"localhost",
+          "host":"127.0.0.1",
           "port":27017
         }
     },

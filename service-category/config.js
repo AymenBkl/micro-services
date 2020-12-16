@@ -21,7 +21,7 @@ function Config() {
             modules:config.api.modules
         },
         serviceRegistry:config.serviceRegistry,
-        mongoURL : 'mongodb://localhost:27017/micro',
+        mongoURL : 'mongodb://127.0.0.1:27017/micro',
         
     };
 

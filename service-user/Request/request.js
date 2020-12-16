@@ -6,7 +6,7 @@ function requests(req,res,next){
         console.log("wtf .");
         
         request.post({
-            url : 'http://localhost:8080/api/account/files/addfile', 
+            url : 'http://127.0.0.1:8080/api/account/files/addfile', 
             body : req
         },function(error, response, body){
             if (error != null) {

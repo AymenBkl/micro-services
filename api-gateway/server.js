@@ -12,6 +12,7 @@ var config= require ('./config')(),
     netLib = require ('../micro-node-net-lib'),
     cfg = require('./config.json'),
     mongoose = require('mongoose'),
+    path = require('path'),
     passport = require('passport');
     cookieParser = require('cookie-parser');
     apiGateway = require('./api-gateway'),
@@ -45,8 +46,9 @@ var config= require ('./config')(),
     } else {
 
         var app=express();
-        app.use(bodyParser.urlencoded({ extended: true }));
-        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+        app.use(bodyParser.json({limit: '50mb'}));
+        app.use(express.static(path.join(__dirname, 'uploads')));
         app.use(morgan('dev'));
         app.use(passport.initialize());
         app.use(passport.session());
