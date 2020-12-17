@@ -18,6 +18,11 @@ router.all('/', function (req, res, next) {
         request.sendRequest("ServiceMessages", "Routes/messages.route", req.method,false, req, res, next);
     })
 
+    .get('/',jwt.verifyUser, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceMessages", "Routes/messages.route", req.method,false, req, res, next);
+    })
+
 
 
 module.exports = router;

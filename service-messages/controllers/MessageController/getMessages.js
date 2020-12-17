@@ -3,13 +3,11 @@ const message = require("../../models/message/message");
 const response = require('../../Handler/MessageHandler/response.controller');
 
 module.exports = {
-    sendMessage: (req, res, next) => {
-        req.body.from = req.query.id
-        console.log(req.body);
-        message.create(req.body)
-            .then((messsage) => {
-                if (messsage) {
-                    response.response("success",res,"Message Sent",200,messsage);
+    getAllMessages: (req, res, next) => {
+        message.find({from : req.query.id})
+        .then((messsage) => {
+                if (messsage && messsage.length != 0) {
+                    response.response("success",res,"Messages",200,messsage);
                 }
                 else {
                     response.response("error",res,"undefined",404,null);
