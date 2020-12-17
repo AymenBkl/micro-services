@@ -17,6 +17,7 @@ const searchProduct = require('./searchProduct');
 
 const mainMainProduct = require('./addMainProduct');
 
+const getAllMainProduct = require('./getAllMainProduct');
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.category = req.body.metadata.categoryId;
@@ -28,6 +29,10 @@ module.exports = {
     },
     getAllProduct : (req,res,next) => {
         gettAllProduct.getAll(res,req.body.metadata.categoryId);
+    },
+
+    getAllMainProduct : (req,res,next) => {
+        getAllMainProduct.getAll(res);
     },
 
     allProduct : (req,res,next) => {

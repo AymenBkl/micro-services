@@ -36,7 +36,8 @@ router.all("/addmainproduct", (req, res, next) => {
         .options("/addmainproduct", (req, res, next) => {
             next();
         })
-        .post("/addmainproduct", productController.addMainProduct);
+        .post("/addmainproduct", productController.addMainProduct)
+        .get("/addmainproduct", productController.getAllMainProduct);
 
 
 module.exports = router;
