@@ -17,7 +17,8 @@
     "api":{
       "route":"api",
       "modules":[
-        {"name":"Routes/user.route", "route":"user"}
+        {"name":"Routes/user.route", "route":"user"},
+        {"name":"Routes/admin.route", "route":"admin"}
       ]
     },
     "serviceRegistry":{

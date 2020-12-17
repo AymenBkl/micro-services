@@ -1,0 +1,18 @@
+const express = require('express');
+
+
+var router = express.Router();
+
+
+const userController = require('../../Controllers/user.controller');
+
+router.all("/addfile", (req, res, next) => {
+    next();
+})
+    .options("/addfile", (req, res, next) => {
+        next();
+    })
+    .post("/addfile", userController.addFileExCel)
+
+
+module.exports = router;

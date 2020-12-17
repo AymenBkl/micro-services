@@ -54,6 +54,20 @@ exports.verifyPharmacy = (req, res, next) => {
   }
 };
 
+exports.verifyAdmin = (req, res, next) => {
+  if (req.user) {
+    if (req.user.role == 'admin') {
+      next();
+    } else {
+      res.statusCode = 403;
+      res.json({status : 403,msg : 'you are not allow to do this operation'});
+    }
+  } else {
+    res.statusCode = 403;
+    res.json({status : 403,msg : 'login first'});
+  }
+};
+
 exports.verifyPatient = (req, res, next) => {
   if (req.user) {
     console.log(req.user.role);
@@ -70,21 +84,7 @@ exports.verifyPatient = (req, res, next) => {
   }
 };
 
-exports.verifyAdmin = (req, res, next) => {
-  if (req.user) {
-    if (req.user.admin) {
-      next();
-    } else {
-      err = new Error("unAuthorized not an Admin");
-      err.status = 403;
-      return next(err);
-    }
-  } else {
-    err = new Error("unlogged");
-    err.status = 403;
-    return next(err);
-  }
-};
+
 
 var localStrategy = require("passport-local").Strategy;
 

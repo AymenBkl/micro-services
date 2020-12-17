@@ -9,6 +9,8 @@ const getUser = require('./getUser');
 
 const searchPharmacies = require('./searchPharmacy');
 
+const addFile = require('./addFile');
+
 module.exports = {
     getUser : (req,res,next) => {
         getUser.getUser(res,req.body.id,null);
@@ -30,6 +32,14 @@ module.exports = {
         }
         searchPharmacies.searchPharmacy(req,res);
     },
+
+    addFileExCel :  (req,res,next) => {
+        const query = {
+            $set : req.body
+        }
+        addFile.addFile(req,res,next);
+    },
+
 
 
 }

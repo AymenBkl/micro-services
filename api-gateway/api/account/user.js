@@ -42,6 +42,18 @@ router.all('/user/searchpharmacies', function (req, res, next) {
     });
 
 
+router.all('/admin/addfile', function (req, res, next) {
+        next();
+    })
+        .options('/', jwt.verifyUser, (req, res, next) => {
+            next();
+        })
+        .post('/', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+            var request = new apiGateway();
+            request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next,'','/addfile');
+        });
+
+
 
 
 
