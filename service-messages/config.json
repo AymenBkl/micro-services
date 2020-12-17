@@ -1,0 +1,57 @@
+{
+  "server": {
+    "id": "ServiceMessages",
+    "port": 8089,
+    "isCluster": true,
+    "https": {
+      "isEnabled": false,
+      "key": "",
+      "ca": ""
+    },
+    "headers": [
+      {
+        "name": "Access-Control-Allow-Origin",
+        "value": "*"
+      },
+      {
+        "name": "Access-Control-Allow-Headers",
+        "value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+      },
+      {
+        "name": "Access-Control-Allow-Methods",
+        "value": "GET,PUT,POST,DELETE,OPTIONS"
+      }
+    ]
+  },
+  "api": {
+    "route": "api",
+    "modules": [
+      {
+        "name": "Routes/messages.route",
+        "route": "messages"
+      }
+    ]
+  },
+  "serviceRegistry": {
+    "watchDog": {
+      "isEnabled": false,
+      "timer": 30000
+    },
+    "database": {
+      "name": "micro",
+      "user": "root",
+      "password": "",
+      "host": "127.0.0.1",
+      "port": 27017
+    }
+  },
+  "token": {
+    "tokenExperationDate": 366666660,
+    "secretKey": "12345azerty6789"
+  },
+  "facebook": {
+    "clientId": "299424541329444",
+    "clientSecret": "67397e0217fc7687941793dd3e2609ee"
+  },
+  "cockiParserSecret": "aymenxyzbkl12345678910"
+}

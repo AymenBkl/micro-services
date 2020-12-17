@@ -2,12 +2,15 @@ const product = require('../Models/product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
 
-module.exports.getAll = (res,categoryId) =>{
+module.exports.getAll = (res,mainProductId,pharmacyId) =>{
     product.find({
-        category : categoryId
+        $and : [{pharmacy : pharmacyId}, {mainProduct : mainProductId}]
     })
+    .populate({path : 'mainProduct'})
+
         .then(products => {
             if (products && products.length != 0){
+                console.log(products);
                 response.response("success",res,"Products Found",200,products);
             }
             else {

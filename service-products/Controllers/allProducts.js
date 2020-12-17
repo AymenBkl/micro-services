@@ -3,10 +3,11 @@ const product = require('../Models/product');
 const response = require('../Handler/HandlerProduct/response.controller');
 
 module.exports.getAll = (req,res) =>{
-    console.log(req.body.categories);
+    console.log(req.body.pharmacyId);
     product.find({
-        $or : req.body.categories
+        pharmacy : req.body.pharmacyId
     })
+    .populate({path : 'mainProduct'})
         .then(products => {
             if (products && products.length != 0){
                 response.response("success",res,"Products Found",200,products);

@@ -5,23 +5,21 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
 
-    name : {
-        type : String,
-        required : true,
-    },
-
+    
     price : {
         type : Number,
         required : true
     },
-
+    description : {
+        type : String,
+        required : true,
+    },
 
     mainProduct : {
         type : mongoose.Types.ObjectId,
         ref : 'mainproduct',
         required : true
     },
-
     pharmacy : {
         type : mongoose.Types.ObjectId,
         ref : 'User',

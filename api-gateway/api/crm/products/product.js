@@ -14,15 +14,16 @@ router.all('/', function (req, res, next) {
     .options('/',jwt.verifyUser,jwt.verifyPharmacy, (req, res, next) => {
         next();
     })
-    .post('/addproduct/:categoryId',jwt.verifyUser,jwt.verifyPharmacy,function (req, res, next) {
+    .post('/addproduct/:mainproductId',jwt.verifyUser,jwt.verifyPharmacy,function (req, res, next) {
         req.body.metadata = {};
-        req.body.metadata.categoryId = req.params.categoryId;
+        req.body.metadata.mainproductId = req.params.mainproductId;
         var request = new apiGateway();
         request.sendRequest("ServiceProducts","Routes/product.route", req.method, false, req, res, next);
     })
-    .get('/allproduct/:categoryId',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
+    .get('/allproduct/:mainproductId/pharmacy/:pharmacyId',jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
         req.body.metadata = {};
-        req.body.metadata.categoryId = req.params.categoryId;
+        req.body.metadata.mainproductId = req.params.mainproductId;
+        req.body.metadata.pharmacyId = req.params.pharmacyId;
         var request = new apiGateway();
         request.sendRequest("ServiceProducts","Routes/product.route", req.method,false, req, res, next);
     })

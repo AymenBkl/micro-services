@@ -20,7 +20,7 @@ const mainMainProduct = require('./addMainProduct');
 const getAllMainProduct = require('./getAllMainProduct');
 module.exports = {
     addProduct : (req,res,next) => {
-        req.body.category = req.body.metadata.categoryId;
+        req.body.mainProduct = req.body.metadata.mainproductId;
         addProduct.addProduct(res,req.body);
     },
 
@@ -28,7 +28,7 @@ module.exports = {
         mainMainProduct.addProduct(res,req.body);
     },
     getAllProduct : (req,res,next) => {
-        gettAllProduct.getAll(res,req.body.metadata.categoryId);
+        gettAllProduct.getAll(res,req.body.metadata.mainproductId,req.body.metadata.pharmacyId);
     },
 
     getAllMainProduct : (req,res,next) => {

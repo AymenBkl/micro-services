@@ -31,6 +31,10 @@ cd service-products
 DEBUG=http node server &
 
 cd ..
+cd service-messages
+DEBUG=http node server &
+
+cd ..
 cd api-gateway
 DEBUG=http node server
 
