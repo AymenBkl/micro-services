@@ -14,14 +14,17 @@ const productSchema = new Schema({
         type : Number,
         required : true
     },
-    description : {
-        type : String,
-        required : true,
+
+
+    mainProduct : {
+        type : mongoose.Types.ObjectId,
+        ref : 'mainproduct',
+        required : true
     },
 
-    category : {
+    pharmacy : {
         type : mongoose.Types.ObjectId,
-        ref : 'Category',
+        ref : 'User',
         required : true
     },
     imageUrl : {

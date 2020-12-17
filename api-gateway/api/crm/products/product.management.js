@@ -30,6 +30,17 @@ router.all('/searchproducts', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/searchproducts');
     });
+
+router.all('/addmainproduct', function (req, res, next) {
+        next();
+    })
+        .options('/addmainproduct', (req, res, next) => {
+            next();
+        })
+        .post('/addmainproduct', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+            var request = new apiGateway();
+            request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/addmainproduct');
+        });
    
 
 module.exports = router;

@@ -14,10 +14,17 @@ const gettAllProduct = require('./getAllProduct');
 const deleteProduct = require('./deleteProduct');
 
 const searchProduct = require('./searchProduct');
+
+const mainMainProduct = require('./addMainProduct');
+
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.category = req.body.metadata.categoryId;
         addProduct.addProduct(res,req.body);
+    },
+
+    addMainProduct : (req,res,next) => {
+        mainMainProduct.addProduct(res,req.body);
     },
     getAllProduct : (req,res,next) => {
         gettAllProduct.getAll(res,req.body.metadata.categoryId);

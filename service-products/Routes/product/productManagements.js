@@ -30,4 +30,13 @@ router.all("/searchproducts", (req, res, next) => {
     .post("/searchproducts", productController.searchProduct);
 
 
+router.all("/addmainproduct", (req, res, next) => {
+        next();
+    })
+        .options("/addmainproduct", (req, res, next) => {
+            next();
+        })
+        .post("/addmainproduct", productController.addMainProduct);
+
+
 module.exports = router;
