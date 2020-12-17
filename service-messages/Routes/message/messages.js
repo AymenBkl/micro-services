@@ -11,6 +11,6 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",loginController.login);
+    .post("/",messagesController.sendMessage);
 
 module.exports = router;
