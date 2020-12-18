@@ -13,12 +13,12 @@ router.all('/', function (req, res, next) {
     .options('/',jwt.verifyUser, (req, res, next) => {
         next();
     })
-    .post('/',jwt.verifyUser, function (req, res, next) {
+    .post('/addmessage',jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceMessages", "Routes/messages.route", req.method,false, req, res, next);
     })
 
-    .get('/',jwt.verifyUser, function (req, res, next) {
+    .get('/getmessages',jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceMessages", "Routes/messages.route", req.method,false, req, res, next);
     })
