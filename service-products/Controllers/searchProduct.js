@@ -9,8 +9,13 @@ const request = require('../Request/requestUser').request;
 
 module.exports.searchProduct = (req, res) => {
     console.log(req.body.products);
+    addRegex(req.body.products);
     product.find()
-    .populate({path: 'mainProduct',match : {$or : req.body.products}})
+        .populate({
+            path: 'mainProduct', match: {
+                $or: req.body.products
+            }
+        })
         .then(products => {
             console.log(products);
             if (products && products.length != 0) {
@@ -77,17 +82,24 @@ function getAllPharmaciesId(products) {
         let pharmaciesId = {};
         console.log(products.length);
         products.forEach(product => {
-            if (product.mainProduct != null){
+            if (product.mainProduct != null) {
 
-            if (pharmaciesId[product.pharmacy]) {
+                if (pharmaciesId[product.pharmacy]) {
+                }
+                else {
+                    pharmaciesId[product.pharmacy] = {};
+                }
+                pharmaciesId[product.pharmacy][product._id] = product;
             }
-            else {
-                pharmaciesId[product.pharmacy] = {};
-            }
-            pharmaciesId[product.pharmacy][product._id] = product;
-        }
         });
         console.log(pharmaciesId);
         resolve(pharmaciesId);
     });
+}
+
+
+function addRegex(products) {
+    products.map(product => {
+        product.name = new RegExp(product.name);
+    })
 }
