@@ -56,10 +56,8 @@ function sendReqToPharmacies(products, req) {
                             Object.keys(result.user).map(pharmacie => {
                                 console.log(pharmacie, result.user[pharmacie]);
                                 result.user[pharmacie].pharmacy.products =
-                                    JSON.stringify(Object.values(pharmaciesId[result.user[pharmacie].pharmacy_id])
-                                        .map(product => {
-                                            return { product: product };
-                                        }))
+                                    Object.values(pharmaciesId[result.user[pharmacie].pharmacy_id])
+                        
 
                             })
                             console.log(result.user);

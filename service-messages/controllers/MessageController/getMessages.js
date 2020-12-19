@@ -1,10 +1,14 @@
 
 const message = require("../../models/message/message");
 const response = require('../../Handler/MessageHandler/response.controller');
+const user = require('../../models/message/user');
 
 module.exports = {
     getAllMessages: (req, res, next) => {
-        message.find({from : req.query.id})
+        message.find({$or : [{from : req.query.id},{to:req.query.id}]})
+        .populate({path:'to'})
+        .populate({path:'from'})
+        .select("-salt -hash")
         .sort('-createdAt')
         .then((messsage) => {
                 if (messsage && messsage.length != 0) {
@@ -15,6 +19,7 @@ module.exports = {
                 }
             })
             .catch(err => {
+                console.log(err);
                 response.response("error",res,err,500,null);
             })
         
