@@ -20,7 +20,8 @@ function Config() {
             route:config.api.route,
             modules:config.api.modules
         },
-        serviceRegistry:config.serviceRegistry
+        serviceRegistry:config.serviceRegistry,
+        mongoURL : 'mongodb://127.0.0.1:27017/micro',
         
     };
 

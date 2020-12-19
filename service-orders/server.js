@@ -11,6 +11,10 @@ var config= require ('./config')(),
     cluster = require('cluster'),
     numCPUs = /**require('os').cpus().length**/ 1,
     netLib = require ('../micro-node-net-lib'),
+    cfg = require('./config.json'),
+    mongoose = require('mongoose'),
+    passport = require('passport');
+    cookieParser = require('cookie-parser');
     configServer= {
         server:{
             port:config.server.port
@@ -53,6 +57,10 @@ var config= require ('./config')(),
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(morgan('dev'));
+        app.use(passport.initialize());
+        app.use(passport.session());
+        app.use(cookieParser(cfg.cockiParserSecret));
+        mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false })
         configServer.express.app = app;
         
         //header(s) setting
@@ -67,7 +75,7 @@ var config= require ('./config')(),
         //load API route(s)
         config.api.modules.forEach(function(item) {
             //console.log(item);
-            app.use('/' + config.api.route + "/" + item.route, require('./' + item.name));
+            app.use('/' + config.api.route, require('./' + item.name));
         });
         
         server.create(function (err,server) {
@@ -129,6 +137,6 @@ var config= require ('./config')(),
                 });
             }
         };
-  
-
+        
+        
     }
