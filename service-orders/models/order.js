@@ -29,6 +29,12 @@ const productSchema = new Schema({
         ref : 'referal',
     },
 
+    totalPrice : {
+        type : Number,
+        required : true,
+        default:0
+    },
+
 } , {
     timestamps : true,
 }

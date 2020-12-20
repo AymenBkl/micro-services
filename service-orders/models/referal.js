@@ -14,18 +14,19 @@ const referalSchema = new Schema({
     owner : {
         type : mongoose.Types.ObjectId,
         ref : 'User',
-        required : true
+        required : true,
+        unique:true
     },
 
     orders : [{
         type : mongoose.Types.ObjectId,
         ref : 'order',
-        required : true
     }],
 
     commision : {
         type : Number,
-        required : true
+        required : true,
+        default:0
     },
 } , {
     timestamps : true,
@@ -33,5 +34,7 @@ const referalSchema = new Schema({
 )
 
 referalValidator.validators.codeValidator(referalSchema);
+
+referalValidator.validators.userValidator(referalSchema);
 
 module.exports = mongoose.model('referal',referalSchema);

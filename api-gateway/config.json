@@ -33,7 +33,8 @@
       {"name":"product.management", "path":"api/crm/products", "route":"crm/productsmanagement/searchproducts"},
       {"name":"product.management", "path":"api/crm/products", "route":"crm/productsmanagement/addmainproduct"},
       {"name":"message", "path":"api/messages/", "route":"messages/messages"},
-      {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"}
+      {"name":"orders", "path":"api/crm/orders", "route":"crm/orders"},
+      {"name":"referal", "path":"api/crm/referal", "route":"crm/referal"}
     ]
   },
   "services":[
@@ -50,7 +51,9 @@
       {"name":"ServiceProducts", "endpointId":"Routes/product.management"},
       {"name":"ServiceMessages", "endpointId":"Routes/messages.route"},
 
-      {"name":"ServiceOrders", "endpointId":"orders"}
+      {"name":"ServiceOrders", "endpointId":"Routes/orders.route"},
+      {"name":"ServiceOrders", "endpointId":"Routes/referal.route"}
+
   ],
   "serviceRegistry":{
       "database":{

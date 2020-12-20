@@ -1,15 +1,16 @@
 
-const message = require("../../models/message/message");
+const referal = require("../../models/referal");
 const response = require('../../Handler/OrderHandler/response.controller');
+const user = require('../../models/user');
 
 module.exports = {
-    sendMessage: (req, res, next) => {
-        req.body.from = req.query.id;
+    createReferal: (req, res, next) => {
+        req.body.owner = req.query.id;
         console.log(req.body);
-        message.create(req.body)
-            .then((messsage) => {
-                if (messsage) {
-                    response.response("success",res,"Message Sent",200,messsage);
+        referal.create(req.body)
+            .then((ref) => {
+                if (ref) {
+                    response.response("success",res,"Referal created ",200,ref);
                 }
                 else {
                     response.response("error",res,"undefined",404,null);

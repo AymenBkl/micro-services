@@ -1,15 +1,22 @@
 
-const sendMessage = require('./sendMessage');
 
-const allMessages = require('./getMessages');
+const getReferal = require('./getReferal');
+
+const createReferal = require('./createReferal');
+
+const getAllReferal = require('./getAllReferal');
+
 module.exports = {
-    sendMessage : (req,res,next) => {
-        console.log(req.body)
-        sendMessage.sendMessage(req,res,next);
+    createReferal : (req,res,next) => {
+        createReferal.createReferal(req,res,next);
     },
 
-    getMessages : (req,res,next) => {
-        allMessages.getAllMessages(req,res,next);
+    getReferal : (req,res,next) => {
+        getReferal.getReferal(req,res,next);
+    },
+
+    getAllReferal : (req,res,next) => {
+        getAllReferal.getReferal(req,res,next);
     },
 
 }

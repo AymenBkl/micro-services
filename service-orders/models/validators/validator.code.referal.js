@@ -8,4 +8,12 @@ module.exports.validators = {
           }, 'Code already exists');
     },
 
+    userValidator : (schema) => {
+        schema.path('owner').validate(async (value) => {
+            const ownerCount = await mongoose.models.User.countDocuments({owner: value });
+            return !ownerCount;
+          }, 'Owner already exists');
+    },
+
 }
+

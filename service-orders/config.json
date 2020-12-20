@@ -29,7 +29,13 @@
       {
         "name": "Routes/orders.route",
         "route": "orders"
+      },
+
+      {
+        "name": "Routes/referal.route",
+        "route": "referal"
       }
+
     ]
   },
   "serviceRegistry": {

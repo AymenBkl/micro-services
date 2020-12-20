@@ -1,17 +1,16 @@
 
+const referal = require('../../models/referal');
+const order = require('../../models/order');
 const response = require('../../Handler/OrderHandler/response.controller');
 const user = require('../../models/user');
 
 module.exports = {
-    getAllMessages: (req, res, next) => {
-        message.find({$or : [{from : req.query.id},{to:req.query.id}]})
-        .populate({path:'to'})
-        .populate({path:'from'})
-        .select("-salt -hash")
-        .sort('-createdAt')
-        .then((messsage) => {
-                if (messsage && messsage.length != 0) {
-                    response.response("success",res,"Messages",200,messsage);
+    getReferal: (req, res, next) => {
+        referal.find()
+        .populate([{path:'owner',select:"-salt -hash"},{path:'orders'}])
+        .then((ref) => {
+                if (ref) {
+                    response.response("success",res,"Messages",200,ref);
                 }
                 else {
                     response.response("error",res,"undefined",404,null);

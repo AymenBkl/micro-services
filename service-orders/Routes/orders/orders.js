@@ -11,7 +11,5 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",messagesController.sendMessage)
-    .get("/",messagesController.getMessages);
 
 module.exports = router;
