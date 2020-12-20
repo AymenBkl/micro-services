@@ -8,6 +8,8 @@ const getAllReferal = require('./getAllReferal');
 
 const createOrder = require('./createOrder');
 
+const getAllOrders = require('./getAllOrder');
+
 module.exports = {
     createReferal : (req,res,next) => {
         createReferal.createReferal(req,res,next);
@@ -29,6 +31,11 @@ module.exports = {
     checkReferal : (req,res,next) => {
         query = {code : req.body.code};
         getReferal.getReferal(req,res,query);
+    }, 
+
+    getAllOrders: (req,res,next) => {
+        query = {$or : [{patient : req.query.id},{pharmacy:req.query.id}]};
+        getAllOrders.getOrders(req,res,query);
     }, 
 
 }

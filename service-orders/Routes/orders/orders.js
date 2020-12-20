@@ -3,7 +3,7 @@ const express = require('express');
 
 var router = express.Router();
 
-const messagesController = require('../../controllers/OrderController/order.controller');
+const orderController = require('../../controllers/OrderController/order.controller');
 
 router.all("/", (req, res, next) => {
     next();
@@ -11,5 +11,7 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
+    .post('/',orderController.createORder)
+    .get('/',orderController.getAllOrders);
 
 module.exports = router;

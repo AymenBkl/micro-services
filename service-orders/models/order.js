@@ -40,7 +40,7 @@ const productSchema = new Schema({
         required : true,
         default:'created'
     },
-    status : {
+    method : {
         type : String,
         required : true,
         default:'cod'
