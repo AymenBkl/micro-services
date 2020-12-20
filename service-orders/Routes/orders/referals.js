@@ -13,6 +13,7 @@ router.all("/", (req, res, next) => {
     })
     .post("/",orderController.createReferal)
     .get("/",orderController.getReferal)
-    .get("/allreferal",orderController.getAllReferal);
+    .get("/allreferal",orderController.getAllReferal)
+    .post("/checkreferal",orderController.checkReferal);
 
 module.exports = router;

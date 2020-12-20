@@ -35,6 +35,17 @@ const productSchema = new Schema({
         default:0
     },
 
+    status : {
+        type : String,
+        required : true,
+        default:'created'
+    },
+    status : {
+        type : String,
+        required : true,
+        default:'cod'
+    }
+
 } , {
     timestamps : true,
 }
