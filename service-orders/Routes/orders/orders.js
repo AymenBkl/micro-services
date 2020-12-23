@@ -12,6 +12,8 @@ router.all("/", (req, res, next) => {
         next();
     })
     .post('/',orderController.createORder)
-    .get('/',orderController.getAllOrders);
+    .get('/',orderController.getAllOrder)
+    .get('/allorders',orderController.getAllOrders)
+    .put('/',orderController.updateOrderStatus)
 
 module.exports = router;

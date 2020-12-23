@@ -7,7 +7,12 @@ const user = require('../../models/user');
 module.exports = {
     getReferal: (req, res, next) => {
         referal.find()
-        .populate([{path:'owner',select:"-salt -hash"},{path:'orders'}])
+        .populate([{path:'owner',select:"-salt -hash"},{path:'orders',populate : [
+            { path: 'patient', select: "-salt -hash" },
+            { path: 'pharmacy', select: "-salt -hash" },
+            { path: 'referal', select: "-orders -owner -commision" },
+            { path: 'products', populate : {path : 'mainProduct'} }
+        ]}])
         .then((ref) => {
                 if (ref) {
                     response.response("success",res,"Messages",200,ref);

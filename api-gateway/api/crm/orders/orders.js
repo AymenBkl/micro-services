@@ -18,7 +18,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next);
     })
-    .get('/getallorders', jwt.verifyUser, function (req, res, next) {
+    .get('/getallorders', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/allorders');
     })
@@ -26,9 +26,9 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next);
     })
-    .put('/updateorders/:ordersId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
+    .put('/updateorder/:orderId', jwt.verifyUser, function (req, res, next) {
         req.body.metadata = {};
-        req.body.metadata.ordersId = req.params.ordersId;
+        req.body.metadata.orderId = req.params.orderId;
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next);
     })

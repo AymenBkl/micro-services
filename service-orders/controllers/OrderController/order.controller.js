@@ -10,6 +10,10 @@ const createOrder = require('./createOrder');
 
 const getAllOrders = require('./getAllOrder');
 
+const updateOrder = require('./updateOrder');
+
+const updateReferal = require('./updateReferal');
+
 module.exports = {
     createReferal : (req,res,next) => {
         createReferal.createReferal(req,res,next);
@@ -33,10 +37,32 @@ module.exports = {
         getReferal.getReferal(req,res,query);
     }, 
 
-    getAllOrders: (req,res,next) => {
+    getAllOrder: (req,res,next) => {
         query = {$or : [{patient : req.query.id},{pharmacy:req.query.id}]};
         getAllOrders.getOrders(req,res,query);
     }, 
+
+    updateOrderStatus: (req,res,next) => {
+        const query = {
+            $set : req.body
+        }
+
+        updateOrder.updateOrder(res,req.body.metadata.orderId,query);
+    },
+
+    getAllOrders : (req,res,next) => {
+        query = {};
+        getAllOrders.getOrders(req,res,query);
+    }, 
+
+    updateReferal : (req,res,next) => {
+        const query = {
+            $set : req.body
+        }
+        updateReferal.updateReferal(res,req.body.metadata.referalId,query);
+    }, 
+    
+
 
 }
 

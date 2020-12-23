@@ -22,7 +22,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/referal.route", req.method, false, req, res, next,'','/checkreferal');
     })
-    .get('/getallreferal', jwt.verifyUser, function (req, res, next) {
+    .get('/getallreferal', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/referal.route", req.method, false, req, res, next,'','/allreferal');
     })

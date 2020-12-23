@@ -36,5 +36,5 @@ pm2 start server.js --name "service-messages" &
 
 cd ..
 cd api-gateway
-pm2 start server.js --name "api-getway" &
+pm2 start server.js --name "api-getway" 
 
