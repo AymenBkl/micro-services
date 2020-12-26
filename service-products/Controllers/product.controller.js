@@ -18,6 +18,9 @@ const searchProduct = require('./searchProduct');
 const mainMainProduct = require('./addMainProduct');
 
 const getAllMainProduct = require('./getAllMainProduct');
+
+const findProduct = require('./findProduct');
+
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.mainProduct = req.body.metadata.mainproductId;
@@ -56,8 +59,10 @@ module.exports = {
     },
 
     searchProduct : (req,res,next) =>{
-        console.log(req.headers.authorization.split(' ')[1]);
         searchProduct.searchProduct(req,res);
+    },
+    findProduct : (req,res,next) =>{
+        findProduct.findProduct(req,res);
     }
 
 

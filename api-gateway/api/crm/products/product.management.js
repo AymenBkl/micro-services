@@ -17,6 +17,10 @@ router.all('/', function (req, res, next) {
     .post('/allproducts', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next);
+    })
+    .post('/findproducts', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/findproducts');
     });
 
 
@@ -27,10 +31,10 @@ router.all('/searchproducts', function (req, res, next) {
         next();
     })
     .post('/searchproducts', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
-        console.log(req.body);
         var request = new apiGateway();
         request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/searchproducts');
     });
+    
 
 router.all('/addmainproduct', function (req, res, next) {
         next();

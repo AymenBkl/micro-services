@@ -8,16 +8,13 @@ const category = require('../../service-category/Models/category');
 const request = require('../Request/requestUser').request;
 
 module.exports.searchProduct = (req, res) => {
-    console.log(req.body.products);
-    addRegex(req.body.products);
     product.find()
         .populate({
             path: 'mainProduct', match: {
-                $or: req.body.products
+                $and: req.body.products
             }
         })
         .then(products => {
-            console.log(products);
             if (products && products.length != 0) {
                 sendReqToPharmacies(products, req)
                     .then(productss => {
@@ -48,19 +45,19 @@ function sendReqToPharmacies(products, req) {
     return new Promise((resolve, reject) => {
         getAllPharmaciesId(products)
             .then(pharmaciesId => {
+                console.log("here1",pharmaciesId)
+                if (pharmaciesId != null && Object.keys(pharmaciesId).length != 0){
+                    console.log("here2",pharmaciesId)
                 req.body.pharmaciesId = Object.keys(pharmaciesId).map(key => { return { _id: key } });
                 request(req)
                     .then(result => {
                         if (result && result.status == 200) {
-                            console.log(result.user);
                             Object.keys(result.user).map(pharmacie => {
-                                console.log(pharmacie, result.user[pharmacie]);
                                 result.user[pharmacie].pharmacy.products =
                                     Object.values(pharmaciesId[result.user[pharmacie].pharmacy_id])
                         
 
                             })
-                            console.log(result.user);
                             resolve(result.user);
                         }
                         else {
@@ -70,15 +67,18 @@ function sendReqToPharmacies(products, req) {
                     .catch(err => {
                         reject(err);
                     });
+                }
+                else {
+                    resolve(false);
+                }
             });
-
+        
     });
 }
 
 function getAllPharmaciesId(products) {
     return new Promise((resolve, reject) => {
         let pharmaciesId = {};
-        console.log(products.length);
         products.forEach(product => {
             if (product.mainProduct != null) {
 
@@ -87,17 +87,9 @@ function getAllPharmaciesId(products) {
                 else {
                     pharmaciesId[product.pharmacy] = {};
                 }
-                pharmaciesId[product.pharmacy][product._id] = product;
+                pharmaciesId[product.pharmacy][product._id] = {product: product,quantity: NaN};
             }
         });
-        console.log(pharmaciesId);
         resolve(pharmaciesId);
     });
-}
-
-
-function addRegex(products) {
-    products.map(product => {
-        product.name = new RegExp(product.name);
-    })
 }

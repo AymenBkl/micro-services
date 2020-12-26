@@ -24,11 +24,6 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
     
     service=servicesHelper.getService(serviceName,serviceEndpointId);
     serviceRegistry.find(service.name,service.endpointId,function (error,service) {
-        console.log({
-            "Content-Type":"application/json",
-            "Authorization": "Bearer " + req.headers.authorization.split(' ')[1]
-    })
-	console.log(service);
         if (service && !error){
             if (file == true){
                 request({
@@ -64,7 +59,6 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 });
             }
         } else {
-            console.log(error);
             if (error){
                 return next(error);
             }else {

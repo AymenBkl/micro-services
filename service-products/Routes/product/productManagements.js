@@ -18,7 +18,8 @@ router.all("/", (req, res, next) => {
 
     .get("/", productController.allProduct)
 
-    .put("/", productController.updateProduct);
+    .put("/", productController.updateProduct)
+    .post('/findproducts',productController.findProduct);
 
 
 router.all("/searchproducts", (req, res, next) => {
