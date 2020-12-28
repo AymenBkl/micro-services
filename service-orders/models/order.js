@@ -13,11 +13,16 @@ const productSchema = new Schema({
     },
 
 
-    products : [{
+    products : [{product : {
         type : mongoose.Types.ObjectId,
         ref : 'product',
         required : true
-    }],
+        }, quantity : {
+            type : Number,
+            required : true,
+            default:1
+        }
+        }],
     pharmacy : {
         type : mongoose.Types.ObjectId,
         ref : 'User',

@@ -11,7 +11,7 @@ module.exports = {
             { path: 'patient', select: "-salt -hash" },
             { path: 'pharmacy', select: "-salt -hash" },
             { path: 'referal', select: "-orders -owner -commision" },
-            { path: 'products', populate : {path : 'mainProduct'} }
+            { path: 'products', populate : {path : 'product',populate: {path : 'mainProduct'}} }
         ]}])
         .then((ref) => {
                 if (ref) {
