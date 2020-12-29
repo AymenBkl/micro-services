@@ -59,6 +59,7 @@ ApiGateway.prototype.sendRequest=function (serviceName,serviceEndpointId,method,
                 });
             }
         } else {
+            console.log(error);
             if (error){
                 return next(error);
             }else {

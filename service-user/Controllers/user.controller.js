@@ -34,6 +34,7 @@ module.exports = {
     },
 
     addFileExCel :  (req,res,next) => {
+        console.log('here');
         const query = {
             $set : req.body
         }
