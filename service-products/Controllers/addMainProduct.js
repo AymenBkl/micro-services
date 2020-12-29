@@ -1,10 +1,20 @@
 const mainProduct = require('../Models/main-product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
+const { updateOne } = require('../Models/main-product');
 
 module.exports.addProduct = (res,body) =>{
-    console.log("body",body);
-    mainProduct.update({},body,{ upsert: true ,new : true})
+    mainProduct.bulkWrite(
+        body.map((product) => 
+          ({
+            updateOne: {
+              filter: { name : product.name },
+              update: { $set: product },
+              upsert: true
+            }
+          })
+        )
+      )
         .then(product => {
             if (product){
                 response.response("success",res,"Main Product CREATED",200,product);

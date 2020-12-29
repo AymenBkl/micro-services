@@ -14,8 +14,8 @@ var config = require('./config')(),
     cfg = require('./config.json'),
     mongoose = require('mongoose'),
     passport = require('passport');
-    cookieParser = require('cookie-parser');
-    configServer = {
+cookieParser = require('cookie-parser');
+configServer = {
     server: {
         port: config.server.port
     },
@@ -54,13 +54,18 @@ if (cluster.isMaster && config.server.isCluster) {
 } else {
 
     var app = express();
-    app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
-    app.use(bodyParser.json({limit: '50mb'}));
+    app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
+    app.use(bodyParser.json({ limit: '50mb' }));
     app.use(morgan('dev'));
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(cookieParser(cfg.cockiParserSecret));
-    mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false })
+    mongoose.connect(config.mongoURL, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+    })
     configServer.express.app = app;
 
     //header(s) setting

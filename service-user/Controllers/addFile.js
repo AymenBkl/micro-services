@@ -19,11 +19,9 @@ module.exports = {
                 if (result && result.status == 200) {
                     readFile(result.msg, res)
                         .then(newObj => {
-                            console.log(newObj)
                             req.body.newObj = newObj;
-                            requestProduct(req, res, next,newObj)
+                            requestProduct(req, res, next, newObj)
                                 .then(result => {
-                                    console.log("result",result);
                                     if (result && result.status == 200) {
                                         response.response("success", res, "Main Product Added", 200, null);
                                     }
@@ -33,7 +31,7 @@ module.exports = {
                                     }
                                 })
                                 .catch(err => {
-                                    console.log("ee",err);
+                                    console.log("ee", err);
                                     response.response("error", res, err, 500, null);
                                 })
                         })
@@ -50,7 +48,7 @@ module.exports = {
 }
 
 
-function readFile(fileURL, res) {
+function readfile(fileURL, res) {
     return new Promise((resolve, reject) => {
         const host = "http://localhost:8080/";
         var XLSX = require('xlsx')
@@ -65,26 +63,40 @@ function readFile(fileURL, res) {
         resolve(renameObj);
     })
 }
-function renameKeys(arrayObject, newKeys, index = false) {
+function addKeys(obj) {
+    obj.splice(0, 1);
+    obj.splice(0, 1);
+    obj.splice(0, 1);
+    obj.splice(0, 1);
+    obj.splice(0, 1);
     let newArray = [];
-    arrayObject.forEach((obj, item) => {
-        if ('COMPANY NAME' in Object.keys(obj)) {
-            const keyValues = Object.keys(obj).map((key, i) => {
-                return { [newKeys[i] || key]: obj[key] }
-            });
-            let id = (index) ? { 'ID': item } : {};
-            newArray.push(Object.assign(id, ...keyValues));
-        }
-        else {
-            const keyValues = Object.keys(obj).map((key, i) => {
-                return { [newKeys[i+1] || key]: obj[key] }
-            });
-            let id = (index) ? { 'ID': item } : {};
-            newArray.push(Object.assign(id, ...keyValues));
-        }
+    obj.map((item, index) => {
+        newArray.push({
+            'company_name': item[0],
+            'name': item[1],
+            'quantity': item[2],
+            'packing': item[3],
+            'hsnocde': item[4],
+            'cgst': item[5],
+            'sgst': item[6],
+            'igst': item[7],
+        })
+    })
+    return newArray;
+}
 
-
+function readFile(fileURL, res) {
+    return new Promise((resolve, reject) => {
+        const host = "http://192.168.1.104:8080/";
+        const request = require('request');
+        var xlsx = require('node-xlsx');
+        var fs = require('fs');
+        request.get(host + fileURL,(err,response,body) => {
+            var obj = xlsx.parse(body);
+            const newobj = addKeys(obj[0]['data'])
+            console.log(newobj)
+            resolve(newobj)
+        })
 
     });
-    return newArray;
 }

@@ -2,21 +2,21 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const validatorProduct = require('./validators/validator.name.product');
 
 const mainProductSchema = new Schema({
 
     name : {
         type : String,
         required : true,
+        unique:true
     },
 
     initial_price : {
         type : Number,
-        required : true
     },
     description : {
         type : String,
-        required : true,
     },
     quantity : {
         type : Number,
@@ -24,7 +24,7 @@ const mainProductSchema = new Schema({
     },
 
     packing : {
-        type : Number,
+        type : String,
         required:false
     },
 
@@ -56,8 +56,10 @@ const mainProductSchema = new Schema({
     },
 } , {
     timestamps : true,
+    strict: false
 }
 )
 
+validatorProduct.validators.productNameValidator(mainProductSchema);
 
 module.exports = mongoose.model('mainproduct',mainProductSchema);
