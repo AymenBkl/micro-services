@@ -15,6 +15,8 @@ const deleteCategory = require('./deleteCategory');
 
 const searchCategory = require('./searchCategory');
 
+const getCategory = require('./getCategory');
+
 module.exports = {
     addCategory : (req,res,next) => {
         req.body.pharmacy = req.query.id;
@@ -24,21 +26,30 @@ module.exports = {
         gettAllCategory.getAll(res);
     },
 
+    getCategory : (req,res,next) => {
+        console.log("id",req.params.categoryId);
+        getCategory.getCategory(res,req.params.categoryId);
+    },
+
     updateCategory : (req,res,next) => {
         req.body.pharmacy = req.query.id;
         const query = {
             $set : req.body
         }
-        console.log(req.body);
-        updateCategory.updateCategory(res,req.body.metadata.id,query);
+        const option = {new : true};
+        updateCategory.updateCategory(res,req.body.metadata.id,query,option);
     },
 
     appendProducts : (req,res,next) => {
         const query = {
-             $push: { products: req.body.products } 
+             $addToSet: { products: req.body.products } ,
+             
         }
-        updateCategory.updateCategory(res,req.body.metadata.id,query);
+        const option = {upsert : true};
+        updateCategory.updateCategory(res,req.body.metadata.id,query,option);
     },
+
+    
 
     deleteCategory : (req,res,next) => {
         deleteCategory.addCategory(res,req.body.metadata.id);

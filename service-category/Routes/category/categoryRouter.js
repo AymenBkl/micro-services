@@ -17,6 +17,8 @@ router.all("/", (req, res, next) => {
 
     .get("/",categoryController.getAllCategory)
     
+    .get("/getcategory/:categoryId",categoryController.getCategory)
+
     .put("/",categoryController.updateCategory)
     
     .put('/appendproducts',categoryController.appendProducts)

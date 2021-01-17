@@ -13,7 +13,8 @@ module.exports = {
                     const query = {
                         $set : {imageUrl : result.msg}
                     }
-                    updateCategory.updateCategory(res,req.query.categoryId,query);
+                    const option = {new : true};
+                    updateCategory.updateCategory(res,req.query.categoryId,query,option);
                 }
                 else {
                     response.response("error",res,result.msg,404,null);
