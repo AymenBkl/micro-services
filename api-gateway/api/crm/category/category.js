@@ -41,6 +41,7 @@ router.all('/searchcategory', function (req, res, next) {
     .options('/',  (req, res, next) => {
         next();
     })
+    
     .post('/', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         console.log("here");
         var request = new apiGateway();

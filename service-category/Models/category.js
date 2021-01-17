@@ -15,10 +15,9 @@ const categorySchema = new Schema({
         required : true,
     },
 
-    pharmacy : {
+    products: {
         type : mongoose.Types.ObjectId,
-        ref : 'User',
-        required : true
+        ref : 'mainproduct',
     },
     imageUrl : {
         type : String,
