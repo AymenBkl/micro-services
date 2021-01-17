@@ -8,15 +8,14 @@ const mainProductSchema = new Schema({
     name : {
         type : String,
         required : true,
+        unique:true
     },
 
     initial_price : {
         type : Number,
-        required : true
     },
     description : {
         type : String,
-        required : true,
     },
     quantity : {
         type : Number,
@@ -24,7 +23,7 @@ const mainProductSchema = new Schema({
     },
 
     packing : {
-        type : Number,
+        type : String,
         required:false
     },
 

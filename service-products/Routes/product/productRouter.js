@@ -19,7 +19,11 @@ router.all("/", (req, res, next) => {
     
     .put("/",productController.updateProduct)
 
-    .delete("/",productController.deleteProduct);
+    .put("/updatemainproduct",productController.updateMainProduct)
+
+    .delete("/",productController.deleteProduct)
+
+    .delete("/deletemainproduct",productController.deleteMainProduct);
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const express = require('express');
 
 var router = express.Router();
 
-
+const multer = require('../../Middlewares/multer').upload;
 const userController = require('../../Controllers/user.controller');
 
 router.all("/addfile", (req, res, next) => {
@@ -13,7 +13,7 @@ router.all("/addfile", (req, res, next) => {
     .options("/addfile", (req, res, next) => {
         next();
     })
-    .post("/addfile", userController.addFileExCel)
+    .post("/addfile",multer.single('file'), userController.addFileExCel)
 
 
 module.exports = router;

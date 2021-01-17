@@ -13,37 +13,29 @@ var xlsx = require('node-xlsx');
 
 module.exports = {
     addFile: (req, res, next) => {
-        request(req, res, next)
-            .then(result => {
-                console.log(result)
-                if (result && result.status == 200) {
-                    readFile(result.msg, res)
-                        .then(newObj => {
-                            req.body.newObj = newObj;
-                            requestProduct(req, res, next, newObj)
-                                .then(result => {
-                                    if (result && result.status == 200) {
-                                        response.response("success", res, "Main Product Added", 200, null);
-                                    }
-                                    else {
-                                        response.response("error", res, result.msg, 404, null);
+        if (req.file) {
+            readFile(req.file.filename, res)
+            .then(newObj => {
+                req.body.newObj = newObj;
+                requestProduct(req, res, next, newObj)
+                    .then(result => {
+                        if (result && result.status == 200) {
+                            response.response("success", res, "Main Product Added", 200, null);
+                        }
+                        else {
+                            response.response("error", res, result.msg, 404, null);
 
-                                    }
-                                })
-                                .catch(err => {
-                                    console.log("ee", err);
-                                    response.response("error", res, err, 500, null);
-                                })
-                        })
-                }
-                else {
-                    response.response("error", res, result.msg, 404, null);
-                }
+                        }
+                    })
+                    .catch(err => {
+                        console.log("ee", err);
+                        response.response("error", res, err, 500, null);
+                    })
             })
-            .catch(err => {
-                response.response("error", res, err, 500, null);
-            })
-
+        } else {
+            response.response("error", res, "FILE NOT PRESENT", 500, null);
+        }
+        
     }
 }
 
@@ -88,15 +80,12 @@ function addKeys(obj) {
 function readFile(fileURL, res) {
     return new Promise((resolve, reject) => {
         const host = "http://192.168.1.104:8080/";
-        const request = require('request');
         var xlsx = require('node-xlsx');
-        var fs = require('fs');
-        request.get(host + fileURL,(err,response,body) => {
-            var obj = xlsx.parse(body);
-            const newobj = addKeys(obj[0]['data'])
-            console.log(newobj)
-            resolve(newobj)
-        })
-
+        var path = require('path');
+        console.log(process.mainModule.path)
+        var obj = xlsx.parse(process.mainModule.path + '\\uploads\\' + fileURL);
+        const newobj = addKeys(obj[0]['data'])
+        console.log(newobj)
+        resolve(newobj)
     });
 }

@@ -21,6 +21,10 @@ const getAllMainProduct = require('./getAllMainProduct');
 
 const findProduct = require('./findProduct');
 
+const updateMainProduct = require('./updateMainProduct');
+
+const deleteMaianProduct = require('./deleteMainProduct');
+
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.mainProduct = req.body.metadata.mainproductId;
@@ -46,12 +50,22 @@ module.exports = {
         const query = {
             $set : req.body
         }
-        console.log(req.body);
         updateProduct.updateProduct(res,req.body.metadata.productId,query);
+    },
+
+    updateMainProduct : (req,res,next) => {
+        const query = {
+            $set : req.body
+        }
+        updateMainProduct.updateMainProduct(res,req.body.metadata.mainproductId,query);
     },
 
     deleteProduct : (req,res,next) => {
         deleteProduct.deleteProduct(res,req.body.metadata.productId);
+    },
+
+    deleteMainProduct : (req,res,next) => {
+        deleteMaianProduct.deleteMainProduct(res,req.body.metadata.mainproductId);
     },
 
     addImage : (req,res,next) => {
