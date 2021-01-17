@@ -21,7 +21,7 @@ module.exports = {
         addCategory.addCategory(res,req.body);
     },
     getAllCategory : (req,res,next) => {
-        gettAllCategory.getAll(res,req.query.id);
+        gettAllCategory.getAll(res);
     },
 
     updateCategory : (req,res,next) => {
@@ -30,6 +30,13 @@ module.exports = {
             $set : req.body
         }
         console.log(req.body);
+        updateCategory.updateCategory(res,req.body.metadata.id,query);
+    },
+
+    appendProducts : (req,res,next) => {
+        const query = {
+             $push: { products: req.body.products } 
+        }
         updateCategory.updateCategory(res,req.body.metadata.id,query);
     },
 

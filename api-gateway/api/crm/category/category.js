@@ -11,24 +11,30 @@ const jwt = require('../../../middlewares/jwt/jwt');
 router.all('/', function (req, res, next) {
     next();
 })
-    .options('/', jwt.verifyUser, jwt.verifyPharmacy, (req, res, next) => {
+    .options('/', jwt.verifyUser, jwt.verifyAdmin, (req, res, next) => {
         next();
     })
-    .post('/addcategory', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+    .post('/addcategory', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
     })
-    .get('/allcategory', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+    .get('/allcategory', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
     })
-    .put('/updatecategory/:categoryId', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+    .put('/updatecategory/:categoryId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.id = req.params.categoryId;
         var request = new apiGateway();
         request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
     })
-    .delete("/deletecategory/:categoryId", jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+    .put('/appendproducts/:categoryId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
+        req.body.metadata = {};
+        req.body.metadata.id = req.params.categoryId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next,'','/appendproducts');
+    })
+    .delete("/deletecategory/:categoryId", jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.id = req.params.categoryId;
         var request = new apiGateway();

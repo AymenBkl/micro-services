@@ -15,10 +15,10 @@ const categorySchema = new Schema({
         required : true,
     },
 
-    products: {
+    products: [{
         type : mongoose.Types.ObjectId,
         ref : 'mainproduct',
-    },
+    }],
     imageUrl : {
         type : String,
         default : '',

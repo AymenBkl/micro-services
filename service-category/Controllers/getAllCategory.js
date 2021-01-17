@@ -2,10 +2,8 @@ const category = require('../Models/category');
 
 const response = require('../Handler/HandlerCategory/response.controller');
 
-module.exports.getAll = (res,pharmacyId) =>{
-    category.find({
-        pharmacy : pharmacyId
-    })
+module.exports.getAll = (res) =>{
+    category.find()
         .then(categories => {
             if (categories){
                 response.response("success",res,"CATEGORY CREATED",200,categories);
