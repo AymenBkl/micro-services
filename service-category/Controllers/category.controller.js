@@ -17,7 +17,6 @@ const searchCategory = require('./searchCategory');
 
 const getCategory = require('./getCategory');
 
-const removeProduct = require('./removeProductFromCategory');
 
 module.exports = {
     addCategory : (req,res,next) => {
@@ -57,7 +56,11 @@ module.exports = {
         deleteCategory.addCategory(res,req.body.metadata.id);
     },
     removeProduct : (req,res,next) => {
-        removeProduct.removeCategory(res,req.body.metadata.categoryId,req.body.metadata.productId);
+        const query = {
+            $pull: { products: req.body.metadata.productId } 
+        }
+        const option = {upsert : true};
+        updateCategory.updateCategory(res,req.body.metadata.categoryId,query,option);
     },
     addImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);

@@ -18,7 +18,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
     })
-    .get('/allcategory', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
+    .get('/allcategory', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
     })
