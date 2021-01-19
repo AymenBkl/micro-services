@@ -4,7 +4,7 @@ const express = require('express');
 var router = express.Router();
 
 
-const categoryController = require('../../Controllers/prescription.controller');
+const prescriptionController = require('../../Controllers/prescription.controller');
 
 
 router.all("/", (req, res, next) => {
@@ -13,11 +13,11 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",categoryController.addImage)
+    .post("/",prescriptionController.addImage)
 
-    .get("/",categoryController.getAllCategory)
+    .get("/",prescriptionController.getAllCategory)
     
-    .put("/",categoryController.updateCategory);
+    .put("/",prescriptionController.updateCategory);
 
 
 module.exports = router;

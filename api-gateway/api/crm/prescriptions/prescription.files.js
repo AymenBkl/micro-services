@@ -11,13 +11,16 @@ const jwt = require('../../../middlewares/jwt/jwt');
 router.all('/', function (req, res, next) {
     next();
 })
-    .options('/',jwt.verifyUser,jwt.verifyAdmin, (req, res, next) => {
+    .options('/',jwt.verifyUser,jwt.verifyPatient, (req, res, next) => {
         next();
     })
-    .post('/addimage/:prescriptionId',jwt.verifyUser,jwt.verifyAdmin,function (req, res, next) {
-        const queryParams = "?id="+req.user._id+"&prescriptionId="+ req.params.prescriptionId;
+    .post('/addimage',jwt.verifyUser,jwt.verifyPatient,function (req, res, next) {
+        console.log("here");
+        const queryParams = "?id="+req.user._id;
+        console.log(queryParams,req.headers.authorization);
+        let requestReq = req;
         var request = new apiGateway();
-        request.sendRequest("ServicePrescription","Routes/prescriptionMangement.route", req.method, true, req, res, next,queryParams);
+        request.sendRequest("ServicePrescription","Routes/prescriptionMangement.route", req.method, true, requestReq, res, next,queryParams);
     })
     .get('/allprescription',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();

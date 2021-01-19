@@ -49,7 +49,7 @@
       {"name":"ServiceCategory", "endpointId":"Routes/category.route"},
       {"name":"ServiceCategory", "endpointId":"Routes/categoryMangement.route"},
       {"name":"ServicePrescription", "endpointId":"Routes/prescription.route"},
-      {"name":"ServicePrescription", "endpointId":"Routes/categoryMangement.route"},
+      {"name":"ServicePrescription", "endpointId":"Routes/prescriptionMangement.route"},
       
       {"name":"ServiceProducts", "endpointId":"Routes/product.route"},
       {"name":"ServiceProducts", "endpointId":"Routes/productMangement.route"},
