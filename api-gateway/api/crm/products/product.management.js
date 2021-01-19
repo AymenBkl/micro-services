@@ -21,6 +21,10 @@ router.all('/', function (req, res, next) {
     .post('/findproducts', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/findproducts');
+    })
+    .post('/findproductcategorie', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/findproductcategorie');
     });
 
 

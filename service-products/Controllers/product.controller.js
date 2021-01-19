@@ -25,6 +25,8 @@ const updateMainProduct = require('./updateMainProduct');
 
 const deleteMaianProduct = require('./deleteMainProduct');
 
+const findProductFromCategory = require('./findProductFromCategory');
+
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.mainProduct = req.body.metadata.mainproductId;
@@ -77,6 +79,10 @@ module.exports = {
     },
     findProduct : (req,res,next) =>{
         findProduct.findProduct(req,res);
+    },
+
+    findProductFromCategory: (req,res,next) => {
+        findProductFromCategory.findProduct(req,res);
     }
 
 
