@@ -15,6 +15,7 @@ router.all('/', function (req, res, next) {
         next();
     })
     .post('/prescription', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
+        console.log("here");
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next);
     })

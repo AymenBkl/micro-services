@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const prescriptionSchema = new Schema({
+const commentSchema = new Schema({
 
-    patient: {
+    pharmacy: {
         type : mongoose.Types.ObjectId,
         ref : 'user',
     },
 
-    description : {
+    comment : {
         type : String,
         required : true,
     },
@@ -19,18 +19,18 @@ const prescriptionSchema = new Schema({
         required : true,
         default:true
     },
-    comments: [{
+    prescription: {
         type : mongoose.Types.ObjectId,
-        ref : 'comment',
-    }],
-    imageUrl : {
-        type : String,
-        default : '',
+        ref : 'prescription',
     },
+    products: [{
+        type : mongoose.Types.ObjectId,
+        ref : 'product',
+    }]
 } , {
     timestamps : true,
 }
 )
 
 
-module.exports = mongoose.model('prescription',prescriptionSchema);
+module.exports = mongoose.model('comment',commentSchema);

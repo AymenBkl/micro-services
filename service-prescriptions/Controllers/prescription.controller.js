@@ -7,7 +7,7 @@ const updateCategory = require('./updateCategory');
 
 const getUser = require('./getUser');
 
-const addCategory = require('./addCategory');
+const addPrescription = require('./addPrescription');
 
 const gettAllCategory = require('./getAllCategory');
 
@@ -19,9 +19,8 @@ const getCategory = require('./getCategory');
 
 
 module.exports = {
-    addCategory : (req,res,next) => {
-        req.body.pharmacy = req.query.id;
-        addCategory.addCategory(res,req.body);
+    addPrescription : (req,res,next) => {
+        addPrescription.addPrescription(res,req.body);
     },
     getAllCategory : (req,res,next) => {
         gettAllCategory.getAll(res);

@@ -4,7 +4,7 @@ const express = require('express');
 var router = express.Router();
 
 
-const categoryController = require('../../Controllers/category.controller');
+const prescriptionController = require('../../Controllers/prescription.controller');
 
 
 router.all("/", (req, res, next) => {
@@ -13,19 +13,19 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",categoryController.addCategory)
+    .post("/",prescriptionController.addPrescription)
 
-    .get("/",categoryController.getAllCategory)
+    .get("/",prescriptionController.getAllCategory)
     
-    .get("/getcategory/:categoryId",categoryController.getCategory)
+    .get("/getcategory/:categoryId",prescriptionController.getCategory)
 
-    .put("/",categoryController.updateCategory)
+    .put("/",prescriptionController.updateCategory)
     
-    .put('/appendproducts',categoryController.appendProducts)
+    .put('/appendproducts',prescriptionController.appendProducts)
 
-    .delete('/removeproduct',categoryController.removeProduct)
+    .delete('/removeproduct',prescriptionController.removeProduct)
     
-    .delete("/",categoryController.deleteCategory);
+    .delete("/",prescriptionController.deleteCategory);
 
 router.all("/searchcategory", (req, res, next) => {
         next();
@@ -33,7 +33,7 @@ router.all("/searchcategory", (req, res, next) => {
         .options("/searchcategory", (req, res, next) => {
             next();
         })
-        .post("/searchcategory", categoryController.searchCategory);
+        .post("/searchcategory", prescriptionController.searchCategory);
 
 
 module.exports = router;

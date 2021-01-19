@@ -35,6 +35,10 @@ cd service-messages
 npm start &
 
 cd ..
+cd service-prescriptions
+npm start &
+
+cd ..
 cd api-gateway
 npm start
 

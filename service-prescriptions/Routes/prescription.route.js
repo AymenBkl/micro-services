@@ -3,13 +3,13 @@ const express = require('express');
 const app = express();
 
 
-const categoryRouter = require('./prescription/prescriptionRouter');
+const prescriptionRouter = require('./prescription/prescriptionRouter');
 
-const categoryFilesRouter = require('./prescription/prescriptionFilesRouter');
+const prescriptionFilesRouter = require('./prescription/prescriptionFilesRouter');
 
-app.use('/category',categoryRouter);
+app.use('/prescription',prescriptionRouter);
 
-app.use('/files',categoryFilesRouter);
+app.use('/files',prescriptionFilesRouter);
 
 
 module.exports = app;

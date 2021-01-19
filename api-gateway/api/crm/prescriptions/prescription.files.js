@@ -14,18 +14,18 @@ router.all('/', function (req, res, next) {
     .options('/',jwt.verifyUser,jwt.verifyAdmin, (req, res, next) => {
         next();
     })
-    .post('/addimage/:categoryId',jwt.verifyUser,jwt.verifyAdmin,function (req, res, next) {
-        const queryParams = "?id="+req.user._id+"&categoryId="+ req.params.categoryId;
+    .post('/addimage/:prescriptionId',jwt.verifyUser,jwt.verifyAdmin,function (req, res, next) {
+        const queryParams = "?id="+req.user._id+"&prescriptionId="+ req.params.prescriptionId;
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory","Routes/categoryMangement.route", req.method, true, req, res, next,queryParams);
+        request.sendRequest("ServicePrescription","Routes/prescriptionMangement.route", req.method, true, req, res, next,queryParams);
     })
-    .get('/allcategory',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+    .get('/allprescription',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory","Routes/categoryMangement.route", req.method,false, req, res, next);
+        request.sendRequest("ServicePrescription","Routes/prescriptionMangement.route", req.method,false, req, res, next);
     })
-    .put('/updatecategory',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+    .put('/updateprescription',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceCategory","Routes/categoryMangement.route", req.method,false, req, res, next);
+        request.sendRequest("ServicePrescription","Routes/prescriptionMangement.route", req.method,false, req, res, next);
     });
 
 

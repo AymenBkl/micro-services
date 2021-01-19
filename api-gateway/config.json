@@ -26,7 +26,7 @@
       {"name":"admin", "path":"api/account", "route":"account/admin"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category/searchcategory"},
-      {"name":"prescription.files", "path":"api/crm/prescriptions", "route":"crm/files"},
+      {"name":"prescription.files", "path":"api/crm/prescriptions", "route":"crm/prescriptionfiles"},
       {"name":"prescription", "path":"api/crm/prescriptions", "route":"crm/prescription"},
       {"name":"category.files", "path":"api/crm/category", "route":"crm/files"},
       {"name":"product", "path":"api/crm/products", "route":"crm/products"},

@@ -2,9 +2,11 @@ const category = require('../Models/category');
 
 const response = require('../Handler/HandlerPrescription/response.controller');
 
-module.exports.addCategory = (res,body) =>{
+const prescription = require('../Models/prescription');
+
+module.exports.addPrescription = (res,body) =>{
     console.log(body);
-    category.create(body)
+    /**category.create(body)
         .then(category => {
             if (category){
                 response.response("success",res,"CATEGORY CREATED",200,category);
@@ -15,5 +17,5 @@ module.exports.addCategory = (res,body) =>{
         } )
         .catch(err => {
             response.response("error",res,err,500,null);
-        })
+        })**/
 }

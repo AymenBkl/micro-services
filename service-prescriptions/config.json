@@ -17,7 +17,9 @@
     "api":{
       "route":"api",
       "modules":[
-        {"name":"Routes/prescription.route", "route":"prescription"}
+        {"name":"Routes/prescription.route", "route":"prescription"},
+        {"name":"Routes/prescriptionMangement.route", "route":"files"}
+
 
       ]
     },

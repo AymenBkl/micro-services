@@ -4,7 +4,7 @@ const express = require('express');
 var router = express.Router();
 
 
-const categoryController = require('../../Controllers/category.controller');
+const categoryController = require('../../Controllers/prescription.controller');
 
 
 router.all("/", (req, res, next) => {
