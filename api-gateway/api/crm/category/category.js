@@ -43,6 +43,13 @@ router.all('/', function (req, res, next) {
         req.body.metadata.id = req.params.categoryId;
         var request = new apiGateway();
         request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next);
+    })
+    .delete("/removeproduct/:categoryId/product/:productId", jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
+        req.body.metadata = {};
+        req.body.metadata.categoryId = req.params.categoryId;
+        req.body.metadata.productId = req.params.productId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceCategory", "Routes/category.route", req.method, false, req, res, next,'','/removeproduct');
     });
 
 router.all('/searchcategory', function (req, res, next) {

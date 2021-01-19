@@ -17,6 +17,8 @@ const searchCategory = require('./searchCategory');
 
 const getCategory = require('./getCategory');
 
+const removeProduct = require('./removeProductFromCategory');
+
 module.exports = {
     addCategory : (req,res,next) => {
         req.body.pharmacy = req.query.id;
@@ -53,6 +55,9 @@ module.exports = {
 
     deleteCategory : (req,res,next) => {
         deleteCategory.addCategory(res,req.body.metadata.id);
+    },
+    removeProduct : (req,res,next) => {
+        removeProduct.removeCategory(res,req.body.metadata.categoryId,req.body.metadata.productId);
     },
     addImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);

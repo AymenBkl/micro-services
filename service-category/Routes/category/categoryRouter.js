@@ -23,6 +23,8 @@ router.all("/", (req, res, next) => {
     
     .put('/appendproducts',categoryController.appendProducts)
 
+    .delete('/removeproduct',categoryController.removeProduct)
+    
     .delete("/",categoryController.deleteCategory);
 
 router.all("/searchcategory", (req, res, next) => {
