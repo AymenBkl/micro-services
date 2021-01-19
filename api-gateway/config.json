@@ -26,6 +26,8 @@
       {"name":"admin", "path":"api/account", "route":"account/admin"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category"},
       {"name":"category", "path":"api/crm/category", "route":"crm/category/searchcategory"},
+      {"name":"prescription.files", "path":"api/crm/prescriptions", "route":"crm/files"},
+      {"name":"prescription", "path":"api/crm/prescriptions", "route":"crm/prescription"},
       {"name":"category.files", "path":"api/crm/category", "route":"crm/files"},
       {"name":"product", "path":"api/crm/products", "route":"crm/products"},
       {"name":"product.files", "path":"api/crm/products", "route":"crm/productsfiles"},
@@ -46,6 +48,9 @@
       {"name":"ServiceUser", "endpointId":"Routes/admin.route"},
       {"name":"ServiceCategory", "endpointId":"Routes/category.route"},
       {"name":"ServiceCategory", "endpointId":"Routes/categoryMangement.route"},
+      {"name":"ServicePrescription", "endpointId":"Routes/prescription.route"},
+      {"name":"ServicePrescription", "endpointId":"Routes/categoryMangement.route"},
+      
       {"name":"ServiceProducts", "endpointId":"Routes/product.route"},
       {"name":"ServiceProducts", "endpointId":"Routes/productMangement.route"},
       {"name":"ServiceProducts", "endpointId":"Routes/product.management"},
