@@ -9,7 +9,7 @@ const getUser = require('./getUser');
 
 const addPrescription = require('./addPrescription');
 
-const gettAllCategory = require('./getAllCategory');
+const gettAllPrescriptions = require('./getAllPrescription');
 
 const deleteCategory = require('./deleteCategory');
 
@@ -22,8 +22,8 @@ module.exports = {
     addPrescription : (req,res,next) => {
         addPrescription.addPrescription(res,req.body);
     },
-    getAllCategory : (req,res,next) => {
-        gettAllCategory.getAll(res);
+    gettAllPrescriptions : (req,res,next) => {
+        gettAllPrescriptions.getAllPrescriptions(res,req);
     },
 
     getCategory : (req,res,next) => {

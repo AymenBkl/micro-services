@@ -15,9 +15,7 @@ router.all("/", (req, res, next) => {
     })
     .post("/",prescriptionController.addImage)
 
-    .get("/",prescriptionController.getAllCategory)
     
-    .put("/",prescriptionController.updateCategory);
 
 
 module.exports = router;

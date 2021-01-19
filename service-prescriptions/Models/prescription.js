@@ -10,10 +10,10 @@ const prescriptionSchema = new Schema({
         ref : 'user',
     },
 
-    description : {
+    description : [{
         type : String,
         required : true,
-    },
+    }],
     status:{
         type : String,
         required : true,
@@ -21,7 +21,7 @@ const prescriptionSchema = new Schema({
     },
     comments: [{
         type : mongoose.Types.ObjectId,
-        ref : 'comment',
+        ref : 'comment', 
     }],
     imageUrl : {
         type : String,

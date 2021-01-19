@@ -15,7 +15,7 @@ router.all("/", (req, res, next) => {
     })
     .post("/",prescriptionController.addPrescription)
 
-    .get("/",prescriptionController.getAllCategory)
+    .get("/",prescriptionController.gettAllPrescriptions)
     
     .get("/getcategory/:categoryId",prescriptionController.getCategory)
 
@@ -27,13 +27,6 @@ router.all("/", (req, res, next) => {
     
     .delete("/",prescriptionController.deleteCategory);
 
-router.all("/searchcategory", (req, res, next) => {
-        next();
-    })
-        .options("/searchcategory", (req, res, next) => {
-            next();
-        })
-        .post("/searchcategory", prescriptionController.searchCategory);
 
 
 module.exports = router;
