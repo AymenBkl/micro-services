@@ -15,17 +15,14 @@ router.all("/", (req, res, next) => {
     })
     .post("/",prescriptionController.addPrescription)
 
+    .post("/addcomment",prescriptionController.addComment)
+
     .get("/",prescriptionController.gettAllPrescriptions)
     
     .get("/getcategory/:categoryId",prescriptionController.getCategory)
 
-    .put("/",prescriptionController.updateCategory)
+    .put("/",prescriptionController.updatePrescription);
     
-    .put('/appendproducts',prescriptionController.appendProducts)
-
-    .delete('/removeproduct',prescriptionController.removeProduct)
-    
-    .delete("/",prescriptionController.deleteCategory);
 
 
 

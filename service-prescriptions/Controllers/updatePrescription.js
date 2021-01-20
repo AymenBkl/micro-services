@@ -2,13 +2,15 @@ const category = require('../Models/category');
 
 const response = require('../Handler/HandlerPrescription/response.controller');
 
-module.exports.updateCategory = (res,id,query,options) =>{
+const prescription = require('../Models/prescription');
+
+module.exports.updatePrescription = (res,id,query,options) =>{
     console.log(id);
 
-    category.findByIdAndUpdate(id,query,options)
-        .then(category => {
-            if (category){
-                response.response("success",res,"CATEGORY UPDATED",200,category);
+    prescription.findByIdAndUpdate(id,query,options)
+        .then(prescription => {
+            if (prescription){
+                response.response("success",res,"CATEGORY UPDATED",200,prescription);
             }
             else {
                 response.response("error",res,"undefined",404,null);

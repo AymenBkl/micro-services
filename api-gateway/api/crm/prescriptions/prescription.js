@@ -39,5 +39,10 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/appendproducts');
     })
+    .post('/addcomment', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+        console.log("herecomment");
+        var request = new apiGateway();
+        request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/addcomment');
+    })
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const request = require('../Request/requestFile').request;
 
-const updateCategory = require('./updateCategory');
+const updateCategory = require('./updatePrescription');
 
 const response = require('../Handler/HandlerPrescription/response.controller');
 

@@ -3,17 +3,13 @@
 
 const updateImage = require('./updateImage');
 
-const updateCategory = require('./updateCategory');
-
-const getUser = require('./getUser');
+const updatePrescription = require('./updatePrescription');
 
 const addPrescription = require('./addPrescription');
 
 const gettAllPrescriptions = require('./getAllPrescription');
 
-const deleteCategory = require('./deleteCategory');
-
-const searchCategory = require('./searchCategory');
+const addComment = require('./addComment');
 
 const getCategory = require('./getCategory');
 
@@ -31,43 +27,22 @@ module.exports = {
         getCategory.getCategory(res,req.params.categoryId);
     },
 
-    updateCategory : (req,res,next) => {
-        req.body.pharmacy = req.query.id;
+    updatePrescription : (req,res,next) => {
         const query = {
             $set : req.body
         }
         const option = {new : true};
-        updateCategory.updateCategory(res,req.body.metadata.id,query,option);
+        updatePrescription.updatePrescription(res,req.body.metadata.id,query,option);
     },
 
-    appendProducts : (req,res,next) => {
-        const query = {
-             $addToSet: { products: req.body.products } ,
-             
-        }
-        const option = {upsert : true};
-        updateCategory.updateCategory(res,req.body.metadata.id,query,option);
+    addComment : (req,res,next) => {
+        req.body.pharmacy = req.query.id;
+        addComment.addComment(res,req.body)
     },
 
-    
-
-    deleteCategory : (req,res,next) => {
-        deleteCategory.addCategory(res,req.body.metadata.id);
-    },
-    removeProduct : (req,res,next) => {
-        const query = {
-            $pull: { products: req.body.metadata.productId } 
-        }
-        const option = {upsert : true};
-        updateCategory.updateCategory(res,req.body.metadata.categoryId,query,option);
-    },
     addImage : (req,res,next) => {
         updateImage.upadeteImage(req,res,next);
     },
-    searchCategory : (req,res,next) => {
-        searchCategory.searchCategory(req,res);
-    },
-
 
 }
 

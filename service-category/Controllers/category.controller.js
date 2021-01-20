@@ -20,7 +20,6 @@ const getCategory = require('./getCategory');
 
 module.exports = {
     addCategory : (req,res,next) => {
-        req.body.pharmacy = req.query.id;
         addCategory.addCategory(res,req.body);
     },
     getAllCategory : (req,res,next) => {
@@ -33,7 +32,6 @@ module.exports = {
     },
 
     updateCategory : (req,res,next) => {
-        req.body.pharmacy = req.query.id;
         const query = {
             $set : req.body
         }
