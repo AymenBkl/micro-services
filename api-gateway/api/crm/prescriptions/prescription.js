@@ -19,9 +19,13 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next);
     })
-    .get('/allprescription', jwt.verifyUser, function (req, res, next) {
+    .get('/allprescription/getallprescriptionpatient', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next);
+        request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/getallprescriptionpatient');
+    })
+    .get('/allprescription/getallprescriptionpharmacy', jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/getallprescriptionpharmacy');
     })
     .get('/getprescription/:prescriptionId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();

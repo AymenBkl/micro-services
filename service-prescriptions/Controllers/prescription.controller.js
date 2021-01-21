@@ -18,8 +18,16 @@ module.exports = {
     addPrescription : (req,res,next) => {
         addPrescription.addPrescription(res,req.body);
     },
-    gettAllPrescriptions : (req,res,next) => {
-        gettAllPrescriptions.getAllPrescriptions(res,req);
+    gettAllPrescriptionsPatient : (req,res,next) => {
+        const query = 
+        {
+            patient: req.query.id
+        }
+        gettAllPrescriptions.getAllPrescriptions(res,query);
+    },
+
+    gettAllPrescriptionsPharmacy: (req,res,next) => {
+        gettAllPrescriptions.getAllPrescriptions(res,{});
     },
 
     getCategory : (req,res,next) => {

@@ -9,10 +9,12 @@ const product = require('../Models/product');
 
 const mainProduct = require('../Models/main-product');
 
-module.exports.getAllPrescriptions = (res,req) =>{
-    console.log(req.query.id);
-    prescription.find({patient: req.query.id})
+const user = require('../Models/user');
+
+module.exports.getAllPrescriptions = (res,query) =>{
+    prescription.find(query)
     .populate({path:"comments",populate:{path:'products',populate:{path:'mainProduct'}}})
+    .populate({path:"patient"})
         .then(prescriptions => {
             if (prescriptions){
                 response.response("success",res,"CATEGORY CREATED",200,prescriptions);

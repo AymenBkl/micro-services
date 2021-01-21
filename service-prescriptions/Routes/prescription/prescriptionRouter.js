@@ -17,8 +17,10 @@ router.all("/", (req, res, next) => {
 
     .post("/addcomment",prescriptionController.addComment)
 
-    .get("/",prescriptionController.gettAllPrescriptions)
+    .get("/getallprescriptionpatient",prescriptionController.gettAllPrescriptionsPatient)
     
+    .get("/getallprescriptionpharmacy",prescriptionController.gettAllPrescriptionsPharmacy)
+
     .get("/getcategory/:categoryId",prescriptionController.getCategory)
 
     .put("/",prescriptionController.updatePrescription);

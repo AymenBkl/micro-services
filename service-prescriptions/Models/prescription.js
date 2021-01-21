@@ -7,7 +7,7 @@ const prescriptionSchema = new Schema({
 
     patient: {
         type : mongoose.Types.ObjectId,
-        ref : 'user',
+        ref : 'User',
     },
 
     description : [{
