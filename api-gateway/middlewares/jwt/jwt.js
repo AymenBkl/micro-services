@@ -42,6 +42,20 @@ exports.verifyUser = passport.authenticate("jwt", { session: false });
 
 exports.verifyPharmacy = (req, res, next) => {
   if (req.user) {
+    if (req.user.role == 'pharmacy') {
+      next();
+    } else {
+      res.statusCode = 403;
+      res.json({status : 403,msg : 'you are not allow to do this operation'});
+    }
+  } else {
+    res.statusCode = 403;
+    res.json({status : 403,msg : 'login first'});
+  }
+};
+
+exports.verifyPharmacyAdmin = (req, res, next) => {
+  if (req.user) {
     if (req.user.role == 'pharmacy' || req.user.role == 'admin') {
       next();
     } else {
@@ -69,6 +83,22 @@ exports.verifyAdmin = (req, res, next) => {
 };
 
 exports.verifyPatient = (req, res, next) => {
+  if (req.user) {
+    console.log(req.user.role);
+    if (req.user.role == 'patient' || req.user.role == 'admin') {
+      console.log(true);
+      next();
+    } else {
+      res.statusCode = 403;
+      res.json({status : 403,msg : 'you are not allow to do this operation'});
+    }
+  } else {
+    res.statusCode = 403;
+    res.json({status : 403,msg : 'login first'});
+  }
+};
+
+exports.verifyPatientAdmin = (req, res, next) => {
   if (req.user) {
     console.log(req.user.role);
     if (req.user.role == 'patient') {

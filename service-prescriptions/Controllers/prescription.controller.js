@@ -38,10 +38,10 @@ module.exports = {
 
     updatePrescription : (req,res,next) => {
         const query = {
-            $set : req.body
+            $set : req.body.prescription
         }
         const option = {new : true};
-        updatePrescription.updatePrescription(res,req.body.metadata.id,query,option);
+        updatePrescription.updatePrescription(res,req.body.prescription._id,query,option);
     },
 
     addComment : (req,res,next) => {

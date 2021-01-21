@@ -29,7 +29,7 @@ module.exports.findProduct = (req, res) => {
 
 
 function addRegex(product) {
-    product.name = new RegExp(product.name);
+    product.name = new RegExp(product.name.toUpperCase());
 }
 
 
