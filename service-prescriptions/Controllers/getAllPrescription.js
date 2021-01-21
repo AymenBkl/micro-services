@@ -13,8 +13,8 @@ const user = require('../Models/user');
 
 module.exports.getAllPrescriptions = (res,query) =>{
     prescription.find(query)
-    .populate({path:"comments",populate:{path:'products pharmacy',populate:{path:'product',populate:{path:'mainProduct'}}}})
-    .populate({path:"patient"})
+    .populate({path:"comments",populate:{path:'products pharmacy',populate:{path:'product',populate:{path:'mainProduct'},select: "-salt -hash"}}})
+    .populate({path:"patient",select: "-salt -hash"})
         .then(prescriptions => {
             if (prescriptions){
                 response.response("success",res,"CATEGORY CREATED",200,prescriptions);

@@ -13,6 +13,7 @@ const addComment = require('./addComment');
 
 const getCategory = require('./getCategory');
 
+const approvePrescription = require('./approvePrescription');
 
 module.exports = {
     addPrescription : (req,res,next) => {
@@ -46,6 +47,15 @@ module.exports = {
     addComment : (req,res,next) => {
         req.body.pharmacy = req.query.id;
         addComment.addComment(res,req.body)
+    },
+
+    approvePrescription: (req,res,next) => {
+        const query = 
+        {
+            status: 'approved'
+        }
+        const option = {new : true};
+        approvePrescription.approvePrescription(res,req.body.prescriptionId,req.body.commentId,query,option);
     },
 
     addImage : (req,res,next) => {

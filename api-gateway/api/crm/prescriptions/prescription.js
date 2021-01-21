@@ -31,17 +31,15 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/getprescription/' + req.params.prescriptionId);
     })
-    .put('/updateprescription/:prescriptionId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
-        req.body.metadata = {};
-        req.body.metadata.id = req.params.prescriptionId;
+    .put('/updateprescription', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next);
     })
-    .put('/appendproducts/:prescriptionId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
+    .put('/approveprescription', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.id = req.params.prescriptionId;
         var request = new apiGateway();
-        request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/appendproducts');
+        request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/approveprescription');
     })
     .post('/addcomment', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
         console.log("herecomment");

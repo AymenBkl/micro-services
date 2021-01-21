@@ -23,7 +23,9 @@ router.all("/", (req, res, next) => {
 
     .get("/getcategory/:categoryId",prescriptionController.getCategory)
 
-    .put("/",prescriptionController.updatePrescription);
+    .put("/",prescriptionController.updatePrescription)
+    
+    .put("/approveprescription",prescriptionController.approvePrescription);
     
 
 
