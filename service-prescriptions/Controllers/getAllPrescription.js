@@ -13,7 +13,7 @@ const user = require('../Models/user');
 
 module.exports.getAllPrescriptions = (res,query) =>{
     prescription.find(query)
-    .populate({path:"comments",populate:{path:'products',populate:{path:'mainProduct'}}})
+    .populate({path:"comments",populate:{path:'products',populate:{path:'product',populate:{path:'mainProduct'}}}})
     .populate({path:"patient"})
         .then(prescriptions => {
             if (prescriptions){

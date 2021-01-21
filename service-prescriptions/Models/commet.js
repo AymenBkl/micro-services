@@ -6,31 +6,33 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
 
     pharmacy: {
-        type : mongoose.Types.ObjectId,
-        ref : 'user',
+        type: mongoose.Types.ObjectId,
+        ref: 'user',
     },
 
-    comment : {
-        type : String,
-        required : true,
-    },
-    status:{
-        type : String,
-        required : true,
-        default:true
+    status: {
+        type: String,
+        required: true,
+        default: true
     },
     prescription: {
-        type : mongoose.Types.ObjectId,
-        ref : 'prescription',
+        type: mongoose.Types.ObjectId,
+        ref: 'prescription',
     },
     products: [{
-        type : mongoose.Types.ObjectId,
-        ref : 'product',
+        product: {
+            type: mongoose.Types.ObjectId,
+            ref: 'product',
+        }, 
+        quantity: {
+            type: Number,
+            default: 0
+        }
     }]
-} , {
-    timestamps : true,
+}, {
+    timestamps: true,
 }
 )
 
 
-module.exports = mongoose.model('comment',commentSchema);
+module.exports = mongoose.model('comment', commentSchema);

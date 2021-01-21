@@ -10,7 +10,7 @@ module.exports.updatePrescription = (res,id,query,options) =>{
     prescription.findByIdAndUpdate(id,query,options)
         .then(prescription => {
             if (prescription){
-                response.response("success",res,"CATEGORY UPDATED",200,prescription);
+                response.response("success",res,"PRESCRIPTION UPDATED",200,prescription);
             }
             else {
                 response.response("error",res,"undefined",404,null);

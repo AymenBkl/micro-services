@@ -9,6 +9,7 @@ module.exports.addComment = (res,body) =>{
     console.log("body",body);
     comment.create(body)
         .then(comment => {
+            console.log(comment);
             if (comment){
                 const query = {
                     $addToSet: { comments: comment._id } ,
