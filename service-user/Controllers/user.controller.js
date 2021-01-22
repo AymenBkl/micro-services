@@ -11,6 +11,8 @@ const searchPharmacies = require('./searchPharmacy');
 
 const addFile = require('./addFile');
 
+const address = require('./addAddress');
+
 module.exports = {
     getUser : (req,res,next) => {
         getUser.getUser(res,req.body.id,null);
@@ -39,6 +41,10 @@ module.exports = {
             $set : req.body
         }
         addFile.addFile(req,res,next);
+    },
+
+    addAddress :  (req,res,next) => {
+        address.addAddress(res,req.query.id,req.body.address);
     },
 
 

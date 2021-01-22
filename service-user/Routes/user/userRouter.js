@@ -17,7 +17,9 @@ router.all("/", (req, res, next) => {
 
     .get("/", userController.getUser)
 
-    .put("/", userController.updateUser);
+    .put("/", userController.updateUser)
+    
+    .post("/addaddress",userController.addAddress);
 
 router.all("/searchpharmacies", (req, res, next) => {
     next();

@@ -19,6 +19,11 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next, queryParams);
     })
+    .post('/addaddress', jwt.verifyUser, function (req, res, next) {
+        const queryParams = "?id=" + req.user._id;
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, queryParams,'/addaddress');
+    })
     .get('/user/:userId', jwt.verifyUser, function (req, res, next) {
         req.body.id = req.params.userId;
         var request = new apiGateway();
