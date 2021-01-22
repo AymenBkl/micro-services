@@ -3,6 +3,7 @@ const jwt = require('../../middlewares/jwt/jwt');
 const response = require('../../Handler/UserHandler/response.controller');
 var  passport = require("passport");
 const user = require("../../models/user/user");
+const address = require("../../models/user/address");
 
 module.exports = {
     login: (req, res, next) => {

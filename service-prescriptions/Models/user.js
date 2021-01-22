@@ -40,6 +40,11 @@ const userSchema = new Schema({
         type : String,
         default : '',
     },
+    addresses : [{
+        type:mongoose.Types.ObjectId,
+        ref: 'address'
+    }],
+    
     hash : {
         select : false,
     },

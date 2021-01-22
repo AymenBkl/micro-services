@@ -7,6 +7,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const validators = require('./validators.users');
 const userSchema = new Schema({
 
+    
     firstname : {
         type : String,
         default : ''
@@ -42,6 +43,10 @@ const userSchema = new Schema({
         type : String,
         default : '',
     },
+    addresses : [{
+        type:mongoose.Types.ObjectId,
+        ref: 'address'
+    }],
 } , {
     timestamps : true,
     strict : true

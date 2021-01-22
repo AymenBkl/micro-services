@@ -10,8 +10,8 @@ module.exports = {
     getOrders: (req, res, query) => {
         order.find(query)
         .populate([
-            { path: 'patient', select: "-salt -hash" },
-            { path: 'pharmacy', select: "-salt -hash" },
+            { path: 'patient', select: "-salt -hash",populate:{path:'addresses'} },
+            { path: 'pharmacy', select: "-salt -hash",populate:{path:'addresses'} },
             { path: 'referal', select: "-orders -owner -commision" },
             { path: 'products',populate:{path:'product',populate:{path:'mainProduct'}}}
         ])

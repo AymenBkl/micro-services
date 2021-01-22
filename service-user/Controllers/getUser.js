@@ -2,9 +2,12 @@ const user = require('../Models/user');
 
 const response = require('../Handler/HandlerUser/response.controller');
 
+const address = require('../Models/address');
+
 module.exports.getUser = (res,id,query) =>{
     
     user.findById(id)
+        .populate({path: 'address'})
         .select("-salt -hash")
         .then(user => {
             if (user){
