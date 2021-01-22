@@ -45,7 +45,8 @@ const userSchema = new Schema({
     },
     addresses : [{
         type:mongoose.Types.ObjectId,
-        ref: 'address'
+        ref: 'address',
+        autopopulate: true
     }],
 } , {
     timestamps : true,
@@ -54,5 +55,6 @@ const userSchema = new Schema({
 )
 
 userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(require('mongoose-autopopulate'));
 validators.validators.emailValidator(userSchema);
 module.exports = mongoose.model('User',userSchema);

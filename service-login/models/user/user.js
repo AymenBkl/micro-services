@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
 
+    
     firstname : {
         type : String,
         default : ''
@@ -42,20 +44,14 @@ const userSchema = new Schema({
     },
     addresses : [{
         type:mongoose.Types.ObjectId,
-        ref: 'address'
+        ref: 'address',
+        autopopulate: true
     }],
-    
-    hash : {
-        select : false,
-    },
-    salt : {
-        select : false,
-    }
 } , {
     timestamps : true,
     strict : true
 }
 )
-
-
+userSchema.plugin(require('mongoose-autopopulate'));
+userSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('User',userSchema);

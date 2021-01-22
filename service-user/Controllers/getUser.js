@@ -7,7 +7,7 @@ const address = require('../Models/address');
 module.exports.getUser = (res,id,query) =>{
     
     user.findById(id)
-        .populate({path: 'address'})
+        .populate({path: 'addresses'})
         .select("-salt -hash")
         .then(user => {
             if (user){

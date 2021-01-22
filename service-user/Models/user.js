@@ -42,9 +42,10 @@ const userSchema = new Schema({
     },
     addresses : [{
         type:mongoose.Types.ObjectId,
-        ref: 'address'
+        ref: 'address',
+        autopopulate: true
     }],
-    
+
     hash : {
         select : false,
     },
@@ -57,5 +58,5 @@ const userSchema = new Schema({
 }
 )
 
-
+userSchema.plugin(require('mongoose-autopopulate'));
 module.exports = mongoose.model('User',userSchema);

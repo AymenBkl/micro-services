@@ -8,6 +8,8 @@ const JWT = require("jsonwebtoken");
 
 const user = require("../../models/user/user"); 
 
+const address = require("../../models/user/address");
+
 const config = require("../../config.json");
 
 const facebookTokenStrategy = require("passport-facebook-token");

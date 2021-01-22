@@ -6,7 +6,7 @@ const address = require('../Models/address');
 
 module.exports.updateUser = (res,id,query) =>{
     user.findByIdAndUpdate(id,query,{new : true})
-    .populate({path: 'address'})
+    .populate({path: 'addresses'})
         .then(user => {
             if (user){
                 response.response("success",res,"USER FOUND",200,user);
