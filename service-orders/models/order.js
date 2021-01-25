@@ -50,6 +50,10 @@ const productSchema = new Schema({
         type: String,
         required: true,
         default: 'cod'
+    },
+    address:{
+        type: mongoose.Types.ObjectId,
+        ref: 'address',
     }
 
 }, {

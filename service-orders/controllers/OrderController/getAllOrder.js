@@ -5,13 +5,14 @@ const response = require('../../Handler/OrderHandler/response.controller');
 const user = require('../../models/user');
 const product = require('../../models/product');
 const mainProduct = require('../../models/main-product');
-
+const address = require('../../models/address');
 module.exports = {
     getOrders: (req, res, query) => {
         order.find(query)
         .populate([
-            { path: 'patient', select: "-salt -hash",populate:{path:'addresses'} },
-            { path: 'pharmacy', select: "-salt -hash",populate:{path:'addresses'} },
+            { path: 'patient', select: "-salt -hash"},
+            { path: 'address'},
+            { path: 'pharmacy', select: "-salt -hash" },
             { path: 'referal', select: "-orders -owner -commision" },
             { path: 'products',populate:{path:'product',populate:{path:'mainProduct'}}}
         ])

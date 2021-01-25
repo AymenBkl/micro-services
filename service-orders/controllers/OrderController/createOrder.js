@@ -3,14 +3,17 @@ const referal = require("../../models/referal");
 const order = require("../../models/order");
 const response = require('../../Handler/OrderHandler/response.controller');
 const user = require('../../models/user');
+const address = require('../../models/address');
 
 module.exports = {
     async createOrder(req, res, next) {
-        req.body.patient = req.query.id;
+        console.log(req.body);
+       /** req.body.patient = req.query.id;
         let createOrder = await order.create(req.body)
         createOrder.populate([
             { path: 'patient', select: "-salt -hash" },
             { path: 'pharmacy', select: "-salt -hash" },
+            { path: 'address'},
             { path: 'referal', select: "-owner -orders -commision" }])
             .execPopulate()
             .then((order) => {
@@ -25,7 +28,7 @@ module.exports = {
             .catch(err => {
                 response.response("error", res, err, 500, null);
             })
-
+            */ 
     }
 }
 
