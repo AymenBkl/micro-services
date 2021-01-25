@@ -25,6 +25,12 @@ const userSchema = new Schema({
         index : true
     },
 
+    phoneNumber : {
+        type : Number,
+        required : true,
+        unique : true,
+        index : true
+    },
     username : {
         type : String,
         required : true,
@@ -43,11 +49,6 @@ const userSchema = new Schema({
         type : String,
         default : '',
     },
-    addresses : [{
-        type:mongoose.Types.ObjectId,
-        ref: 'address',
-        autopopulate: true
-    }],
 } , {
     timestamps : true,
     strict : true
@@ -57,4 +58,5 @@ const userSchema = new Schema({
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(require('mongoose-autopopulate'));
 validators.validators.emailValidator(userSchema);
+validators.validators.phoneValidator(userSchema);
 module.exports = mongoose.model('User',userSchema);

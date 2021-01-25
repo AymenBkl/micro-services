@@ -8,6 +8,7 @@ module.exports = {
     registerUser : (req,res,newUser,password) => {
         user.register(newUser,password,(err,user) => {
             if (err){
+                console.log(err);
                 response.response('error',res,err,500)
             }
             else {

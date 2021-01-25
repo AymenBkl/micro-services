@@ -24,6 +24,13 @@ const userSchema = new Schema({
         index : true
     },
 
+    phoneNumber : {
+        type : Number,
+        required : true,
+        unique : true,
+        index : true
+    },
+
     username : {
         type : String,
         required : true,
