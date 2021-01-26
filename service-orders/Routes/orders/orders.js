@@ -12,6 +12,7 @@ router.all("/", (req, res, next) => {
         next();
     })
     .post('/',orderController.createORder)
+    .post('/createrefund',orderController.createRefund)
     .get('/',orderController.getAllOrder)
     .get('/allorders',orderController.getAllOrders)
     .put('/',orderController.updateOrderStatus)

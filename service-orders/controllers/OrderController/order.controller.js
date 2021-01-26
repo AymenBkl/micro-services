@@ -14,6 +14,8 @@ const updateOrder = require('./updateOrder');
 
 const updateReferal = require('./updateReferal');
 
+const createRefund = require('./createRefund');
+
 module.exports = {
     createReferal : (req,res,next) => {
         createReferal.createReferal(req,res,next);
@@ -62,6 +64,9 @@ module.exports = {
         updateReferal.updateReferal(res,req.body.metadata.referalId,query);
     }, 
     
+    createRefund : (req,res,next) => {
+        createRefund.createRefund(req,res,next);
+    }, 
 
 
 }

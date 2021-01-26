@@ -6,6 +6,7 @@ const user = require('../../models/user');
 const product = require('../../models/product');
 const mainProduct = require('../../models/main-product');
 const address = require('../../models/address');
+const refund = require('../../models/refund');
 module.exports = {
     getOrders: (req, res, query) => {
         order.find(query)
@@ -14,6 +15,7 @@ module.exports = {
             { path: 'address'},
             { path: 'pharmacy', select: "-salt -hash" },
             { path: 'referal', select: "-orders -owner -commision" },
+            { path: 'refund', select: "-order -patient" },
             { path: 'products',populate:{path:'product',populate:{path:'mainProduct'}}}
         ])
         .sort('-createdAt')

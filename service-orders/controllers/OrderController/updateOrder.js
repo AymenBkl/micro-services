@@ -6,7 +6,7 @@ module.exports.updateOrder = (res,orderId,query) =>{
     order.findByIdAndUpdate(orderId,query,{new : true})
         .then(order => {
             if (order){
-                response.response("success",res,"USER FOUND",200,order);
+                response.response("success",res,"ORDER UPDATED",200,order);
             }
             else {
                 response.response("error",res,"undefined",404,null);

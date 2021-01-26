@@ -4,6 +4,7 @@ const order = require("../../models/order");
 const response = require('../../Handler/OrderHandler/response.controller');
 const user = require('../../models/user');
 const address = require('../../models/address');
+const refund = require('../../models/refund');
 
 module.exports = {
     async createOrder(req, res, next) {
@@ -14,7 +15,8 @@ module.exports = {
             { path: 'patient', select: "-salt -hash" },
             { path: 'pharmacy', select: "-salt -hash" },
             { path: 'address'},
-            { path: 'referal', select: "-owner -orders -commision" }])
+            { path: 'referal', select: "-owner -orders -commision" },
+            { path: 'refund', select: "-order -patient" }])
             .execPopulate()
             .then((order) => {
                 if (order) {

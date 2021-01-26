@@ -63,7 +63,11 @@ const productSchema = new Schema({
     payedByAdmin: {
         type: String,
         default: 'NOT PAYED'
-    }
+    },
+    refund:{
+        type: mongoose.Types.ObjectId,
+        ref: 'refund',
+    },
 
 }, {
     timestamps: true,
