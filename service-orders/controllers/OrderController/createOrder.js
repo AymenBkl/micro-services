@@ -8,7 +8,7 @@ const address = require('../../models/address');
 module.exports = {
     async createOrder(req, res, next) {
         console.log(req.body);
-       /** req.body.patient = req.query.id;
+       req.body.patient = req.query.id;
         let createOrder = await order.create(req.body)
         createOrder.populate([
             { path: 'patient', select: "-salt -hash" },
@@ -28,7 +28,7 @@ module.exports = {
             .catch(err => {
                 response.response("error", res, err, 500, null);
             })
-            */ 
+            
     }
 }
 
