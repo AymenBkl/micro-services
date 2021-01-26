@@ -22,6 +22,11 @@ const productSchema = new Schema({
             type: Number,
             required: true,
             default: 1
+        },
+        refundedQuantity:{
+            type: Number,
+            required: true,
+            default: 0
         }
     }],
     pharmacy: {
@@ -54,6 +59,10 @@ const productSchema = new Schema({
     address:{
         type: mongoose.Types.ObjectId,
         ref: 'address',
+    },
+    payedByAdmin: {
+        type: String,
+        default: 'NOT PAYED'
     }
 
 }, {
