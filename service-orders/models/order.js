@@ -62,11 +62,11 @@ const productSchema = new Schema({
     },
     payedByAdmin: {
         type: String,
-        default: 'NOT PAYED'
+        default: 'NOT PAIED'
     },
     refund:{
         type: mongoose.Types.ObjectId,
-        ref: 'refund',
+        ref: 'refunds',
     },
 
 }, {

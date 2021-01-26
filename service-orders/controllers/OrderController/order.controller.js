@@ -16,6 +16,8 @@ const updateReferal = require('./updateReferal');
 
 const createRefund = require('./createRefund');
 
+const getAllRefund = require('./getAllRefund');
+
 module.exports = {
     createReferal : (req,res,next) => {
         createReferal.createReferal(req,res,next);
@@ -42,6 +44,11 @@ module.exports = {
     getAllOrder: (req,res,next) => {
         query = {$or : [{patient : req.query.id},{pharmacy:req.query.id}]};
         getAllOrders.getOrders(req,res,query);
+    }, 
+
+    getAllRefunds: (req,res,next) => {
+        query = {$or : [{patient : req.query.id},{pharmacy:req.query.id}]};
+        getAllRefund.getRefunds(req,res,query);
     }, 
 
     updateOrderStatus: (req,res,next) => {

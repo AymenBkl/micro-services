@@ -18,7 +18,7 @@ const refundSchema = new Schema({
     },
     payedByAdmin: {
         type: String,
-        default: 'NOT PAYED'
+        default: 'NOT PAIED'
     },
     refundPrice: {
         type: Number,

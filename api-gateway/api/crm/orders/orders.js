@@ -26,6 +26,10 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/allorders');
     })
+    .get('/allrefunds', jwt.verifyUser, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/allrefunds');
+    })
     .get('/getorder', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next);
