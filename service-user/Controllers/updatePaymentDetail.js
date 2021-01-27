@@ -6,13 +6,12 @@ const address = require('../Models/address');
 
 const paymentDetail = require('../Models/paymentDetail');
 
-module.exports.updateUser = (res,id,query) =>{
-    user.findByIdAndUpdate(id,query,{new : true})
-    .populate({path: 'addresses'})
-    .populate({path:'paymentDetail'})
-        .then(user => {
-            if (user){
-                response.response("success",res,"USER FOUND",200,user);
+module.exports.updatePaymentDetail = (res,id,query) =>{
+    console.log(id);
+    paymentDetail.findByIdAndUpdate(id,query,{new : true})
+        .then(paymentDetail => {
+            if (paymentDetail){
+                response.response("success",res,"USER FOUND",200,paymentDetail);
             }
             else {
                 response.response("error",res,"undefined",404,null);

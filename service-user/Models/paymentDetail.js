@@ -19,6 +19,10 @@ const paymentDetailsSchema = new Schema({
         type : String,
         default:'',
     },
+    user: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }
 } , {
     timestamps : true,
     strict : true

@@ -13,6 +13,11 @@ const addFile = require('./addFile');
 
 const address = require('./addAddress');
 
+
+const addPaymentDetail = require('./addPaymentDetail');
+
+const updatePaymentDetail = require('./updatePaymentDetail');
+
 module.exports = {
     getUser : (req,res,next) => {
         getUser.getUser(res,req.body.id,null);
@@ -26,6 +31,14 @@ module.exports = {
             $set : req.body
         }
         updateUser.updateUser(res,req.query.id,query);
+    },
+
+    updatePaymentDetail : (req,res,next) => {
+        console.log("here",req.params.paymentId);
+        const query = {
+            $set : req.body.paymentDetail
+        }
+        updatePaymentDetail.updatePaymentDetail(res,req.params.paymentId,query);
     },
 
     searchPharmarcies : (req,res,next) => {
@@ -45,6 +58,10 @@ module.exports = {
 
     addAddress :  (req,res,next) => {
         address.addAddress(res,req.query.id,req.body.address);
+    },
+
+    addPaymentDetail :  (req,res,next) => {
+        addPaymentDetail.addPaymentDetail(res,req.query.id,req.body.paymentDetail);
     },
 
 

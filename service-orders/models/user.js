@@ -51,6 +51,11 @@ const userSchema = new Schema({
         type:mongoose.Types.ObjectId,
         ref: 'address'
     }],
+    paymentDetail : {
+        type:mongoose.Types.ObjectId,
+        ref: 'paymentdetail',
+        autopopulate: true
+    },
     
     hash : {
         select : false,

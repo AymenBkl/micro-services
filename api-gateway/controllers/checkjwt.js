@@ -1,9 +1,10 @@
 const passport = require("passport");
-
+const paymentDetail = require('../models/user/paymentDetail');
 module.exports = {
     checkJWT: (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
             if (err) {
+                console.log(err);
                 return next(err);
             }
 

@@ -18,8 +18,12 @@ router.all("/", (req, res, next) => {
     .get("/", userController.getUser)
 
     .put("/", userController.updateUser)
+
+    .put("/updatepaymentdetail/:paymentId", userController.updatePaymentDetail)
+
+    .post("/addaddress",userController.addAddress)
     
-    .post("/addaddress",userController.addAddress);
+    .post("/addpaymentdetail",userController.addPaymentDetail);
 
 router.all("/searchpharmacies", (req, res, next) => {
     next();
