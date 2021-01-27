@@ -35,10 +35,14 @@ const productSchema = new Schema({
         required: true
     },
 
-    referal: {
+    referal: {referal: {
         type: mongoose.Types.ObjectId,
         ref: 'referal',
-    },
+    } ,
+    payedByAdmin: {
+        type: String,
+        default: 'NOT PAIED'
+    }},
 
     totalPrice: {
         type: Number,

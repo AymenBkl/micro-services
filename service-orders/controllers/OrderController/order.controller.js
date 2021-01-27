@@ -71,9 +71,26 @@ module.exports = {
         updateReferal.updateReferal(res,req.body.metadata.referalId,query);
     }, 
     
+    
     createRefund : (req,res,next) => {
         createRefund.createRefund(req,res,next);
     }, 
+
+    payPharmacy : (req,res,next) => {
+        const query = {
+            payedByAdmin : 'PAID'
+        }
+
+        updateOrder.updateOrder(res,req.body.metadata.orderId,query);
+    }, 
+
+    payReferal : (req,res,next) => {
+        const query = {
+            referal: {payedByAdmin : 'PAID'}
+        }
+
+        updateOrder.updateOrder(res,req.body.metadata.orderId,query);
+    },
 
 
 }

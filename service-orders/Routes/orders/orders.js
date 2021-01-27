@@ -17,5 +17,8 @@ router.all("/", (req, res, next) => {
     .get('/allorders',orderController.getAllOrders)
     .get('/allrefunds',orderController.getAllRefunds)
     .put('/',orderController.updateOrderStatus)
+    .put('/paypharmacy',orderController.payPharmacy)
+    .put('/payreferal',orderController.payReferal)
+
 
 module.exports = router;
