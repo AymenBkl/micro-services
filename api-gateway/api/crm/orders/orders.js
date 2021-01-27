@@ -30,6 +30,10 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/allrefunds');
     })
+    .get('/allrefundsadmin', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/allrefundsadmin');
+    })
     .get('/getorder', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next);
@@ -40,13 +44,13 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next);
     })
-    .put('/paypharmacy/:orderId', jwt.verifyUser, function (req, res, next) {
+    .put('/paypharmacy/:orderId', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.orderId = req.params.orderId;
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/paypharmacy');
     })
-    .put('/payreferal/:orderId', jwt.verifyUser, function (req, res, next) {
+    .put('/payreferal/:orderId', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.orderId = req.params.orderId;
         var request = new apiGateway();

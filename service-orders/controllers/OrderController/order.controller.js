@@ -50,6 +50,10 @@ module.exports = {
         query = {$or : [{patient : req.query.id},{pharmacy:req.query.id}]};
         getAllRefund.getRefunds(req,res,query);
     }, 
+    getAllRefundsAdmin: (req,res,next) => {
+        query = {};
+        getAllRefund.getRefunds(req,res,query);
+    }, 
 
     updateOrderStatus: (req,res,next) => {
         const query = {

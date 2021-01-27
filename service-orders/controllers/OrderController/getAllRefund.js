@@ -18,7 +18,7 @@ module.exports = {
                         { path: 'address' },
                         { path: 'pharmacy', select: "-salt -hash" },
                         { path: 'referal', select: "-orders -owner -commision" },
-                        { path: 'refund', select: "-order -patient" },
+                        { path: 'referal',populate:{path:'referal',select: "-orders -owner -commision" }},
                         { path: 'products', populate: { path: 'product', populate: { path: 'mainProduct' } } }
                     ]
                 }
