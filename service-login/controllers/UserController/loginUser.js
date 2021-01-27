@@ -4,7 +4,7 @@ const response = require('../../Handler/UserHandler/response.controller');
 var  passport = require("passport");
 const user = require("../../models/user/user");
 const address = require("../../models/user/address");
-const address = require("../../models/user/paymentDetail");
+const paymentDetail = require("../../models/user/paymentDetail");
 
 module.exports = {
     login: (req, res, next) => {
