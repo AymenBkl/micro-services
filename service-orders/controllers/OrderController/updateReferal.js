@@ -2,6 +2,8 @@ const referal = require('../../models/referal');
 
 const response = require('../../Handler/OrderHandler/response.controller');
 
+const paymentDetail = require('../../models/paymentDetail');
+
 module.exports.updateReferal = (res,referalId,query) =>{
     referal.findByIdAndUpdate(referalId,query,{new : true})
         .then(referal => {

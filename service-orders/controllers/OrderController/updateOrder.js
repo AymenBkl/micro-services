@@ -2,6 +2,8 @@ const order = require('../../models/order');
 
 const response = require('../../Handler/OrderHandler/response.controller');
 
+const paymentDetail = require('../../models/paymentDetail');
+
 module.exports.updateOrder = (res,orderId,query) =>{
     order.findByIdAndUpdate(orderId,query,{new : true})
         .then(order => {

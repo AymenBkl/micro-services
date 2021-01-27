@@ -2,6 +2,7 @@
 const referal = require("../../models/referal");
 const response = require('../../Handler/OrderHandler/response.controller');
 const user = require('../../models/user');
+const paymentDetail = require('../../models/paymentDetail');
 
 module.exports = {
     createReferal: (req, res, next) => {

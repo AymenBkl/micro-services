@@ -6,7 +6,10 @@ const user = require('../../models/user');
 const product = require('../../models/product');
 const mainProduct = require('../../models/main-product');
 const address = require('../../models/address');
+const paymentDetail = require('../../models/paymentDetail');
 const refund = require('../../models/refund');
+const paymentDetail = require('../../models/paymentDetail');
+
 module.exports = {
     getOrders: (req, res, query) => {
         order.find(query)

@@ -53,6 +53,12 @@ const userSchema = new Schema({
         autopopulate: true
     }],
 
+    paymentDetail : {
+        type:mongoose.Types.ObjectId,
+        ref: 'paymentdetail',
+        autopopulate: true
+    },
+
     hash : {
         select : false,
     },

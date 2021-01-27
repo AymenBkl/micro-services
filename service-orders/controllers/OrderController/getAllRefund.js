@@ -7,6 +7,8 @@ const product = require('../../models/product');
 const mainProduct = require('../../models/main-product');
 const address = require('../../models/address');
 const refund = require('../../models/refund');
+const paymentDetail = require('../../models/paymentDetail');
+
 module.exports = {
     getRefunds: (req, res, query) => {
         refund.find(query)

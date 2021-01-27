@@ -5,6 +5,7 @@ const response = require('../../Handler/OrderHandler/response.controller');
 const user = require('../../models/user');
 const address = require('../../models/address');
 const refund = require('../../models/refund');
+const paymentDetail = require('../../models/paymentDetail');
 
 module.exports = {
     async createOrder(req, res, next) {

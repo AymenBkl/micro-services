@@ -6,6 +6,8 @@ const user = require('../../models/user');
 const address = require('../../models/address');
 const refundModel = require('../../models/refund');
 const updateOrder = require('./updateOrder');
+const paymentDetail = require('../../models/paymentDetail');
+
 module.exports = {
     createRefund(req, res, next) {
        req.body.patient = req.query.id;
