@@ -13,16 +13,17 @@ module.exports = {
     getOrders: (req, res, query) => {
         order.find(query)
         .populate([
-            { path: 'patient', select: "-salt -hash"},
+            { path: 'patient',populate:{path:'paymentDetail'}, select: "-salt -hash"},
             { path: 'address'},
-            { path: 'pharmacy', select: "-salt -hash" },
+            { path: 'pharmacy',populate:{path:'paymentDetail'},select: "-salt -hash" },
             { path: 'referal',populate:{path:'referal',select: "-orders -owner -commision" }},
-            { path: 'refund', select: "-order -patient" },
+            { path: 'refund',populate:{path:'refund'}, select: "-order -patient" },
             { path: 'products',populate:{path:'product',populate:{path:'mainProduct'}}}
         ])
         .sort('-createdAt')
         .then((ref) => {
                 if (ref) {
+                    console.log(ref);
                     response.response("success",res,"Messages",200,ref);
                 }
                 else {

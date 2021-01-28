@@ -20,7 +20,7 @@ module.exports = {
             .then((refund) => {
                 if (refund){
                     const query = {
-                        refund: refund._id,
+                        refund: {refund : refund._id},
                         products: req.body.products
                     }
                     updateOrder.updateOrder(res,req.body.orderId,query);

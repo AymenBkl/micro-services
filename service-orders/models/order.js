@@ -23,7 +23,7 @@ const productSchema = new Schema({
             required: true,
             default: 1
         },
-        refundedQuantity:{
+        refundedQuantity: {
             type: Number,
             required: true,
             default: 0
@@ -35,14 +35,20 @@ const productSchema = new Schema({
         required: true
     },
 
-    referal: {referal: {
-        type: mongoose.Types.ObjectId,
-        ref: 'referal',
-    } ,
-    payedByAdmin: {
-        type: String,
-        default: 'NOT PAIED'
-    }},
+    referal: {
+        referal: {
+            type: mongoose.Types.ObjectId,
+            ref: 'referal',
+        },
+        payedByAdmin: {
+            type: String,
+            default: 'NOT PAIED'
+        },
+        commissionApplied: {
+            type: Number,
+            default:0
+        }
+    },
 
     totalPrice: {
         type: Number,
@@ -60,7 +66,7 @@ const productSchema = new Schema({
         required: true,
         default: 'cod'
     },
-    address:{
+    address: {
         type: mongoose.Types.ObjectId,
         ref: 'address',
     },
@@ -68,9 +74,18 @@ const productSchema = new Schema({
         type: String,
         default: 'NOT PAIED'
     },
-    refund:{
-        type: mongoose.Types.ObjectId,
-        ref: 'refunds',
+    refund: {
+        refund: {
+            type: mongoose.Types.ObjectId,
+            ref: 'refunds',
+        },
+        payedByAdmin: {
+            type: String,
+            default: 'NOT PAIED'
+        }, commissionApplied: {
+            type: Number,
+            default:0
+        }
     },
 
 }, {

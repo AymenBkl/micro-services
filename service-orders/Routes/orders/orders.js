@@ -33,6 +33,8 @@ router.all("/", (req, res, next) => {
 
     .put('/payreferal',orderController.payReferal)
 
+    .put('/payrerefund',orderController.payRefund)
+
 
 
 module.exports = router;

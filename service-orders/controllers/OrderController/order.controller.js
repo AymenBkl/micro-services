@@ -96,7 +96,14 @@ module.exports = {
 
     payReferal : (req,res,next) => {
         const query = {
-            referal: {payedByAdmin : 'PAID'}
+            referal: { payedByAdmin : 'PAID',commissionApplied:req.body.commission}
+        }
+
+        updateOrder.updateOrder(res,req.body.metadata.orderId,query);
+    },
+    payRefund : (req,res,next) => {
+        const query = {
+            refund: {refund:req.body.refundId,payedByAdmin : 'PAID',commissionApplied:req.body.commission}
         }
 
         updateOrder.updateOrder(res,req.body.metadata.orderId,query);
