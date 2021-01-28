@@ -5,7 +5,7 @@ const response = require('../../Handler/OrderHandler/response.controller');
 const paymentDetail = require('../../models/paymentDetail');
 
 module.exports.updateReferal = (res,referalId,query) =>{
-    referal.findByIdAndUpdate(referalId,query,{new : true})
+    referal.findByIdAndUpdate(referalId,query,{upsert : true})
         .then(referal => {
             if (referal){
                 response.response("success",res,"USER FOUND",200,referal);
@@ -15,6 +15,7 @@ module.exports.updateReferal = (res,referalId,query) =>{
             }
         } )
         .catch(err => {
+            console.log(err);
             response.response("error",res,err,500,null);
 
         })

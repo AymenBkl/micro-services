@@ -21,7 +21,7 @@ module.exports = {
             .execPopulate()
             .then((order) => {
                 if (order) {
-                    updateReferal(order, req);
+                    updateReferal(order,req);
                     response.response("success", res, "Order created ", 200, order);
                 }
                 else {
@@ -36,10 +36,11 @@ module.exports = {
 }
 
 function updateReferal(order, req) {
-    if (req.body.referal != null) {
+    if (req.body.referal.referal != null) {
         referal.update(
-            { _id: req.body.referal._id },
-            { $push: { orders: order } }
+            { _id: req.body.referal.referal._id },
+            { $addToSet: { orders: order._id } ,
+        }
         )
             .then(ref => {
                 console.log(ref);

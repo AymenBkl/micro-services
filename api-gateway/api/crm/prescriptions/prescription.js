@@ -23,7 +23,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/getallprescriptionpatient');
     })
-    .get('/allprescription/getallprescriptionpharmacy', jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
+    .get('/allprescription/getallprescriptionpharmacy', jwt.verifyUser,jwt.verifyPharmacyAdmin, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServicePrescription", "Routes/prescription.route", req.method, false, req, res, next,'','/getallprescriptionpharmacy');
     })
