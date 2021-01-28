@@ -18,6 +18,10 @@ const createRefund = require('./createRefund');
 
 const getAllRefund = require('./getAllRefund');
 
+const createCommission = require('./createComission');
+
+const updatecommission = require('./updateComission');
+
 module.exports = {
     createReferal : (req,res,next) => {
         createReferal.createReferal(req,res,next);
@@ -96,6 +100,13 @@ module.exports = {
         updateOrder.updateOrder(res,req.body.metadata.orderId,query);
     },
 
+    createCommission: (data) => {
+        createCommission.createCommission(data);
+    },
+
+    updateCommission: (req,res,next) => {
+
+    }
 
 }
 

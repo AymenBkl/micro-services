@@ -22,12 +22,6 @@ const referalSchema = new Schema({
         type : mongoose.Types.ObjectId,
         ref : 'order',
     }],
-
-    commision : {
-        type : Number,
-        required : true,
-        default:0
-    },
 } , {
     timestamps : true,
 }
