@@ -12,7 +12,6 @@ var config= require ('./config')(),
     numCPUs = /**require('os').cpus().length**/ 1,
     netLib = require ('../micro-node-net-lib'),
     cfg = require('./config.json'),
-    orderController = require('./controllers/OrderController/order.controller');
     mongoose = require('mongoose'),
     passport = require('passport');
     cookieParser = require('cookie-parser');
@@ -63,9 +62,6 @@ var config= require ('./config')(),
         app.use(cookieParser(cfg.cockiParserSecret));
         mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false })
         configServer.express.app = app;
-        orderController.createCommission({name:'Referal',commission:0});
-        orderController.createCommission({name:'Refund',commission:0});
-        orderController.createCommission({name:'Pay Pharmacy',commission:0});
         //header(s) setting
         app.all('/*', function(req, res, next) {
             config.server.headers.forEach(function(item) {
