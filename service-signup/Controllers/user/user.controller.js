@@ -13,8 +13,6 @@ module.exports = {
     signUp : (req,res,next) => {
         console.log(req.body)
         const newUser = new user({
-            email : req.body.email,
-            username : req.body.username,
             firstname : req.body.firstname,
             lastname : req.body.lastname,
             phoneNumber: req.body.phoneNumber,

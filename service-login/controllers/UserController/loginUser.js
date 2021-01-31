@@ -10,9 +10,12 @@ module.exports = {
     login: (req, res, next) => {
         passport.authenticate('local', (err, user, info) => {
             if (!user) {
+                console.log("wow?",user);
                 response.response("error", res, info, 401,null);
+                next();
             }
                 req.logIn(user, (err) => {
+                    console.log("err",err);
                     if (err) {
                         response.response("error", res, err, 401,null);
                     }

@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const validators = require('./validators.users');
+
 const userSchema = new Schema({
 
     
