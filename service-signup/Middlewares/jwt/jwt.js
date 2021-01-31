@@ -91,7 +91,7 @@ exports.facebookToken = passport.use(
         if (err) {
           return done(err, false);
         } else if (!err && users != null) {
-          return done(false, users); 
+          return done(false, users);
         } else {
           us = new user({ username: profile.displayName });
           us.firstname = profile.name.givenName;

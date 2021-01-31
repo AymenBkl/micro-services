@@ -53,7 +53,9 @@ const userSchema = new Schema({
     strict : true
 }
 )
-userSchema.plugin(passportLocalMongoose,{ usernameField : 'phoneNumber' });
+
 userSchema.plugin(require('mongoose-autopopulate'));
 validators.validators.phoneValidator(userSchema);
+userSchema.plugin(passportLocalMongoose,{ usernameField : 'phoneNumber',passwordField: 'password' });
+
 module.exports = mongoose.model('User',userSchema);

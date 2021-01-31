@@ -79,7 +79,7 @@ exports.verifyAdmin = (req, res, next) => {
 
 var localStrategy = require("passport-local").Strategy;
 
-exports.localStrategy = passport.use(new localStrategy({usernameField: 'phoneNumber'},user.authenticate()));
+exports.localStrategy = passport.use(new localStrategy({usernameField:'phoneNumber'},user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
