@@ -41,6 +41,24 @@ router.all('/', function (req, res, next) {
     .put('/updatepaymentdetail/:paymentId', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/updatepaymentdetail/' + req.params.paymentId);
+    })
+    .post('/addfile', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        console.log('here');
+        const queryParams = "?id=" + req.user._id;
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next,queryParams,'/addfile');
+    })
+    .put('/updatemainproduct/:mainproductId',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        req.body.metadata = {};
+        req.body.metadata.mainproductId = req.params.mainproductId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceProducts","Routes/product.route", req.method,false, req, res, next,'','/updatemainproduct');
+    })
+    .delete("/deletemainproduct/:mainproductId",jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        req.body.metadata = {};
+        req.body.metadata.mainproductId = req.params.mainproductId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceProducts","Routes/product.route", req.method,false, req, res, next,'','/deletemainproduct');
     });
 
 

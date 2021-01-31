@@ -13,6 +13,7 @@ var xlsx = require('node-xlsx');
 
 module.exports = {
     addFile: (req, res, next) => {
+        console.log(req.file)
         if (req.file) {
             readFile(req.file.filename, res)
             .then(newObj => {
@@ -44,7 +45,7 @@ function readfile(fileURL, res) {
     return new Promise((resolve, reject) => {
         const host = "http://localhost:8080/";
         var XLSX = require('xlsx')
-        var workbook = XLSX.readFile(__dirname + '\\xyz.xlsx');
+        var workbook = XLSX.readFile(__dirname + '/xyz.xlsx');
         var sheet_name_list = workbook.SheetNames;
         var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
         xlData.splice(0, 1);
@@ -79,11 +80,10 @@ function addKeys(obj) {
 
 function readFile(fileURL, res) {
     return new Promise((resolve, reject) => {
-        const host = "http://192.168.1.104:8080/";
         var xlsx = require('node-xlsx');
         var path = require('path');
         console.log(process.mainModule.path)
-        var obj = xlsx.parse(process.mainModule.path + '\\uploads\\' + fileURL);
+        var obj = xlsx.parse(process.mainModule.path + '/uploads/' + fileURL);
         const newobj = addKeys(obj[0]['data'])
         console.log(newobj)
         resolve(newobj)

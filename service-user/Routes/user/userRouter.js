@@ -5,6 +5,7 @@ var router = express.Router();
 
 
 const userController = require('../../Controllers/user.controller');
+const multer = require('../../Middlewares/multer').upload;
 
 
 router.all("/", (req, res, next) => {
@@ -22,6 +23,8 @@ router.all("/", (req, res, next) => {
     .put("/updatepaymentdetail/:paymentId", userController.updatePaymentDetail)
 
     .post("/addaddress",userController.addAddress)
+
+    .post("/addfile",multer.single('file'), userController.addFileExCel)
     
     .post("/addpaymentdetail",userController.addPaymentDetail);
 

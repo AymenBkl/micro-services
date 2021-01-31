@@ -28,7 +28,7 @@ router.all('', function (req, res, next) {
         req.body.metadata.mainproductId = req.params.mainproductId;
         var request = new apiGateway();
         request.sendRequest("ServiceProducts","Routes/product.route", req.method,false, req, res, next,'','/deletemainproduct');
-    });;
+    });
 
 
 

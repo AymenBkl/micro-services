@@ -35,6 +35,11 @@ cd service-messages
 pm2 start server.js --name "service-messages" &
 
 cd ..
+cd service-prescriptions
+pm2 start server.js --name "service-prescriptions" &
+
+
+cd ..
 cd api-gateway
 pm2 start server.js --name "api-getway" 
 

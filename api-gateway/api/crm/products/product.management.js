@@ -46,11 +46,11 @@ router.all('/addmainproduct', function (req, res, next) {
         .options('/addmainproduct', (req, res, next) => {
             next();
         })
-        .post('/addmainproduct', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+        .post('/addmainproduct', jwt.verifyUser, jwt.verifyPharmacyAdmin, function (req, res, next) {
             var request = new apiGateway();
             request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/addmainproduct');
         })
-        .get('/addmainproduct', jwt.verifyUser, jwt.verifyPharmacy, function (req, res, next) {
+        .get('/addmainproduct', jwt.verifyUser, jwt.verifyPharmacyAdmin, function (req, res, next) {
             var request = new apiGateway();
             request.sendRequest("ServiceProducts", "Routes/product.management", req.method, false, req, res, next,'','/addmainproduct');
         })
