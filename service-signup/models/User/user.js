@@ -18,29 +18,13 @@ const userSchema = new Schema({
         default : ''
     },
 
-    email : {
-        type : String,
-        required : true,
-        unique : true,
-        index : true
-    },
-
     phoneNumber : {
         type : Number,
         required : true,
         unique : true,
         index : true
     },
-    username : {
-        type : String,
-        required : true,
-        unique : true,
-        index : true
-    },
-    emailVerified : {
-        type : Boolean,
-        default : false
-    },
+
     role : {
         type : String,
         required : true
@@ -55,8 +39,7 @@ const userSchema = new Schema({
 }
 )
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose,{ usernameField : 'phoneNumber' });
 userSchema.plugin(require('mongoose-autopopulate'));
-validators.validators.emailValidator(userSchema);
 validators.validators.phoneValidator(userSchema);
 module.exports = mongoose.model('User',userSchema);

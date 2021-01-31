@@ -76,7 +76,7 @@ exports.verifyAdmin = (req, res, next) => {
 
 var localStrategy = require("passport-local").Strategy;
 
-exports.localStrategy = passport.use(new localStrategy(user.authenticate()));
+exports.localStrategy = passport.use(new localStrategy({usernameField: 'phoneNumber'},user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
@@ -91,7 +91,7 @@ exports.facebookToken = passport.use(
         if (err) {
           return done(err, false);
         } else if (!err && users != null) {
-          return done(false, users);
+          return done(false, users); 
         } else {
           us = new user({ username: profile.displayName });
           us.firstname = profile.name.givenName;
