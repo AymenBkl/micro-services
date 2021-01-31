@@ -23,7 +23,7 @@
     "serviceRegistry":{
         "watchDog":{
           "isEnabled":false,
-          "timer":30000
+          "timer":9999999
         },
         "database":{
           "name":"micro",
