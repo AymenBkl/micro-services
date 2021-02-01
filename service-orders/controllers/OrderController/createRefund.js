@@ -14,6 +14,7 @@ module.exports = {
         let refund = {
             order: req.body.orderId,
             patient: req.body.patient,
+            pharmacy: req.body.pharmacyId,
             refundPrice:req.body.refundPrice
         }
         refundModel.create(refund)
@@ -31,6 +32,7 @@ module.exports = {
 
             })
             .catch(err => {
+                console.log(err);
                 response.response("error", res, err, 500, null);
             })
             

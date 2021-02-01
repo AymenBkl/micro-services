@@ -11,6 +11,11 @@ const refundSchema = new Schema({
         ref: 'User',
         required: true
     },
+    pharmacy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     order: {
         type: mongoose.Types.ObjectId,
         ref: 'order',
