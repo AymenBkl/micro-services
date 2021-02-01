@@ -31,6 +31,7 @@ module.exports = {
         gettAllPrescriptions.getAllPrescriptions(res,{});
     },
 
+
     getCategory : (req,res,next) => {
         console.log("id",req.params.categoryId);
         getCategory.getCategory(res,req.params.categoryId);
