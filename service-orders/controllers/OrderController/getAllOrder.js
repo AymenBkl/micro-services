@@ -16,7 +16,7 @@ module.exports = {
             { path: 'patient',populate:{path:'paymentDetail'}, select: "-salt -hash"},
             { path: 'address'},
             { path: 'pharmacy',populate:{path:'paymentDetail'},select: "-salt -hash" },
-            { path: 'referal',populate:{path:'referal',select: "-orders -owner -commision" }},
+            { path: 'referal',populate:{path:'referal',populate:{path:'owner',populate: { path: 'paymentDetail' }},select: "-orders  -commision" }},
             { path: 'refund',populate:{path:'refund'}, select: "-order -patient" },
             { path: 'products',populate:{path:'product',populate:{path:'mainProduct'}}}
         ])

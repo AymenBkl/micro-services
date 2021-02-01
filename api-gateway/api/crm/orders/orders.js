@@ -84,6 +84,12 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/payrerefund');
     })
+    .put('/payreferal/:orderId', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        req.body.metadata = {};
+        req.body.metadata.orderId = req.params.orderId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/payreferal');
+    })
     .delete("/deleteorders/:ordersId", jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.ordersId = req.params.categoryId;
