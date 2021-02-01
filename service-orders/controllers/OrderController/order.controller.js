@@ -24,6 +24,8 @@ const updatecommission = require('./updateComission');
 
 const getCommission = require('./getCommission');
 
+const updateRefund = require('./updateRefund');
+
 module.exports = {
     createReferal : (req,res,next) => {
         createReferal.createReferal(req,res,next);
@@ -84,6 +86,10 @@ module.exports = {
     
     createRefund : (req,res,next) => {
         createRefund.createRefund(req,res,next);
+    }, 
+
+    updateRefund : (req,res,next) => {
+        updateRefund.updateRefund(req,res,next);
     }, 
 
     payPharmacy : (req,res,next) => {

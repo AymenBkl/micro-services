@@ -22,6 +22,11 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/createrefund');
     })
+
+    .put('/updaterefund', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/updaterefund');
+    })
     .get('/getallorders', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/allorders');
