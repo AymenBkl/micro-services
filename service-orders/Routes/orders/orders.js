@@ -35,6 +35,8 @@ router.all("/", (req, res, next) => {
 
     .put('/payrerefund',orderController.payRefund)
 
+    .put('/pickuprefund',orderController.pickUp)
+
     .put('/updaterefund',orderController.updateRefund)
 
 

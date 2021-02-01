@@ -115,6 +115,14 @@ module.exports = {
         updateOrder.updateOrder(res,req.body.metadata.orderId,query);
     },
 
+    pickUp : (req,res,next) => {
+        const query = {
+            refund: {refund:req.body.refundId,payedByAdmin : 'PICKUP',commissionApplied:req.body.commission}
+        }
+
+        updateOrder.updateOrder(res,req.body.metadata.orderId,query);
+    },
+
     getCommissions : (req,res,next) => {
         getCommission.getCommission(res);
     },
