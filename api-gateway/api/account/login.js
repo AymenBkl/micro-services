@@ -17,6 +17,11 @@ router.all('/', function (req, res, next) {
         request.sendRequest("ServiceLogin", "Routes/login.route", req.method,false, req, res, next);
     })
 
+    .post('/resetpassword', function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceLogin", "Routes/login.route", req.method,false, req, res, next,'','/resetpassword');
+    })
+
 
 
 module.exports = router;

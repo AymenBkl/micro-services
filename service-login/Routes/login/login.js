@@ -3,7 +3,7 @@ const express = require('express');
 
 var router = express.Router();
 
-const loginController = require('../../controllers/UserController/loginUser');
+const loginController = require('../../controllers/UserController/user.controller');
 
 router.all("/", (req, res, next) => {
     next();
@@ -11,6 +11,8 @@ router.all("/", (req, res, next) => {
     .options("/", (req, res, next) => {
         next();
     })
-    .post("/",loginController.login);
+    .post("/",loginController.login)
+
+    .post("/resetpassword",loginController.resetPassword);
 
 module.exports = router;
