@@ -1,16 +1,34 @@
-const user = require('../../models/user/user');
+const userModel = require('../../models/user/user');
+const response = require('../../Handler/UserHandler/response.controller');
 
 module.exports.resetPassword = (req,res,next) => {
-    user.findByUsername(req.body.phoneNumber).then(function(sanitizedUser){
+    userModel.findByUsername(req.body.phoneNumber)
+        .then((sanitizedUser) => {
+        console.log(sanitizedUser);
         if (sanitizedUser){
-            sanitizedUser.setPassword(req.body.password, function(){
-                sanitizedUser.save();
-                res.status(200).json({message: 'password reset successful'});
+            sanitizedUser.setPassword(req.body.password)
+                .then(updateUser =>{
+                    console.log(updateUser);
+                userModel.updateOne({phoneNumber:req.body.phoneNumber},updateUser)
+                    .then((user) => {
+                        if (user){
+                            response.response("success", res, "YOUR PASSWORD HAS BEEN RESET", 200,null);
+                        }
+                        else {
+                          response.response("error", res, 'error', 404,null);
+                        }
+                    })
+                    .catch((err) => {
+                        response.response("error", res, 'error', 500,null);
+                    });
             });
         } else {
-            res.status(500).json({message: 'This user does not exist'});
+            response.response("error", res, "USER DOSN'T EXIST", 404,null);
         }
-    },function(err){
-        console.error(err);
+    },(err) => {
+        response.response("error", res, 'error', 500,null);
+    })
+    .catch(err => {
+        response.response("error", res, 'error', 500,null);
     })
 }
