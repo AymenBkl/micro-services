@@ -8,7 +8,7 @@ module.exports.addPrescription = (res,body) =>{
     prescription.create(body)
         .then(prescription => {
             if (prescription){
-                response.response("success",res,"CATEGORY CREATED",200,prescription);
+                response.response("success",res,"PRESCRIPTION CREATED",200,prescription);
             }
             else {
                 response.response("error",res,"undefined",404,null);

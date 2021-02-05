@@ -15,6 +15,8 @@ router.all("/", (req, res, next) => {
     })
     .post("/",upload.single('file'),filesController.uploadImage)
 
+    .post("/uploadmultiple",upload.array('file',7),filesController.uploadImages)
+
     .get("/",filesController.getImage);
 
 

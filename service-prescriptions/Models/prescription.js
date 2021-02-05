@@ -23,10 +23,10 @@ const prescriptionSchema = new Schema({
         type : mongoose.Types.ObjectId,
         ref : 'comment', 
     }],
-    imageUrl : {
+    imageUrl : [{
         type : String,
         default : '',
-    },
+    }],
 } , {
     timestamps : true,
 }

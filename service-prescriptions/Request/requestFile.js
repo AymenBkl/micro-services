@@ -4,7 +4,7 @@ var request = require('request');
 function requests(req,res,next){
     return new Promise((resolve,reject) => {        
         request.post({
-            url : 'http://127.0.0.1:8080/api/account/files/addfile', 
+            url : 'http://127.0.0.1:8080/api/account/files/uploadmultiple', 
             body : req
         },function(error, response, body){
             if (error != null) {
