@@ -56,6 +56,7 @@ var config= require ('./config')(),
         mongoose.connect(config.mongoURL, { useNewUrlParser: true,useFindAndModify : false })
         configServer.express.app = app;
         
+        
         //header(s) setting
         app.all('/*', function(req, res, next) {
             config.server.headers.forEach(function(item) {
@@ -65,6 +66,8 @@ var config= require ('./config')(),
             next();
         });
 
+        
+
         //pu here a middleware to check the api key
         
 
@@ -72,7 +75,6 @@ var config= require ('./config')(),
         config.api.modules.forEach(function(item) {
             app.use('/' + config.api.route + "/" + item.route, require('./' + item.path + "/" +  item.name));
         });
-        
         server.create(function (err,server) {
             if (!err){
                 console.log("### " + config.server.id + " -> " + (config.server.https ? "HTTPS" : "HTTP") + " Server started on port " +
@@ -81,6 +83,16 @@ var config= require ('./config')(),
                 debug(err);
             }
         });
+
+        app.options('/*',(req,res,next) => {
+            console.log("here");
+            next();
+        })
+        app.get('/*',(req,res,next) => {
+
+            console.log("here");
+            next();
+        })
         
 
         //Http Error Handling on

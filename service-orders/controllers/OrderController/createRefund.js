@@ -15,7 +15,7 @@ module.exports = {
             order: req.body.orderId,
             patient: req.body.patient,
             pharmacy: req.body.pharmacyId,
-            refundPrice:req.body.refundPrice
+            refundPrice:req.body.refundPrice,
         }
         refundModel.create(refund)
             .then((refund) => {

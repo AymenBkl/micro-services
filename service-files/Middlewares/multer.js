@@ -6,7 +6,7 @@ var storage = multer.diskStorage(
     {
         destination: '../api-gateway/uploads/',
         filename: function ( req, file, cb ) {
-            cb( null, uuid.v4() + file.originalname );
+            cb( null, uuid.v4() + '.' + file.mimetype.split('/')[1] );
         }, 
     }
 );

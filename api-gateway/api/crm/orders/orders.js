@@ -72,7 +72,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceOrders", "Routes/orders.route", req.method, false, req, res, next,'','/paypharmacy');
     })
-    .put('/pickuprefund/:orderId', jwt.verifyUser,jwt.verifyPharmacy, function (req, res, next) {
+    .put('/pickuprefund/:orderId', jwt.verifyUser, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.orderId = req.params.orderId;
         var request = new apiGateway();

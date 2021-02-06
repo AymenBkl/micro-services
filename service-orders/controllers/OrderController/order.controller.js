@@ -116,6 +116,7 @@ module.exports = {
     },
 
     pickUp : (req,res,next) => {
+        console.log(req.body.refundId)
         const query = {
             refund: {refund:req.body.refundId,payedByAdmin : 'PICKUP',commissionApplied:req.body.commission}
         }
