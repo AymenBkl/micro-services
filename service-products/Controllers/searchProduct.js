@@ -8,10 +8,12 @@ const category = require('../../service-category/Models/category');
 const request = require('../Request/requestUser').request;
 
 module.exports.searchProduct = (req, res) => {
-    product.find()
+    console.log("product",req.body.products) 
+    product.find({status: 'active'})
         .populate({
             path: 'mainProduct', match: {
-                name : {$in : req.body.products}
+                name : {$in : req.body.products},
+                status: 'active'
             }
         })
 

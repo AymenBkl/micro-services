@@ -8,6 +8,7 @@ const category = require('../../service-category/Models/category');
 
 module.exports.findProduct = (req, res) => {
     addRegex(req.body.products);
+    req.body.products.status = 'active';
     mainProduct.find(req.body.products)
         .then(products => {
             if (products && products.length != 0) {
