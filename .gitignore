@@ -12,6 +12,7 @@ service-orders/node_modules
 service-products/node_modules
 service-signup/node_modules
 service-user/node_modules
+service-user/uploads
 
 
 api-gateway/uploads/
