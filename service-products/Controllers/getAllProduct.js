@@ -3,10 +3,11 @@ const product = require('../Models/product');
 const response = require('../Handler/HandlerProduct/response.controller');
 
 module.exports.getAll = (res,mainProductId,pharmacyId) =>{
+    console.log("here");
     product.find({
         $and : [{pharmacy : pharmacyId}, {mainProduct : mainProductId}]
     })
-    .populate({path : 'mainProduct'})
+    .populate({path : 'mainProduct',match: {status:'active'}})
 
         .then(products => {
             if (products && products.length != 0){
