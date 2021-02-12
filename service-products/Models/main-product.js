@@ -50,6 +50,10 @@ const mainProductSchema = new Schema({
         type : String,
         default : '',
     },
+    status : {
+        type : String,
+        default : 'active',
+    },
     imageUrl : {
         type : String,
         default : '',

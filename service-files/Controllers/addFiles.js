@@ -6,10 +6,10 @@ module.exports.upload = (req, res) => {
         let images = [];
         req.files.map(file => {
             if (file.originalname == 'new'){
-                images.push('http://192.168.1.104:8080//' + file.filename)
+                images.push('http://medsurgcompany.in/api/images//' + file.filename)
             }
             else {
-                images.push('http://192.168.1.104:8080//' + file.originalname)
+                images.push('http://medsurgcompany.in/api/images//' + file.originalname)
             }
         })
         response.response('success', res, images, 200, null);

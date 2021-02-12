@@ -19,6 +19,10 @@ const productSchema = new Schema({
         ref : 'mainproduct',
         required : true
     },
+    status : {
+        type : String,
+        default : 'active',
+    },
     pharmacy : {
         type : mongoose.Types.ObjectId,
         ref : 'User',
