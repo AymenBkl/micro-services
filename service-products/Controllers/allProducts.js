@@ -5,7 +5,8 @@ const response = require('../Handler/HandlerProduct/response.controller');
 module.exports.getAll = (req,res) =>{
     console.log(req.body.pharmacyId);
     product.find({
-        pharmacy : req.body.pharmacyId
+        pharmacy : req.body.pharmacyId,
+        status: 'active'
     })
     .populate({path : 'mainProduct'})
         .then(products => {

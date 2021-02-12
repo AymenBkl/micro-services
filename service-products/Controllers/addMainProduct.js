@@ -9,7 +9,7 @@ module.exports.addProduct = (res,body) =>{
           ({
             updateOne: {
               filter: { name : product.name },
-              update: { $set: product },
+              update: { $set: product,status:'active'},
               upsert: true
             }
           })

@@ -63,11 +63,16 @@ module.exports = {
     },
 
     deleteProduct : (req,res,next) => {
-        deleteProduct.deleteProduct(res,req.body.metadata.productId);
-    },
+        const query = {
+            $set : {status : 'deleted'}
+        }
+        updateProduct.updateProduct(res,req.body.metadata.productId,query);    },
 
     deleteMainProduct : (req,res,next) => {
-        deleteMaianProduct.deleteMainProduct(res,req.body.metadata.mainproductId);
+        const query = {
+            $set : {status : 'deleted'}
+        }
+        updateMainProduct.updateMainProduct(res,req.body.metadata.mainproductId,query);
     },
 
     addImage : (req,res,next) => {
