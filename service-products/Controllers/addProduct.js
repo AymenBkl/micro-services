@@ -2,8 +2,9 @@ const product = require('../Models/product');
 
 const response = require('../Handler/HandlerProduct/response.controller');
 
-module.exports.addProduct = (res, body) => {
-        var query = {mainProduct:body.mainProduct},
+module.exports.addProduct = (res, body,pharmacy) => {
+    console.log(pharmacy)
+        var query = {mainProduct:body.mainProduct,pharmacy: pharmacy},
          update = { status: 'active',price: body.price,description:body.description},
          options = { upsert: true, new: true, setDefaultsOnInsert: true };
          console.log(query);

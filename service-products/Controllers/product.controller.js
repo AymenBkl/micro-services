@@ -30,7 +30,7 @@ const findProductFromCategory = require('./findProductFromCategory');
 module.exports = {
     addProduct : (req,res,next) => {
         req.body.mainProduct = req.body.metadata.mainproductId;
-        addProduct.addProduct(res,req.body);
+        addProduct.addProduct(res,req.body,req.query.id);
     },
 
     addMainProduct : (req,res,next) => {
