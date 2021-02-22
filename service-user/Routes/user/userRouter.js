@@ -30,7 +30,10 @@ router.all("/", (req, res, next) => {
     
     .post("/addpaymentdetail",userController.addPaymentDetail)
 
-    .get("/usermanagement/patients", userController.getPatients);
+    .get("/usermanagement/patients", userController.getPatients)
+
+    .get("/usermanagement/pharmacies", userController.getPharmacies);
+
     
 router.all("/searchpharmacies", (req, res, next) => {
     next();

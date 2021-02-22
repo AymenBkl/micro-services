@@ -38,6 +38,10 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/usermanagement/patients');
     })
+    .get('/usermanagement/pharmacies', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/usermanagement/pharmacies');
+    })
     .put('/updateuser', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);

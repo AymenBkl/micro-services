@@ -18,7 +18,7 @@ const addPaymentDetail = require('./addPaymentDetail');
 
 const updatePaymentDetail = require('./updatePaymentDetail');
 
-const getPatients = require('./getPatients');
+const getUsers = require('./getUsers');
 
 module.exports = {
     getUser : (req,res,next) => {
@@ -67,7 +67,12 @@ module.exports = {
     },
 
     getPatients:  (req,res,next) => {
-        getPatients.getPatients(res);
+        getUsers.getUsers(res,'patient');
+    },
+
+
+    getPharmacies:  (req,res,next) => {
+        getUsers.getUsers(res,'pharmacy');
     },
 
 

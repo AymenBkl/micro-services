@@ -4,9 +4,9 @@ const response = require('../Handler/HandlerUser/response.controller');
 
 const address = require('../Models/address');
 
-module.exports.getPatients = (res) =>{
+module.exports.getUsers = (res,role) =>{
     
-    user.find({role:"patient"})
+    user.find({role:role})
         .populate({path: 'addresses'})
         .select("-salt -hash")
         .then(users => {
