@@ -76,6 +76,12 @@ module.exports = {
         getAllOrders.getOrders(req,res,query);
     }, 
 
+    getAllUserOrders : (req,res,next) => {
+        console.log(req.params.userId);
+        query = {$or : [{patient : req.params.userId},{pharmacy:req.params.userId}]};
+        getAllOrders.getOrders(req,res,query);
+    }, 
+
     updateReferal : (req,res,next) => {
         const query = {
             $set : req.body

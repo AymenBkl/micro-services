@@ -19,6 +19,8 @@ router.all("/", (req, res, next) => {
 
     .get('/allorders',orderController.getAllOrders)
 
+    .get('/userallorders/:userId',orderController.getAllUserOrders)
+
     .get('/allrefunds',orderController.getAllRefunds)
 
     .get('/getcommission',orderController.getCommissions)
