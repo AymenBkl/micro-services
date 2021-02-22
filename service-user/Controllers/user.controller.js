@@ -66,7 +66,7 @@ module.exports = {
         addPaymentDetail.addPaymentDetail(res,req.query.id,req.body.paymentDetail);
     },
 
-    getPatients(){
+    getPatients:  (req,res,next) => {
         getPatients.getPatients(res);
     }
 

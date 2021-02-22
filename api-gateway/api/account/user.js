@@ -34,7 +34,7 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);
     })
-    .get('/usermanagement/patients', jwt.verifyUser, function (req, res, next) {
+    .get('/usermanagement/patients', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
         req.body.id = req.params.userId;
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/usermanagement/patients');
