@@ -32,6 +32,10 @@ const userSchema = new Schema({
         type : String,
         required : true
     },
+    status:{
+        type : String,
+        default : 'active'
+    },
     imageUrl : {
         type : String,
         default : '',
