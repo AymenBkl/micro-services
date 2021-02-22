@@ -22,6 +22,8 @@ router.all("/", (req, res, next) => {
 
     .put("/updatepaymentdetail/:paymentId", userController.updatePaymentDetail)
 
+    .put("/usermanagement/updateuser/:userId", userController.updateUserAdmin)
+
     .post("/addaddress",userController.addAddress)
 
     .post("/addfile",multer.single('file'), userController.addFileExCel)

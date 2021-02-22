@@ -68,6 +68,15 @@ module.exports = {
 
     getPatients:  (req,res,next) => {
         getPatients.getPatients(res);
+    },
+
+
+    updateUserAdmin : (req,res,next) => {
+        console.log(req.params.userId);
+        const query = {
+            $set : req.body.user
+        }
+        updateUser.updateUser(res,req.params.userId,query)
     }
 
 

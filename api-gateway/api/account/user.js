@@ -35,7 +35,6 @@ router.all('/', function (req, res, next) {
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);
     })
     .get('/usermanagement/patients', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
-        req.body.id = req.params.userId;
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/usermanagement/patients');
     })
@@ -43,9 +42,14 @@ router.all('/', function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);
     })
+    
     .put('/updatepaymentdetail/:paymentId', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, '', '/updatepaymentdetail/' + req.params.paymentId);
+    })
+    .put('/usermanagement/updateuser/:userId', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, '', '/usermanagement/updateuser/' + req.params.userId);
     })
     .post('/addfile', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         console.log('here');
