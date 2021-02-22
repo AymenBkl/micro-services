@@ -26,8 +26,10 @@ router.all("/", (req, res, next) => {
 
     .post("/addfile",multer.single('file'), userController.addFileExCel)
     
-    .post("/addpaymentdetail",userController.addPaymentDetail);
+    .post("/addpaymentdetail",userController.addPaymentDetail)
 
+    .get("/usermanagement/patients", userController.getPatients);
+    
 router.all("/searchpharmacies", (req, res, next) => {
     next();
 })

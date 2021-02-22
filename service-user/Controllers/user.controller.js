@@ -18,6 +18,8 @@ const addPaymentDetail = require('./addPaymentDetail');
 
 const updatePaymentDetail = require('./updatePaymentDetail');
 
+const getPatients = require('./getPatients');
+
 module.exports = {
     getUser : (req,res,next) => {
         getUser.getUser(res,req.body.id,null);
@@ -63,6 +65,10 @@ module.exports = {
     addPaymentDetail :  (req,res,next) => {
         addPaymentDetail.addPaymentDetail(res,req.query.id,req.body.paymentDetail);
     },
+
+    getPatients(){
+        getPatients.getPatients(res);
+    }
 
 
 

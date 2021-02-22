@@ -22,17 +22,22 @@ router.all('/', function (req, res, next) {
     .post('/addaddress', jwt.verifyUser, function (req, res, next) {
         const queryParams = "?id=" + req.user._id;
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, queryParams,'/addaddress');
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, queryParams, '/addaddress');
     })
     .post('/addpaymentdetail', jwt.verifyUser, function (req, res, next) {
         const queryParams = "?id=" + req.user._id;
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, queryParams,'/addpaymentdetail');
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, queryParams, '/addpaymentdetail');
     })
     .get('/user/:userId', jwt.verifyUser, function (req, res, next) {
         req.body.id = req.params.userId;
         var request = new apiGateway();
         request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next);
+    })
+    .get('/usermanagement/patients', jwt.verifyUser, function (req, res, next) {
+        req.body.id = req.params.userId;
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/usermanagement/patients');
     })
     .put('/updateuser', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
@@ -40,25 +45,25 @@ router.all('/', function (req, res, next) {
     })
     .put('/updatepaymentdetail/:paymentId', jwt.verifyUser, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/updatepaymentdetail/' + req.params.paymentId);
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, '', '/updatepaymentdetail/' + req.params.paymentId);
     })
-    .post('/addfile', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+    .post('/addfile', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         console.log('here');
         const queryParams = "?id=" + req.user._id;
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next,queryParams,'/addfile');
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next, queryParams, '/addfile');
     })
-    .put('/updatemainproduct/:mainproductId',jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+    .put('/updatemainproduct/:mainproductId', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.mainproductId = req.params.mainproductId;
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts","Routes/product.route", req.method,false, req, res, next,'','/updatemainproduct');
+        request.sendRequest("ServiceProducts", "Routes/product.route", req.method, false, req, res, next, '', '/updatemainproduct');
     })
-    .delete("/deletemainproduct/:mainproductId",jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
+    .delete("/deletemainproduct/:mainproductId", jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
         req.body.metadata = {};
         req.body.metadata.mainproductId = req.params.mainproductId;
         var request = new apiGateway();
-        request.sendRequest("ServiceProducts","Routes/product.route", req.method,false, req, res, next,'','/deletemainproduct');
+        request.sendRequest("ServiceProducts", "Routes/product.route", req.method, false, req, res, next, '', '/deletemainproduct');
     });
 
 
@@ -68,22 +73,24 @@ router.all('/user/searchpharmacies', function (req, res, next) {
     .options('/', jwt.verifyUser, (req, res, next) => {
         next();
     })
-    .post('/', jwt.verifyUser,jwt.verifyPatient, function (req, res, next) {
+    .post('/', jwt.verifyUser, jwt.verifyPatient, function (req, res, next) {
         var request = new apiGateway();
-        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next,'','/searchpharmacies');
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, false, req, res, next, '', '/searchpharmacies');
     });
 
 
 router.all('/admin/addfile', function (req, res, next) {
+    next();
+})
+    .options('/', jwt.verifyUser, (req, res, next) => {
         next();
     })
-        .options('/', jwt.verifyUser, (req, res, next) => {
-            next();
-        })
-        .post('/', jwt.verifyUser,jwt.verifyAdmin, function (req, res, next) {
-            var request = new apiGateway();
-            request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next,'','/addfile');
-        });
+    .post('/', jwt.verifyUser, jwt.verifyAdmin, function (req, res, next) {
+        var request = new apiGateway();
+        request.sendRequest("ServiceUser", "Routes/user.route", req.method, true, req, res, next, '', '/addfile');
+    });
+
+
 
 
 
