@@ -13,7 +13,7 @@ module.exports.addProduct = (res,body) =>{
               upsert: true
             }
           })
-        )
+        ) 
       )
         .then(product => {
             if (product){
